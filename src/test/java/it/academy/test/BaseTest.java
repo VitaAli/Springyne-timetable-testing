@@ -13,7 +13,7 @@ public class BaseTest {
     public void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://op.akademijait.vtmc.lt/");
+        driver.get("http://localhost:3000/?#/");
     }
 
     @AfterEach
