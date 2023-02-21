@@ -6,17 +6,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class Header {
 
-    @FindBy(xpath = "//a[normalize-space()='Pagrindinis']")
+    @FindBy(css = "a[href='#/']")
     private WebElement home;
-    @FindBy(xpath = "//a[normalize-space()='Moduliai']")
+    @FindBy(css = "a[href='#/modules']")
     private WebElement modules;
-    @FindBy(xpath = "//a[normalize-space()='Kabinetai']")
+    @FindBy(css = "a[href='#/rooms']")
     private WebElement rooms;
-    @FindBy(xpath = "//a[normalize-space()='Pamainos']")
+    @FindBy(css = "a[href='#/shifts']")
     private WebElement shifts;
-    @FindBy(xpath = "//a[normalize-space()='Dalykai']")
+    @FindBy(css = "a[href='#/subjects']")
     private WebElement subjects;
-    @FindBy(xpath = "//a[normalize-space()='Mokytojai']")
+    @FindBy(css = "a[href='#/teachers']")
     private WebElement teachers;
 
     public Header(WebDriver driver) {
