@@ -20,7 +20,8 @@ public class ModuleListPageTest {
         moduleListPage.searchModuleByName("Test name1");
         moduleListPage.pressButtonEnter();
 
-        xxx
+        //Inga, žemiau pakartotas kodas ištestuoti merge į main šaką:
+        moduleListPage.pressButtonEnter();
 
     }
 }
