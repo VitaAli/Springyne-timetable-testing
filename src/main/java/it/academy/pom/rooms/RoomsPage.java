@@ -1,4 +1,4 @@
-package it.academy.pom.modules;
+package it.academy.pom.rooms;
 
 import it.academy.pom.AbstractPage;
 import org.openqa.selenium.WebDriver;
