@@ -1,8 +1,7 @@
-package it.academy.test;
+package it.academy.test.module;
 
 import it.academy.pom.Header;
-import it.academy.pom.ModuleListPage;
-import org.junit.jupiter.api.Assertions;
+import it.academy.pom.module.ModuleListPage;
 
 import static it.academy.test.BaseTest.driver;
 
@@ -20,8 +19,6 @@ public class ModuleListPageTest {
         moduleListPage.searchModuleByName("Test name1");
         moduleListPage.pressButtonEnter();
 
-        //Inga, žemiau pakartotas kodas ištestuoti merge į main šaką:
-        moduleListPage.pressButtonEnter();
 
     }
 }

@@ -1,4 +1,4 @@
-package it.academy.pom;
+package it.academy.pom.module;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
