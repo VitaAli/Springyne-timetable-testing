@@ -1,21 +1,21 @@
-package it.academy.test.module;
+package it.academy.test.modules;
 
 import it.academy.pom.Header;
-import it.academy.pom.module.ModuleListPage;
+import it.academy.pom.modules.ModulesPage;
 
 import static it.academy.test.BaseTest.driver;
 
-public class ModuleListPageTest {
+public class ModulesPageTest {
 
     private Header header;
-    private ModuleListPage moduleListPage;
+    private ModulesPage moduleListPage;
 
     public void modulesCanBeFilteredByModuleName() {
 
         header = new Header(driver);
-        moduleListPage = new ModuleListPage(driver);
+        moduleListPage = new ModulesPage(driver);
 
-        header.selectModuleListFromNavbar();
+        header.openModules();
         moduleListPage.searchModuleByName("Test name1");
         moduleListPage.pressButtonEnter();
 
