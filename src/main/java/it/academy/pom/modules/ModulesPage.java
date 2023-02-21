@@ -6,16 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class ModulesPage {
 
-    @FindBy (xpath = "//input[@id='search-name-input']")
+    @FindBy (css = "#search-name-input")
     private WebElement inputByName;
 
-    @FindBy (xpath = "//button[@type='submit']")
+    @FindBy (css = "button[type='submit']")
     private WebElement buttonEnter;
 
-    @FindBy (xpath = "//td[normalize-space()='Test name1']")
-    private WebElement searchedModule;
-
-    public ModulesPage(WebDriver driver) {
+    public ModuleListPage(WebDriver driver) {
         super();
     }
 
@@ -25,10 +22,6 @@ public class ModulesPage {
 
     public void pressButtonEnter() {
         buttonEnter.click();
-    }
-
-    public void getNameOfSearchedModule() {
-        searchedModule.getText();
     }
 
 }
