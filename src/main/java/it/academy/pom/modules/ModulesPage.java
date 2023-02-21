@@ -12,7 +12,7 @@ public class ModulesPage {
     @FindBy (css = "button[type='submit']")
     private WebElement buttonEnter;
 
-    public ModuleListPage(WebDriver driver) {
+    public ModulesPage(WebDriver driver) {
         super();
     }
 
