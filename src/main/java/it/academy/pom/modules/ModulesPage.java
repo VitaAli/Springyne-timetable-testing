@@ -1,5 +1,6 @@
 package it.academy.pom.modules;
 
+import it.academy.pom.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModulesPage {
+public class ModulesPage extends AbstractPage {
 
     @FindBy (css = "#search-name-input")
     private WebElement inputByName;
@@ -19,7 +20,7 @@ public class ModulesPage {
     private List<WebElement> modulesList;
 
     public ModulesPage(WebDriver driver) {
-        super();
+        super(driver);
     }
 
     public void searchModuleByName(String name) {

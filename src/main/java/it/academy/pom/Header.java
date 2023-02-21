@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Header {
+public class Header extends AbstractPage {
 
     @FindBy(css = "a[href='#/']")
     private WebElement home;
@@ -20,7 +20,7 @@ public class Header {
     private WebElement teachers;
 
     public Header(WebDriver driver) {
-        super();
+        super(driver);
     }
 
     public void openHome() {

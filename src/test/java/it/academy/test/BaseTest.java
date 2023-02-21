@@ -1,5 +1,6 @@
 package it.academy.test;
 
+import it.academy.pom.AbstractPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
