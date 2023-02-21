@@ -1,10 +1,10 @@
-package it.academy.pom.module;
+package it.academy.pom.modules;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ModuleListPage {
+public class ModulesPage {
 
     @FindBy (xpath = "//input[@id='search-name-input']")
     private WebElement inputByName;
@@ -15,7 +15,7 @@ public class ModuleListPage {
     @FindBy (xpath = "//td[normalize-space()='Test name1']")
     private WebElement searchedModule;
 
-    public ModuleListPage(WebDriver driver) {
+    public ModulesPage(WebDriver driver) {
         super();
     }
 
