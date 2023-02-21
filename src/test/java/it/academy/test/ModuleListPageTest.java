@@ -20,7 +20,7 @@ public class ModuleListPageTest {
         moduleListPage.searchModuleByName("Test name1");
         moduleListPage.pressButtonEnter();
 
-        
+        xxx
 
     }
 }
