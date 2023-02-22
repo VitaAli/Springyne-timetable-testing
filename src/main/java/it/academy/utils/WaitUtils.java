@@ -12,4 +12,8 @@ public class WaitUtils {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(dr -> ((Long) ((JavascriptExecutor) dr)
                 .executeScript("return jQuery.active") == 0));
     }
+
+    public static void waitCertainTime(WebDriver driver) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
 }

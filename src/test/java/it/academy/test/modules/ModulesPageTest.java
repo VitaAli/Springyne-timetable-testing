@@ -8,9 +8,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.openqa.selenium.JavascriptExecutor;
-
-import java.time.Duration;
 
 public class ModulesPageTest extends BaseTest {
 
@@ -19,7 +16,7 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData.txt")
-    public void modulesCanBeFilteredByModuleName(String valueFromFile) {
+    public void modulesAreFilteredBy(String valueFromFile) {
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
@@ -29,8 +26,8 @@ public class ModulesPageTest extends BaseTest {
         modulesPage.pressButtonSearch();
 
 
-//        Assertions.assertTrue(modulesPage.getModuleNames(valueFromFile).contains(valueFromFile)
-//                , "The searched module was not found in the list of modules");
+        Assertions.assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
+                , "The searched module was not found in the list of modules");
 
     }
 
@@ -50,9 +47,9 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData.txt")
-    public void modulesCannotBeFilteredByRandomAndSymbols(String valueFromFile) throws InterruptedException {
+    public void modulesCannotBeFilteredByRandomAndSymbols(String valueFromFile) {
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WaitUtils.waitCertainTime(driver);
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
@@ -60,7 +57,6 @@ public class ModulesPageTest extends BaseTest {
         header.openModules();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-//        WaitUtils.waitForJs(driver);
         Assertions.assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
                 , "Modules cannot be filtered by random words/symbols");
     }

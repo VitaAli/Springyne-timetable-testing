@@ -1,0 +1,8 @@
+Informacinių sistemų projektavimas
+duomenų bazių projektavimas
+Programavimo aplinkos valdymas
+java programų kūrimas
+Testavimo metodikų taikymas
+Java
+Testavimo
+duomenų
