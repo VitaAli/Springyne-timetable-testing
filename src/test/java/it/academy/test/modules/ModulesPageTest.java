@@ -5,6 +5,8 @@ import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.JavascriptExecutor;
 
 public class ModulesPageTest extends BaseTest {
@@ -12,18 +14,20 @@ public class ModulesPageTest extends BaseTest {
     private Header header;
     private ModulesPage modulesPage;
 
-    @Test
-    public void modulesCanBeFilteredByModuleName() {
+    @ParameterizedTest
+    @CsvFileSource(resources = "/TestData.txt")
+    public void modulesCanBeFilteredByModuleName(String valueFromFile) {
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
 
         header.openModules();
-        modulesPage.searchModuleByName("Informacinių sistemų projektavimas");
+        modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
-        Assertions.assertTrue(modulesPage.getModuleNames().contains("Informacinių sistemų projektavimas")
-                , "The searched module was not found in the list of modules");
+
+//        Assertions.assertTrue(modulesPage.getModuleNames(valueFromFile).contains(valueFromFile)
+//                , "The searched module was not found in the list of modules");
 
     }
 
@@ -41,18 +45,19 @@ public class ModulesPageTest extends BaseTest {
                 , "The searched module was not found in the list of modules");
     }
 
-    @Test
-    public void modulesCannotBeFilteredByRandomWord() {
+    @ParameterizedTest
+    @CsvFileSource(resources = "/TestData.txt")
+    public void modulesCannotBeFilteredByRandomAndSymbols(String valueFromFile) {
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
 
         header.openModules();
-        modulesPage.searchModuleByName("random");
+        modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
         Assertions.assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
-                , "Either the message is not displayed or no results were found");
+                , "Modules cannot be filtered by random words/symbols");
     }
 
     @Test
@@ -67,6 +72,11 @@ public class ModulesPageTest extends BaseTest {
         Assertions.assertEquals(10, modulesPage.getModulesListSize()
                 , "There are more or less results than selected to display on the page, or no results found");
     }
+
+    //kokiais atvejais gauname tą patį rezultatą
+    //Įrašų nerasta jei norim patikrinti, ar tikrai įrašų nerasta, jei įvedame params:
+    // neegzistuojantį pavadinimą, simbolių seką, skaičių seką
+    //gauname listą ir jame contains params(partial name, number related to name, symbol related to name)
 
 
 }

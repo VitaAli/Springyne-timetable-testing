@@ -38,13 +38,19 @@ public class ModulesPage extends AbstractPage {
         buttonSearch.click();
     }
 
-    public List getModuleNames() {
+    public String getModuleNames(String valueFromFile) {
 
-        ArrayList<String> moduleNames = new ArrayList<>();
-        for (int index = 0; index < modulesList.size(); index++) {
-            moduleNames.add(modulesList.get(index).getText());
+        if (valueFromFile == "Testavimo metodikų taikymas") {
+
+            ArrayList<String> moduleNames = new ArrayList<>();
+            for (int index = 0; index < modulesList.size(); index++) {
+                moduleNames.add(modulesList.get(index).getText());
+            }
+            return null;
         }
-        return moduleNames;
+
+        return null;
+
     }
 
     public List getFirstWordsOfModuleNames() {
