@@ -1,4 +1,4 @@
-package it.academy.test.Rooms;
+package it.academy.test.rooms;
 
 import it.academy.pom.Header;
 import it.academy.pom.rooms.RoomsPage;

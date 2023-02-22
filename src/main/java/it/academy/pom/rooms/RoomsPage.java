@@ -40,11 +40,11 @@ public class RoomsPage extends AbstractPage {
     }
 
     public List getRoomsListByName() {
-        ArrayList<String> roomsName = new ArrayList<>();
+        ArrayList<String> roomNames = new ArrayList<>();
         for (int index = 0; index < roomsListByName.size(); index++) {
-            roomsName.add(roomsListByName.get(index).getText());
+            roomNames.add(roomsListByName.get(index).getText());
         }
-        return roomsName;
+        return roomNames;
     }
 
     public void searchRoomsByBuilding(String name) {
