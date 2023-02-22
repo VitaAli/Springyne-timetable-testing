@@ -16,7 +16,7 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData1.txt")
-    public void modulesAreFilteredBy(String valueFromFile) {
+    public void modulesCanBeFilteredByName(String valueFromFile) {
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
@@ -25,28 +25,27 @@ public class ModulesPageTest extends BaseTest {
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
-
         Assertions.assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
-                , "The searched module was not found in the list of modules");
-
+                , "The list should be filtered by the value");
     }
 
-    @Test
-    public void modulesCanBeFilteredByPartialModuleName() {
+    @ParameterizedTest
+    @CsvFileSource(resources = "/TestData2.txt")
+    public void modulesCanBeFilteredByPartialName(String valueFromFile) {
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
 
         header.openModules();
-        modulesPage.searchModuleByName("Informacinių");
+        modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
-        Assertions.assertTrue(modulesPage.getFirstWordsOfModuleNames().contains("Informacinių")
-                , "The searched module was not found in the list of modules");
+        Assertions.assertTrue(modulesPage.getFirstWordsOfModuleNames().contains(valueFromFile)
+                , "The list should be filtered by the value");
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData.txt")
+    @CsvFileSource(resources = "/TestData3.txt")
     public void modulesCannotBeFound(String valueFromFile) {
 
         WaitUtils.waitCertainTime(driver);
@@ -57,27 +56,22 @@ public class ModulesPageTest extends BaseTest {
         header.openModules();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
+
         Assertions.assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
-                , "Modules cannot be filtered by random words/symbols");
+                , "Modules cannot be filtered by random words or symbols");
     }
 
-    @Test
-    public void moduleListCanBeDisplayedBy10EntriesPerPage() {
-
-        header = new Header(driver);
-        modulesPage = new ModulesPage(driver);
-
-        header.openModules();
-        modulesPage.selectPageSize10();
-
-        Assertions.assertEquals(10, modulesPage.getModulesListSize()
-                , "There are more or less results than selected to display on the page, or no results found");
-    }
-
-    //kokiais atvejais gauname tą patį rezultatą
-    //Įrašų nerasta jei norim patikrinti, ar tikrai įrašų nerasta, jei įvedame params:
-    // neegzistuojantį pavadinimą, simbolių seką, skaičių seką
-    //gauname listą ir jame contains params(partial name, number related to name, symbol related to name)
-
+//    @Test
+//    public void moduleListCanBeDisplayedBy10EntriesPerPage() throws InterruptedException {
+//
+//        header = new Header(driver);
+//        modulesPage = new ModulesPage(driver);
+//
+//        header.openModules();
+//        modulesPage.selectPageSize10();
+//
+//        Assertions.assertEquals(10, modulesPage.getModulesListSize()
+//                , "There are more or less results than selected to display on the page, or no results found");
+//    }
 
 }

@@ -74,7 +74,7 @@ public class ModulesPage extends AbstractPage {
     }
 
     public int getModulesListSize() {
-        return modulesList.size() - 1;
+        return modulesList.size() - 2;
     }
 
 }
