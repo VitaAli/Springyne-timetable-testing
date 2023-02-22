@@ -15,7 +15,7 @@ public class ModulesPageTest extends BaseTest {
     private ModulesPage modulesPage;
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData.txt")
+    @CsvFileSource(resources = "/TestData1.txt")
     public void modulesAreFilteredBy(String valueFromFile) {
 
         header = new Header(driver);
@@ -47,7 +47,7 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData.txt")
-    public void modulesCannotBeFilteredByRandomAndSymbols(String valueFromFile) {
+    public void modulesCannotBeFound(String valueFromFile) {
 
         WaitUtils.waitCertainTime(driver);
 
