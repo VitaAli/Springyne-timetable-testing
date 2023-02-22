@@ -3,11 +3,14 @@ package it.academy.test.modules;
 import it.academy.pom.Header;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.JavascriptExecutor;
+
+import java.time.Duration;
 
 public class ModulesPageTest extends BaseTest {
 
@@ -47,7 +50,9 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData.txt")
-    public void modulesCannotBeFilteredByRandomAndSymbols(String valueFromFile) {
+    public void modulesCannotBeFilteredByRandomAndSymbols(String valueFromFile) throws InterruptedException {
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
@@ -55,7 +60,7 @@ public class ModulesPageTest extends BaseTest {
         header.openModules();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-
+//        WaitUtils.waitForJs(driver);
         Assertions.assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
                 , "Modules cannot be filtered by random words/symbols");
     }
