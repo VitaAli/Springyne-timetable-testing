@@ -4,7 +4,6 @@ import it.academy.pom.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +22,11 @@ public class ModulesPage extends AbstractPage {
     @FindBy(xpath = "//td[contains(text(),'Įrašų nerasta')]")
     private WebElement messageNoRecords;
 
-    @FindBy(css = "#page-size-select")
-    private WebElement pageSize;
+//    @FindBy(css = "#page-size-select")
+//    private WebElement pageSize;
+//
+//    @FindBy(css = "div:nth-child(7) > div.mb-4 > form > div")
+//    private WebElement size;
 
     public ModulesPage(WebDriver driver) {
         super(driver);
@@ -47,34 +49,42 @@ public class ModulesPage extends AbstractPage {
         return moduleNames;
     }
 
-    public List<String> getFirstWordsOfModuleNames() {
+    public List<String> getPartialModuleNames() {
 
         ArrayList<String> moduleNames = new ArrayList<>();
         for (int index = 0; index < modulesList.size(); index++) {
             moduleNames.add(modulesList.get(index).getText());
         }
 
-        ArrayList<String> firstWords = new ArrayList<>();
+        ArrayList<String> partialModuleNames = new ArrayList<>();
         for (int index = 0; index < moduleNames.size(); index++) {
             String moduleName = moduleNames.get(index);
             String[] result = moduleName.split(" ", 2);
-            firstWords.add(result[0]);
+            partialModuleNames.add(result[0]);
         }
-        return firstWords;
+        return partialModuleNames;
     }
 
     public String getTextOfMessageNoRecords() {
         return messageNoRecords.getText();
     }
 
-    public void selectPageSize10() {
-
-        Select pageSize10 = new Select(pageSize);
-        pageSize10.selectByIndex(1);
-    }
-
-    public int getModulesListSize() {
-        return modulesList.size() - 2;
-    }
+//    public void selectPageSize10() {
+//
+//        Select pageSize10 = new Select(pageSize);
+//        pageSize10.selectByIndex(1);
+//    }
+//
+//    public void expandPageSizeSelection() {
+//        size.click();
+//    }
+//
+//    public void selectPageSize() {
+//
+//    }
+//
+//    public int getModulesListSize() {
+//        return modulesList.size() - 2;
+//    }
 
 }

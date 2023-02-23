@@ -5,7 +5,6 @@ import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -40,7 +39,7 @@ public class ModulesPageTest extends BaseTest {
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
-        Assertions.assertTrue(modulesPage.getFirstWordsOfModuleNames().contains(valueFromFile)
+        Assertions.assertTrue(modulesPage.getPartialModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
     }
 
@@ -69,6 +68,9 @@ public class ModulesPageTest extends BaseTest {
 //
 //        header.openModules();
 //        modulesPage.selectPageSize10();
+//
+//        modulesPage.expandPageSizeSelection();
+//
 //
 //        Assertions.assertEquals(10, modulesPage.getModulesListSize()
 //                , "There are more or less results than selected to display on the page, or no results found");
