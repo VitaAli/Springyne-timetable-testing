@@ -16,6 +16,9 @@ public class ModuleAdd extends AbstractPage {
     @FindBy (css = "button[type='submit']")
     private WebElement buttonAdd;
 
+    @FindBy (css = "")
+    private WebElement message;
+
     public ModuleAdd(WebDriver driver) {
         super(driver);
     }
@@ -26,5 +29,13 @@ public class ModuleAdd extends AbstractPage {
 
     public void enterName(String name) {
         inputName.sendKeys(name);
+    }
+
+    public void pressButtonAdd() {
+        buttonAdd.click();
+    }
+
+    public String getMessage() {
+        return null;
     }
 }
