@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class ModuleAdd extends AbstractPage {
 
-    @FindBy (css = ".btn-primary")
-    private WebElement buttonAdd;
-
     @FindBy (css = "div:nth-child(1) > div:nth-child(2) > input:nth-child(1)")
     private WebElement inputNumber;
 
@@ -17,13 +14,17 @@ public class ModuleAdd extends AbstractPage {
     private WebElement inputName;
 
     @FindBy (css = "button[type='submit']")
-    private WebElement buttonAddModule;
+    private WebElement buttonAdd;
 
     public ModuleAdd(WebDriver driver) {
         super(driver);
     }
 
-    public void pressButtonAdd() {
-        buttonAdd.click();
+    public void enterNumber(String number) {
+        inputNumber.sendKeys(number);
+    }
+
+    public void enterName(String name) {
+        inputName.sendKeys(name);
     }
 }

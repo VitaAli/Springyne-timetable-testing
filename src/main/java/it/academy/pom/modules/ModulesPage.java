@@ -22,6 +22,9 @@ public class ModulesPage extends AbstractPage {
     @FindBy(xpath = "//td[contains(text(),'Įrašų nerasta')]")
     private WebElement messageNoRecords;
 
+    @FindBy (css = ".btn-primary")
+    private WebElement buttonAddModule;
+
     public ModulesPage(WebDriver driver) {
         super(driver);
     }
@@ -60,6 +63,10 @@ public class ModulesPage extends AbstractPage {
 
     public String getTextOfMessageNoRecords() {
         return messageNoRecords.getText();
+    }
+
+    public void pressButtonAdd() {
+        buttonAddModule.click();
     }
 
 }
