@@ -22,12 +22,6 @@ public class ModulesPage extends AbstractPage {
     @FindBy(xpath = "//td[contains(text(),'Įrašų nerasta')]")
     private WebElement messageNoRecords;
 
-//    @FindBy(css = "#page-size-select")
-//    private WebElement pageSize;
-//
-//    @FindBy(css = "div:nth-child(7) > div.mb-4 > form > div")
-//    private WebElement size;
-
     public ModulesPage(WebDriver driver) {
         super(driver);
     }
@@ -68,23 +62,5 @@ public class ModulesPage extends AbstractPage {
     public String getTextOfMessageNoRecords() {
         return messageNoRecords.getText();
     }
-
-//    public void selectPageSize10() {
-//
-//        Select pageSize10 = new Select(pageSize);
-//        pageSize10.selectByIndex(1);
-//    }
-//
-//    public void expandPageSizeSelection() {
-//        size.click();
-//    }
-//
-//    public void selectPageSize() {
-//
-//    }
-//
-//    public int getModulesListSize() {
-//        return modulesList.size() - 2;
-//    }
 
 }
