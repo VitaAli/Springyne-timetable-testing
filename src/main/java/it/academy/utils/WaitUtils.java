@@ -13,7 +13,7 @@ public class WaitUtils {
                 .executeScript("return jQuery.active") == 0));
     }
 
-    public static void waitCertainTime(WebDriver driver) {
+    public static void setImplicitWait(WebDriver driver) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 }

@@ -16,7 +16,6 @@ public class ModulesPageTest extends BaseTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData1.txt")
     public void modulesCanBeFilteredByName(String valueFromFile) {
-
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
 
@@ -31,7 +30,6 @@ public class ModulesPageTest extends BaseTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData2.txt")
     public void modulesCanBeFilteredByPartialName(String valueFromFile) {
-
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
 
@@ -46,8 +44,7 @@ public class ModulesPageTest extends BaseTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData3.txt")
     public void modulesCannotBeFound(String valueFromFile) {
-
-        WaitUtils.waitCertainTime(driver);
+        WaitUtils.setImplicitWait(driver);
 
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
@@ -59,21 +56,5 @@ public class ModulesPageTest extends BaseTest {
         Assertions.assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
                 , "Modules cannot be filtered by random words or symbols");
     }
-
-//    @Test
-//    public void moduleListCanBeDisplayedBy10EntriesPerPage() throws InterruptedException {
-//
-//        header = new Header(driver);
-//        modulesPage = new ModulesPage(driver);
-//
-//        header.openModules();
-//        modulesPage.selectPageSize10();
-//
-//        modulesPage.expandPageSizeSelection();
-//
-//
-//        Assertions.assertEquals(10, modulesPage.getModulesListSize()
-//                , "There are more or less results than selected to display on the page, or no results found");
-//    }
 
 }

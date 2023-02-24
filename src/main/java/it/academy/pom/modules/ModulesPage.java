@@ -44,7 +44,6 @@ public class ModulesPage extends AbstractPage {
     }
 
     public List<String> getPartialModuleNames() {
-
         ArrayList<String> moduleNames = new ArrayList<>();
         for (int index = 0; index < modulesList.size(); index++) {
             moduleNames.add(modulesList.get(index).getText());
