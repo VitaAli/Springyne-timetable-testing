@@ -13,13 +13,16 @@ public class ModulesPageTest extends BaseTest {
     private Header header;
     private ModulesPage modulesPage;
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/TestData1.txt")
-    public void modulesCanBeFilteredByName(String valueFromFile) {
+    void performInitialSteps() {
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
-
         header.openModules();
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/TestData1.txt")
+    public void modulesShouldBeFilteredByName(String valueFromFile) {
+        performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
@@ -29,11 +32,8 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData2.txt")
-    public void modulesCanBeFilteredByPartialName(String valueFromFile) {
-        header = new Header(driver);
-        modulesPage = new ModulesPage(driver);
-
-        header.openModules();
+    public void modulesShouldBeFilteredByPartialName(String valueFromFile) {
+        performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
@@ -43,13 +43,10 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/TestData3.txt")
-    public void modulesCannotBeFound(String valueFromFile) {
+    public void modulesShouldNotBeFound(String valueFromFile) {
+//        implicit wait is used for some time until we fix the explicit wait:
         WaitUtils.setImplicitWait(driver);
-
-        header = new Header(driver);
-        modulesPage = new ModulesPage(driver);
-
-        header.openModules();
+        performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
 
