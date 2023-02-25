@@ -25,6 +25,9 @@ public class ModulesPage extends AbstractPage {
     @FindBy (css = ".btn-primary")
     private WebElement buttonAddModule;
 
+    @FindBy (css = "button[title='Redaguoti']")
+    private WebElement buttonEditModule;
+
     public ModulesPage(WebDriver driver) {
         super(driver);
     }
@@ -67,6 +70,10 @@ public class ModulesPage extends AbstractPage {
 
     public void pressButtonAdd() {
         buttonAddModule.click();
+    }
+
+    public void pressButtonEdit() {
+        buttonEditModule.click();
     }
 
 }
