@@ -16,7 +16,7 @@ public class ModuleAdd extends AbstractPage {
     @FindBy (css = "button[type='submit']")
     private WebElement buttonAdd;
 
-    @FindBy (css = "")
+    @FindBy (css = ".MuiAlert-message")
     private WebElement message;
 
     public ModuleAdd(WebDriver driver) {
@@ -35,7 +35,7 @@ public class ModuleAdd extends AbstractPage {
         buttonAdd.click();
     }
 
-    public String getMessage() {
-        return null;
+    public String getSuccessMessage() {
+        return message.getText();
     }
 }
