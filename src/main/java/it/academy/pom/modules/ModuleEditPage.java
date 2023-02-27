@@ -22,6 +22,12 @@ public class ModuleEditPage extends AbstractPage {
     @FindBy(xpath = "//button[.='Atstatyti']")
     private WebElement buttonRestore;
 
+    @FindBy (css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+    private WebElement successMessage;
+
+    @FindBy (css = ".mx-3 > div:nth-of-type(2) .MuiAlert-message")
+    private WebElement errorMessage;
+
     public ModuleEditPage(WebDriver driver) {
         super(driver);
     }
@@ -44,5 +50,13 @@ public class ModuleEditPage extends AbstractPage {
 
     public void pressButtonRestore() {
         buttonRestore.click();
+    }
+
+    public String getSuccessMessage() {
+        return successMessage.getText();
+    }
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
     }
 }
