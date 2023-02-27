@@ -19,7 +19,7 @@ public class ShiftsPage extends AbstractPage {
     @FindBy(css = "tr td:nth-child(1)")
     private List<WebElement> shiftsList;
 
-    @FindBy(xpath = "//td[contains(text(),'Įrašų nerasta')]")
+    @FindBy(xpath = "//td[contains(.,'Įrašų nerasta')]")
     private WebElement messageNoRecords;
 
     @FindBy(css = ".btn-primary")
@@ -48,6 +48,14 @@ public class ShiftsPage extends AbstractPage {
         ArrayList<String> shiftNames = new ArrayList<>();
         for (int index = 0; index < shiftsList.size(); index++) {
             shiftNames.add(shiftsList.get(index).getText());
+        }
+        return shiftNames;
+    }
+
+    public List<String> getPartialShiftNames() {
+        ArrayList<String> shiftNames = new ArrayList<>();
+        for (int index = 0; index < shiftsList.size(); index++) {
+            shiftNames.add(shiftsList.get(index).getText().substring(0, 3));
         }
         return shiftNames;
     }
