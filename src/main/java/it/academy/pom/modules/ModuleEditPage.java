@@ -25,4 +25,24 @@ public class ModuleEditPage extends AbstractPage {
     public ModuleEditPage(WebDriver driver) {
         super(driver);
     }
+
+    public void enterNumber(String number) {
+        inputNumber.sendKeys(number);
+    }
+
+    public void enterName(String name) {
+        inputName.sendKeys(name);
+    }
+
+    public void pressButtonEdit() {
+        buttonEdit.click();
+    }
+
+    public void pressButtonDelete() {
+        buttonDelete.click();
+    }
+
+    public void pressButtonRestore() {
+        buttonRestore.click();
+    }
 }
