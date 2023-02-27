@@ -20,7 +20,7 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData1.txt")
+    @CsvFileSource(resources = "/ModuleTestData1.txt")
     public void modulesShouldBeFilteredByName(String valueFromFile) {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
@@ -31,7 +31,7 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData2.txt")
+    @CsvFileSource(resources = "/ModuleTestData2.txt")
     public void modulesShouldBeFilteredByPartialName(String valueFromFile) {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
@@ -42,7 +42,7 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData3.txt")
+    @CsvFileSource(resources = "/ModuleTestData3.txt")
     public void modulesShouldNotBeFound(String valueFromFile) {
 //        implicit wait is used for some time until we fix the explicit wait:
         WaitUtils.setImplicitWait(driver);
