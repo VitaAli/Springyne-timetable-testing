@@ -4,6 +4,7 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleAddPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,14 +23,14 @@ public class ModuleAddPageTest extends BaseTest {
     }
 
     @Test
-    public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() throws InterruptedException {
+    public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
 
         performInitialSteps();
-        moduleAddPage.enterNumber("008");
+        moduleAddPage.enterNumber("009");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
 
-        Thread.sleep(3000);
+        WaitUtils.waitForSuccessMessage(driver);
 
         String expectedMessage = "Įrašas sėkmingai sukurtas";
         String actualMessage = moduleAddPage.getSuccessMessage();
