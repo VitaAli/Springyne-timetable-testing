@@ -62,13 +62,13 @@ public class ModuleAddPageTest extends BaseTest {
     }
 
     @Test
-    public void moduleShouldNotBeCreatedWithNonUniqueNumberAndAnyName() throws InterruptedException {
+    public void moduleShouldNotBeCreatedWithNonUniqueNumberAndAnyName() {
         performInitialSteps();
         moduleAddPage.enterNumber("001");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
 
-        Thread.sleep(3000);
+        WaitUtils.waitForErrorMessage(driver);
 
         String expectedMessage = "Įrašo nepavyko sukurti";
         String actualMessage = moduleAddPage.getErrorMessage();

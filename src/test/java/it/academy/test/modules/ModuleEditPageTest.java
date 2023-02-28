@@ -5,6 +5,7 @@ import it.academy.pom.modules.ModuleAddPage;
 import it.academy.pom.modules.ModuleEditPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,26 +13,24 @@ public class ModuleEditPageTest extends BaseTest {
 
     private Header header;
     private ModulesPage modulesPage;
-    private ModuleAddPage moduleAddPage;
     private ModuleEditPage moduleEditPage;
 
     void performInitialSteps() {
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
-        moduleAddPage = new ModuleAddPage(driver);
-        moduleEditPage = new ModuleEditPage(driver);
         header.openModules();
         modulesPage.pressButtonEdit();
     }
 
     @Test
-    public void moduleNumberAndNameShouldBeEdited() throws InterruptedException {
+    public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
-        moduleEditPage.enterNumber("008");
+        moduleEditPage.enterNumber("010");
         moduleEditPage.enterName("name");
         moduleEditPage.pressButtonEdit();
-//        thread.sleep is used for some time until we fix the explicit wait:
-        Thread.sleep(3000);
+
+        WaitUtils.waitForSuccessMessageAfterUpdate(driver);
+
         String expectedMessage = "Įrašas sėkmingai atnaujintas";
         String actualMessage = moduleEditPage.getSuccessMessage();
 
@@ -40,13 +39,14 @@ public class ModuleEditPageTest extends BaseTest {
     }
 
     @Test
-    public void moduleShouldBeInvalidated() throws InterruptedException {
+    public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
+
+        WaitUtils.waitForSuccessMessageAfterUpdate(driver);
+
         String expectedMessage = "Įrašas sėkmingai atnaujintas";
         String actualMessage = moduleEditPage.getSuccessMessage();
-//        thread.sleep is used for some time until we fix the explicit wait:
-        Thread.sleep(3000);
         Assertions.assertEquals(expectedMessage, actualMessage
                 , "No success message received");
     }
@@ -55,8 +55,9 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleShouldBeRestored() throws InterruptedException {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-//        thread.sleep is used for some time until we fix the explicit wait:
-        Thread.sleep(3000);
+
+        WaitUtils.waitUntilTheButtonAppears(driver);
+
         moduleEditPage.pressButtonRestore();
 
         String expectedMessage = "Įrašas sėkmingai atnaujintas";
