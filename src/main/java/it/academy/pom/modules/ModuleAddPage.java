@@ -46,7 +46,11 @@ public class ModuleAddPage extends AbstractPage {
         return errorMessage.getText();
     }
 
-    public boolean getAriaInvalidValue() {
+    public boolean getNameInvalidValue() {
         return Boolean.parseBoolean(inputName.getAttribute("aria-invalid"));
+    }
+
+    public boolean getNumberInvalidValue() {
+        return Boolean.parseBoolean(inputNumber.getAttribute("aria-invalid"));
     }
 }

@@ -6,8 +6,6 @@ import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class ModuleAddPageTest extends BaseTest {
 
@@ -46,8 +44,19 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterName("");
         moduleAddPage.pressButtonAdd();
 
-        Assertions.assertTrue(moduleAddPage.getAriaInvalidValue()
+        Assertions.assertTrue(moduleAddPage.getNameInvalidValue()
                 , "The module name is mandatory for adding a new module");
+    }
+
+    @Test
+    public void moduleShouldNotBeCreatedWithNoNumberAndAnyName() {
+        performInitialSteps();
+        moduleAddPage.enterNumber("");
+        moduleAddPage.enterName("name");
+        moduleAddPage.pressButtonAdd();
+
+        Assertions.assertTrue(moduleAddPage.getNumberInvalidValue()
+                , "The module number is mandatory for adding a new module");
     }
 
     @Test

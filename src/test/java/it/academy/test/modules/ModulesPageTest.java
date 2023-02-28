@@ -3,7 +3,6 @@ package it.academy.test.modules;
 import it.academy.pom.Header;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -20,35 +19,39 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData1.txt")
-    public void modulesShouldBeFilteredByName(String valueFromFile) {
+    @CsvFileSource(resources = "/ModuleTestData1.txt")
+    public void modulesShouldBeFilteredByName(String valueFromFile) throws InterruptedException {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
+
+        Thread.sleep(2000);
 
         Assertions.assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData2.txt")
-    public void modulesShouldBeFilteredByPartialName(String valueFromFile) {
+    @CsvFileSource(resources = "/ModuleTestData2.txt")
+    public void modulesShouldBeFilteredByPartialName(String valueFromFile) throws InterruptedException {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
+
+        Thread.sleep(2000);
 
         Assertions.assertTrue(modulesPage.getPartialModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData3.txt")
-    public void modulesShouldNotBeFound(String valueFromFile) {
-//        implicit wait is used for some time until we fix the explicit wait:
-        WaitUtils.setImplicitWait(driver);
+    @CsvFileSource(resources = "/ModuleTestData3.txt")
+    public void modulesShouldNotBeFound(String valueFromFile) throws InterruptedException {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
+
+        Thread.sleep(2000);
 
         Assertions.assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
                 , "Modules cannot be filtered by random words or symbols");

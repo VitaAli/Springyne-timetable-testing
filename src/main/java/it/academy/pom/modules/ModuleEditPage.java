@@ -22,7 +22,41 @@ public class ModuleEditPage extends AbstractPage {
     @FindBy(xpath = "//button[.='Atstatyti']")
     private WebElement buttonRestore;
 
+    @FindBy (css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+    private WebElement successMessage;
+
+    @FindBy (css = ".mx-3 > div:nth-of-type(2) .MuiAlert-message")
+    private WebElement errorMessage;
+
     public ModuleEditPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void enterNumber(String number) {
+        inputNumber.sendKeys(number);
+    }
+
+    public void enterName(String name) {
+        inputName.sendKeys(name);
+    }
+
+    public void pressButtonEdit() {
+        buttonEdit.click();
+    }
+
+    public void pressButtonDelete() {
+        buttonDelete.click();
+    }
+
+    public void pressButtonRestore() {
+        buttonRestore.click();
+    }
+
+    public String getSuccessMessage() {
+        return successMessage.getText();
+    }
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
     }
 }
