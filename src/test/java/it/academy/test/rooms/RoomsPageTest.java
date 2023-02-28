@@ -67,7 +67,7 @@ public class RoomsPageTest extends BaseTest {
                 , "Rooms cannot be filtered by random words or symbols");
     }
     @ParameterizedTest
-    @CsvFileSource(resources = "/TestData3.txt")
+    @CsvFileSource(resources = "/ModuleTestData3.txt")
     public void roomsBuildingShouldNotBeFound(String valueFromFile) {
         performInitialSteps();
         roomsPage.searchRoomsByBuilding(valueFromFile);

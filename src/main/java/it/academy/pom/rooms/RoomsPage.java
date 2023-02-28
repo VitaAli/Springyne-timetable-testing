@@ -18,7 +18,7 @@ public class RoomsPage extends AbstractPage {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement buttonSearch;
 
-    @FindBy(css = "tr td:nth-child(" + "1)")
+    @FindBy(css = "tr td:nth-child(1)")
     private List<WebElement> roomsListByName;
 
     @FindBy(css = "tr td:nth-child(2)")
