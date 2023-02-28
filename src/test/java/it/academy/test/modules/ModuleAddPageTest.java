@@ -28,8 +28,9 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterNumber("008");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-//        thread.sleep is used for some time until we fix the explicit wait:
+
         Thread.sleep(3000);
+
         String expectedMessage = "Įrašas sėkmingai sukurtas";
         String actualMessage = moduleAddPage.getSuccessMessage();
 
@@ -65,8 +66,9 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterNumber("001");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-//        thread.sleep is used for some time until we fix the explicit wait:
+
         Thread.sleep(3000);
+
         String expectedMessage = "Įrašo nepavyko sukurti";
         String actualMessage = moduleAddPage.getErrorMessage();
 

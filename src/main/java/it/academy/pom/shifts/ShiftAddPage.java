@@ -13,6 +13,12 @@ public class ShiftAddPage extends AbstractPage {
     @FindBy (css = "button[type='submit']")
     private WebElement buttonAdd;
 
+    @FindBy (css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+    private WebElement successMessage;
+
+    @FindBy (css = ".mx-3 > div:nth-of-type(2) .MuiAlert-message")
+    private WebElement errorMessage;
+
     public ShiftAddPage(WebDriver driver) {
         super(driver);
     }
@@ -23,5 +29,17 @@ public class ShiftAddPage extends AbstractPage {
 
     public void pressButtonAdd() {
         buttonAdd.click();
+    }
+
+    public String getSuccessMessage() {
+        return successMessage.getText();
+    }
+
+    public boolean getNumberInvalidValue() {
+        return Boolean.parseBoolean(inputName.getAttribute("aria-invalid"));
+    }
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
     }
 }
