@@ -12,12 +12,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 public class ShiftsPageTest extends BaseTest {
 
     private Header header;
-    private ModulesPage modulesPage;
     private ShiftsPage shiftsPage;
 
     void performInitialSteps() {
         header = new Header(driver);
-        modulesPage = new ModulesPage(driver);
         shiftsPage = new ShiftsPage(driver);
         header.openShifts();
     }
