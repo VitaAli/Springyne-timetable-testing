@@ -4,6 +4,7 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleViewPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,26 +23,25 @@ public class ModuleViewPageTest extends BaseTest {
     }
 
     @Test
-    public void moduleShouldBeInvalidated() throws InterruptedException {
+    public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
-
-        Thread.sleep(3000);
+        WaitUtils.waitForSuccessMessage(driver);
 
         String expectedMessage = "Įrašas sėkmingai ištrintas";
         String actualMessage = moduleViewPage.getSuccessMessageAfterDeletion();
 
         Assertions.assertEquals(expectedMessage, actualMessage
-                , "No success message received");
+                , "No success message received after module deletion");
     }
 
     @Test
-    public void invalidatedModuleShouldBeRestored() throws InterruptedException {
+    public void invalidatedModuleShouldBeRestored() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
-        Thread.sleep(3000);
+        WaitUtils.waitUntilRestoreButtonAppears(driver);
         moduleViewPage.pressButtonRestore();
-        Thread.sleep(3000);
+        WaitUtils.waitForErrorMessage(driver);
 
         String expectedMessage = "Įrašas sėkmingai atstatytas";
         String actualMessage = moduleViewPage.getSuccessMessageAfterReset();

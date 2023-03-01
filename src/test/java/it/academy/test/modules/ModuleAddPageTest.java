@@ -24,12 +24,10 @@ public class ModuleAddPageTest extends BaseTest {
 
     @Test
     public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
-
         performInitialSteps();
-        moduleAddPage.enterNumber("009");
+        moduleAddPage.enterNumber("006");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-
         WaitUtils.waitForSuccessMessage(driver);
 
         String expectedMessage = "Įrašas sėkmingai sukurtas";
@@ -47,7 +45,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.pressButtonAdd();
 
         Assertions.assertTrue(moduleAddPage.getNameInvalidValue()
-                , "The module name is mandatory for adding a new module");
+                , "User must see validation error message when he wants to create a module with no name");
     }
 
     @Test
@@ -58,7 +56,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.pressButtonAdd();
 
         Assertions.assertTrue(moduleAddPage.getNumberInvalidValue()
-                , "The module number is mandatory for adding a new module");
+                , "User must see validation error message when he wants to create a module with no number");
     }
 
     @Test
@@ -67,7 +65,6 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterNumber("001");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-
         WaitUtils.waitForErrorMessage(driver);
 
         String expectedMessage = "Įrašo nepavyko sukurti";
