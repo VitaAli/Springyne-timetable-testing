@@ -25,7 +25,7 @@ public class ShiftsPage extends AbstractPage {
     @FindBy(css = ".btn-primary")
     private WebElement buttonAddShift;
 
-    @FindBy(css = "button[title='Redaguoti']")
+    @FindBy(css = "tr[id='1'] button[title='Redaguoti']")
     private WebElement buttonEditShift;
 
     @FindBy(css = "button[title='Ištrinti']")

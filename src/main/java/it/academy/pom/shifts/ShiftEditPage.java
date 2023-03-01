@@ -1,16 +1,13 @@
-package it.academy.pom.modules;
+package it.academy.pom.shifts;
 
 import it.academy.pom.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ModuleEditPage extends AbstractPage {
+public class ShiftEditPage extends AbstractPage {
 
-    @FindBy(css = "#edit-module-number-with-error")
-    private WebElement inputNumber;
-
-    @FindBy(css = "#edit-module-name-with-error")
+    @FindBy(css = "#create-module-number-with-error")
     private WebElement inputName;
 
     @FindBy(xpath = "//button[.='Redaguoti']")
@@ -22,15 +19,11 @@ public class ModuleEditPage extends AbstractPage {
     @FindBy(xpath = "//button[.='Atstatyti']")
     private WebElement buttonRestore;
 
-    @FindBy (css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+    @FindBy (css = ".mx-3 > div:nth-of-type(3) .MuiAlert-message")
     private WebElement successMessage;
 
-    public ModuleEditPage(WebDriver driver) {
+    public ShiftEditPage(WebDriver driver) {
         super(driver);
-    }
-
-    public void enterNumber(String number) {
-        inputNumber.sendKeys(number);
     }
 
     public void enterName(String name) {
@@ -52,5 +45,4 @@ public class ModuleEditPage extends AbstractPage {
     public String getSuccessMessage() {
         return successMessage.getText();
     }
-
 }

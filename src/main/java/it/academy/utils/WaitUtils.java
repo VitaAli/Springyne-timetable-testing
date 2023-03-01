@@ -44,5 +44,13 @@ public class WaitUtils {
         wait.until((ExpectedConditions
                 .visibilityOfElementLocated(By.xpath("//button[.='Atstatyti']"))));
     }
+
+    public static void waitMessageRecordSuccessfullyUpdated(WebDriver driver, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                        .cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")
+                , "Įrašas sėkmingai atnaujintas"));
+
+    }
 }
 
