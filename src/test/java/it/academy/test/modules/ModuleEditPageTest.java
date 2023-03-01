@@ -28,7 +28,7 @@ public class ModuleEditPageTest extends BaseTest {
         moduleEditPage.enterNumber("010");
         moduleEditPage.enterName("name");
         moduleEditPage.pressButtonEdit();
-        WaitUtils.waitForSuccessMessage(driver);
+        WaitUtils.waitMessageRecordSuccessfullyCreated(driver, 10);
 
         String expectedMessage = "Įrašas sėkmingai atnaujintas";
         String actualMessage = moduleEditPage.getSuccessMessage();
@@ -41,7 +41,7 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-        WaitUtils.waitForSuccessMessage(driver);
+        WaitUtils.waitMessageRecordSuccessfullyCreated(driver, 10);
 
         String expectedMessage = "Įrašas sėkmingai atnaujintas";
         String actualMessage = moduleEditPage.getSuccessMessage();
@@ -54,7 +54,7 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleShouldBeRestored() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-        WaitUtils.waitUntilRestoreButtonAppears(driver);
+        WaitUtils.waitUntilRestoreButtonAppears(driver, 10);
         moduleEditPage.pressButtonRestore();
 
         String expectedMessage = "Įrašas sėkmingai atnaujintas";

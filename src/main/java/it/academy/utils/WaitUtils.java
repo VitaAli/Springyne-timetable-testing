@@ -19,30 +19,28 @@ public class WaitUtils {
                 , "Įrašų nerasta"));
     }
 
-    public static void waitForResult(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public static void waitForResult(WebDriver driver , int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//tfoot/tr/td[1]")));
     }
 
-    public static void waitForSuccessMessage(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By
-                .cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
+    public static void waitMessageRecordSuccessfullyCreated(WebDriver driver, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                .cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+        , "Įrašas sėkmingai sukurtas"));
+
     }
 
-
-
-    public static void waitForErrorMessage(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By
-                        .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")));
+    public static void waitMessageRecordCouldNotBeCreated(WebDriver driver, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
+        ,"Įrašo nepavyko sukurti"));
     }
 
-
-
-
-    public static void waitUntilRestoreButtonAppears(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait((driver), Duration.ofSeconds(3));
+    public static void waitUntilRestoreButtonAppears(WebDriver driver, int seconds) {
+        WebDriverWait wait = new WebDriverWait((driver), Duration.ofSeconds(seconds));
         wait.until((ExpectedConditions
                 .visibilityOfElementLocated(By.xpath("//button[.='Atstatyti']"))));
     }

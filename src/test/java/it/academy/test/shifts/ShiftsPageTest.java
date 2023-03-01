@@ -26,6 +26,7 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
+        WaitUtils.waitForResult(driver, 10);
 
         Assertions.assertTrue(shiftsPage.getShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
@@ -33,12 +34,11 @@ public class ShiftsPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/ShiftTestData2.txt")
-    public void shiftsShouldBeFilteredByPartialName(String valueFromFile) throws InterruptedException {
+    public void shiftsShouldBeFilteredByPartialName(String valueFromFile) {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-
-        Thread.sleep(3000);
+        WaitUtils.waitForResult(driver, 10);
 
         Assertions.assertTrue(shiftsPage.getPartialShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
@@ -46,12 +46,11 @@ public class ShiftsPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/ShiftTestData3.txt")
-    public void shiftsShouldNotBeFound(String valueFromFile) throws InterruptedException {
+    public void shiftsShouldNotBeFound(String valueFromFile) {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-
-        Thread.sleep(3000);
+        WaitUtils.waitForMessageNoRecordsFound(driver);
 
         Assertions.assertEquals("Įrašų nerasta", shiftsPage.getTextOfMessageNoRecords()
                 , "Shifts cannot be filtered by random words or symbols");

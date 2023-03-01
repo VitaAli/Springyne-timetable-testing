@@ -25,7 +25,7 @@ public class ModulesPageTest extends BaseTest {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-        WaitUtils.waitForResult(driver);
+        WaitUtils.waitForResult(driver, 10);
 
         Assertions.assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
@@ -37,7 +37,7 @@ public class ModulesPageTest extends BaseTest {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-        WaitUtils.waitForResult(driver);
+        WaitUtils.waitForResult(driver, 10);
 
         Assertions.assertTrue(modulesPage.getPartialModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
