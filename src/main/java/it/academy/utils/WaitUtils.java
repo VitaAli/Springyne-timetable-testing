@@ -32,11 +32,27 @@ public class WaitUtils {
 
     }
 
+    //waitMessageRecordSuccessfullyCreated in other way
+    public static void waitForRecordSuccessfullyCreated(WebDriver driver, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                .cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
+
+    }
+
     public static void waitMessageRecordCouldNotBeCreated(WebDriver driver, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                 .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
         ,"Įrašo nepavyko sukurti"));
+    }
+
+    // .mx-3 > div:nth-of-type(2) .MuiAlert-message
+    public static void waitForRecordSuccessfullyUpdated (WebDriver driver, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                        .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
+                ,"Įrašas sėkmingai atstatytas"));
     }
 
     public static void waitUntilRestoreButtonAppears(WebDriver driver, int seconds) {

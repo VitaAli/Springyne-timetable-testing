@@ -25,10 +25,10 @@ public class ModuleAddPageTest extends BaseTest {
     @Test
     public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
         performInitialSteps();
-        moduleAddPage.enterNumber("006");
+        moduleAddPage.enterNumber("007");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-        WaitUtils.waitMessageRecordSuccessfullyCreated(driver, 10);
+        WaitUtils.waitForRecordSuccessfullyCreated(driver, 10);
 
         String expectedMessage = "Įrašas sėkmingai sukurtas";
         String actualMessage = moduleAddPage.getSuccessMessage();
