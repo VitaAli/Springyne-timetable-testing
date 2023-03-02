@@ -34,7 +34,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.pressButtonAdd();
 
         waitForMessageModuleCreated(driver);
-        assertEquals("Įrašas skimming sukurtas", moduleAddPage.getSuccessMessage()
+        assertEquals("Įrašas sėkmingai sukurtas", moduleAddPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
     }
 
