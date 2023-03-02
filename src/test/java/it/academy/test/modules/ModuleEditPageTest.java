@@ -25,15 +25,13 @@ public class ModuleEditPageTest extends BaseTest {
     @Test
     public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
-        moduleEditPage.enterNumber("010");
+        moduleEditPage.enterNumber("008");
         moduleEditPage.enterName("name");
         moduleEditPage.pressButtonEdit();
-        WaitUtils.waitForMessageRecordSuccessfullyCreated(driver, 10);
 
-        String expectedMessage = "Įrašas sėkmingai atnaujintas";
-        String actualMessage = moduleEditPage.getSuccessMessage();
-
-        Assertions.assertEquals(expectedMessage, actualMessage
+        WaitUtils.waitForMessageModuleUpdated(driver);
+        Assertions.assertEquals("Įrašas sėkmingai atnaujintas"
+                , moduleEditPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
     }
 
@@ -41,12 +39,10 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-        WaitUtils.waitForMessageRecordSuccessfullyCreated(driver, 10);
 
-        String expectedMessage = "Įrašas sėkmingai atnaujintas";
-        String actualMessage = moduleEditPage.getSuccessMessage();
-
-        Assertions.assertEquals(expectedMessage, actualMessage
+        WaitUtils.waitForMessageModuleUpdated(driver);
+        Assertions.assertEquals("Įrašas sėkmingai atnaujintas"
+                , moduleEditPage.getSuccessMessage()
                 , "No success message received");
     }
 
@@ -54,13 +50,12 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleShouldBeRestored() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-        WaitUtils.waitUntilRestoreButtonAppears(driver, 10);
+        WaitUtils.waitUntilRestoreButtonAppears(driver);
         moduleEditPage.pressButtonRestore();
 
-        String expectedMessage = "Įrašas sėkmingai atnaujintas";
-        String actualMessage = moduleEditPage.getSuccessMessage();
-
-        Assertions.assertEquals(expectedMessage, actualMessage
+        WaitUtils.waitForMessageModuleUpdated(driver);
+        Assertions.assertEquals("Įrašas sėkmingai atnaujintas"
+                , moduleEditPage.getSuccessMessage()
                 , "No success message received");
     }
 

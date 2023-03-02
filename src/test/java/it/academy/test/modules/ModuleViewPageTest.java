@@ -39,7 +39,7 @@ public class ModuleViewPageTest extends BaseTest {
     public void invalidatedModuleShouldBeRestored() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
-        WaitUtils.waitUntilRestoreButtonAppears(driver, 10);
+        WaitUtils.waitUntilRestoreButtonAppears(driver);
         moduleViewPage.pressButtonRestore();
         WaitUtils.waitForRecordSuccessfullyRestored(driver, 10);
 

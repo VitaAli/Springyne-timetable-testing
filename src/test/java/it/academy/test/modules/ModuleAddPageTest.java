@@ -4,9 +4,13 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleAddPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static it.academy.utils.GenerateDataUtils.generateRandomModuleNumber;
+import static it.academy.utils.WaitUtils.waitForMessageModuleCreated;
+import static it.academy.utils.WaitUtils.waitForMessageModuleNotCreated;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ModuleAddPageTest extends BaseTest {
 
@@ -25,26 +29,23 @@ public class ModuleAddPageTest extends BaseTest {
     @Test
     public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
         performInitialSteps();
-        moduleAddPage.enterNumber("007");
+        moduleAddPage.enterNumber(generateRandomModuleNumber());
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-        WaitUtils.waitForMessageRecordSuccessfullyCreated(driver, 10);
 
-        String expectedMessage = "Įrašas sėkmingai sukurtas";
-        String actualMessage = moduleAddPage.getSuccessMessage();
-
-        Assertions.assertEquals(expectedMessage, actualMessage
+        waitForMessageModuleCreated(driver);
+        assertEquals("Įrašas skimming sukurtas", moduleAddPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
     }
 
     @Test
     public void moduleShouldNotBeCreatedWithUniqueNumberAndNoName() {
         performInitialSteps();
-        moduleAddPage.enterNumber("007");
+        moduleAddPage.enterNumber(generateRandomModuleNumber());
         moduleAddPage.enterName("");
         moduleAddPage.pressButtonAdd();
 
-        Assertions.assertTrue(moduleAddPage.getNameInvalidValue()
+        assertTrue(moduleAddPage.getNameInvalidValue()
                 , "User must see validation error message when he wants to create a module with no name");
     }
 
@@ -55,7 +56,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
 
-        Assertions.assertTrue(moduleAddPage.getNumberInvalidValue()
+        assertTrue(moduleAddPage.getNumberInvalidValue()
                 , "User must see validation error message when he wants to create a module with no number");
     }
 
@@ -65,11 +66,9 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterNumber("001");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-        WaitUtils.waitForMessageRecordCouldNotBeCreated(driver, 10);
 
-        String expectedMessage = "Įrašo nepavyko sukurti";
-        String actualMessage = moduleAddPage.getErrorMessage();
-
-        Assertions.assertEquals(expectedMessage, actualMessage, "The module number must be unique");
+        waitForMessageModuleNotCreated(driver);
+        assertEquals("Įrašo nepavyko sukurti", moduleAddPage.getErrorMessage()
+                , "The module number must be unique");
     }
 }

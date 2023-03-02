@@ -3,10 +3,13 @@ package it.academy.test.modules;
 import it.academy.pom.Header;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+
+import static it.academy.utils.WaitUtils.waitForMessageFoundRecords;
+import static it.academy.utils.WaitUtils.waitForMessageNoRecordsFound;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ModulesPageTest extends BaseTest {
 
@@ -25,9 +28,9 @@ public class ModulesPageTest extends BaseTest {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-        WaitUtils.waitForMessageFoundRecords(driver, 10);
+        waitForMessageFoundRecords(driver, 10);
 
-        Assertions.assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
+        assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
     }
 
@@ -37,9 +40,9 @@ public class ModulesPageTest extends BaseTest {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-        WaitUtils.waitForMessageFoundRecords(driver, 10);
+        waitForMessageFoundRecords(driver, 10);
 
-        Assertions.assertTrue(modulesPage.getPartialModuleNames().contains(valueFromFile)
+        assertTrue(modulesPage.getPartialModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
     }
 
@@ -49,9 +52,9 @@ public class ModulesPageTest extends BaseTest {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-        WaitUtils.waitForMessageNoRecordsFound(driver);
+        waitForMessageNoRecordsFound(driver);
 
-        Assertions.assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
+        assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
                 , "Modules cannot be filtered by random words or symbols");
     }
 
