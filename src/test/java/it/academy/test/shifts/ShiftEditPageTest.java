@@ -5,8 +5,11 @@ import it.academy.pom.shifts.ShiftEditPage;
 import it.academy.pom.shifts.ShiftsPage;
 import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static it.academy.utils.GenerateDataUtils.generateRandomModuleName;
+import static it.academy.utils.WaitUtils.waitForMessageShiftUpdated;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShiftEditPageTest extends BaseTest {
 
@@ -25,21 +28,23 @@ public class ShiftEditPageTest extends BaseTest {
     @Test
     public void shiftNameShouldBeEdited() {
         performInitialSteps();
-        shiftEditPage.enterName("Rytas");
-
+        shiftEditPage.enterName(generateRandomModuleName()); //nenusisiuncia naujas name
         shiftEditPage.pressButtonEdit();
-        WaitUtils.waitForMessageRecordSuccessfullyUpdated(driver, 10);
+        waitForMessageShiftUpdated(driver);
 
-        Assertions.assertEquals("Įrašas sėkmingai atnaujintas", shiftEditPage.getSuccessMessage()
+        assertEquals("Įrašas sėkmingai atnaujintas", shiftEditPage.getSuccessMessage()
         , "Record is not updated");
-
     }
 
     @Test
-    public void shiftShouldBeInvalidated() {
+    public void moduleShouldBeRestoredAfterDeletion() {
         performInitialSteps();
         shiftEditPage.pressButtonDelete();
+        WaitUtils.waitUntilRestoreButtonAppears(driver);
+        shiftEditPage.pressButtonRestore();
+        waitForMessageShiftUpdated(driver);
 
-
+        assertEquals("Įrašas sėkmingai atnaujintas", shiftEditPage.getSuccessMessage()
+                , "No success message received");
     }
 }

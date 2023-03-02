@@ -4,8 +4,6 @@ import it.academy.pom.Header;
 import it.academy.pom.shifts.ShiftAddPage;
 import it.academy.pom.shifts.ShiftsPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomModuleName;

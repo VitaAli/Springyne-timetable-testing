@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ShiftEditPage extends AbstractPage {
 
-    @FindBy(css = "#create-module-number-with-error")
+    @FindBy(css = "#edit-module-number-with-error")
     private WebElement inputName;
 
     @FindBy(xpath = "//button[.='Redaguoti']")

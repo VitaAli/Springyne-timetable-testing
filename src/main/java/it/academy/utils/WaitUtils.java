@@ -81,6 +81,7 @@ public class WaitUtils {
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
     }
+    //.mx-3 > div:nth-of-type(3) .MuiAlert-message
     //.mx-3 > div:nth-of-type(1) .MuiAlert-message
     //.mx-3 > div:nth-of-type(1) .MuiAlert-message
 
@@ -99,6 +100,13 @@ public class WaitUtils {
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
                 ,"Įrašas sėkmingai atstatytas"));
+    }
+
+    public static void waitForMessageShiftUpdated(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                        .cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")
+                ,"Įrašas sėkmingai atnaujintas"));
     }
 }
 
