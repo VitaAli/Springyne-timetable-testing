@@ -8,6 +8,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
+import static it.academy.utils.WaitUtils.waitForMessageFoundRecords;
+import static it.academy.utils.WaitUtils.waitForMessageNoRecordsFound;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class ShiftsPageTest extends BaseTest {
 
     private Header header;
@@ -25,9 +30,9 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-        WaitUtils.waitForMessageFoundRecords(driver, 10);
+        waitForMessageFoundRecords(driver, 10);
 
-        Assertions.assertTrue(shiftsPage.getShiftNames().contains(valueFromFile)
+        assertTrue(shiftsPage.getShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
     }
 
@@ -37,9 +42,9 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-        WaitUtils.waitForMessageFoundRecords(driver, 10);
+        waitForMessageFoundRecords(driver, 10);
 
-        Assertions.assertTrue(shiftsPage.getPartialShiftNames().contains(valueFromFile)
+        assertTrue(shiftsPage.getPartialShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
     }
 
@@ -49,9 +54,9 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-        WaitUtils.waitForMessageNoRecordsFound(driver);
+        waitForMessageNoRecordsFound(driver);
 
-        Assertions.assertEquals("Įrašų nerasta", shiftsPage.getTextOfMessageNoRecords()
+        assertEquals("Įrašų nerasta", shiftsPage.getTextOfMessageNoRecords()
                 , "Shifts cannot be filtered by random words or symbols");
     }
 }
