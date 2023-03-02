@@ -63,18 +63,25 @@ public class WaitUtils {
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
     }
+    //.mx-3 > div:nth-of-type(1) .MuiAlert-message
 
     public static void waitForMessageModuleNotCreated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")));
+//        wait.until(ExpectedConditions
+//                .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")));
+
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                        .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
+                ,"Įrašo nepavyko sukurti"));
     }
+    //.mx-3 > div:nth-of-type(2) .MuiAlert-message
 
     public static void waitForMessageModuleUpdated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
     }
+    //.mx-3 > div:nth-of-type(1) .MuiAlert-message
     //.mx-3 > div:nth-of-type(1) .MuiAlert-message
 
     //.mx-3 > div:nth-of-type(1) .MuiAlert-message ištrintas

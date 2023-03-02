@@ -6,6 +6,11 @@ public class GenerateDataUtils {
 
     public static String generateRandomModuleNumber() {
         int randomNum = ThreadLocalRandom.current().nextInt(1, 9999);
-        return "random" + randomNum;
+        return "number" + randomNum;
+    }
+
+    public static String generateRandomModuleName() {
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 9999);
+        return "name" + randomNum;
     }
 }
