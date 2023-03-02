@@ -29,7 +29,7 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
         moduleEditPage.enterNumber(generateRandomModuleNumber());
-        moduleEditPage.enterName("name");
+        moduleEditPage.clearAndFillNewName("newName");
         moduleEditPage.pressButtonEdit();
         waitForMessageModuleUpdated(driver);
 

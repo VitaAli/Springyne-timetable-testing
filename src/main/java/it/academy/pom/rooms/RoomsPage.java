@@ -30,6 +30,9 @@ public class RoomsPage extends AbstractPage {
     @FindBy(xpath = "//td[contains(text(),'Rasta įrašų: ')]")
     private WebElement messageRecordsAreFound;
 
+    @FindBy (xpath = "//a[starts-with(@href, '#/rooms/create')]")
+     private WebElement buttonAddRoom;
+
     public RoomsPage(WebDriver driver) {
         super(driver);
     }
@@ -46,7 +49,7 @@ public class RoomsPage extends AbstractPage {
         buttonSearch.click();
     }
 
-    public List getRoomsByName() {
+      public List getRoomsByName() {
         ArrayList<String> roomNames = new ArrayList<>();
         for (int index = 0; index < roomsListByName.size(); index++) {
             roomNames.add(roomsListByName.get(index).getText());
@@ -57,16 +60,9 @@ public class RoomsPage extends AbstractPage {
     public List<String> getRoomByPartialName() {
         ArrayList<String> roomNames = new ArrayList<>();
         for (int index = 0; index < roomsListByName.size(); index++) {
-            roomNames.add(roomsListByName.get(index).getText());
-        }
-
-        ArrayList<String> partialRoomName = new ArrayList<>();
-        for (int index = 0; index < roomNames.size(); index++) {
-            String roomName = roomNames.get(index);
-            String[] result = roomName.split("", 2);
-            partialRoomName.add(result[0]);
-        }
-        return partialRoomName;
+            roomNames.add(roomsListByName.get(index).getText().substring(0,2));
+            }
+        return roomNames;
     }
 
     public List getRoomsByBuildingName() {
@@ -84,21 +80,21 @@ public class RoomsPage extends AbstractPage {
             roomsBuilding.add(roomsListByBuilding.get(index).getText());
         }
 
-        ArrayList<String> partialRoomBuildingName = new ArrayList<>();
+        ArrayList<String> roomsPartialBuildingName = new ArrayList<>();
         for (int index = 0; index < roomsBuilding.size(); index++) {
             String roomBuilding = roomsBuilding.get(index);
             String[] result = roomBuilding.split(" ", 2);
-            partialRoomBuildingName.add(result[0]);
+            roomsPartialBuildingName.add(result[0]);
         }
-        return partialRoomBuildingName;
+      return roomsPartialBuildingName;
     }
 
     public String getMessageWhenNoRecords() {
         return messageNoRecords.getText();
 
     }
-
-    public String getMessageWhenRecordsFound() {
-        return messageRecordsAreFound.getText();
+    public void buttonAddRoom(){
+        buttonAddRoom.click();
     }
+
 }

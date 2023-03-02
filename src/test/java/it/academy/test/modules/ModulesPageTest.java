@@ -6,7 +6,7 @@ import it.academy.test.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import static it.academy.utils.WaitUtils.waitForMessageFoundRecords;
+import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
 import static it.academy.utils.WaitUtils.waitForMessageNoRecordsFound;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -28,7 +28,7 @@ public class ModulesPageTest extends BaseTest {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-        waitForMessageFoundRecords(driver, 10);
+        waitForMessageRecordsAreFound(driver, 10);
 
         assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
@@ -40,7 +40,7 @@ public class ModulesPageTest extends BaseTest {
         performInitialSteps();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
-        waitForMessageFoundRecords(driver, 10);
+        waitForMessageRecordsAreFound(driver, 10);
 
         assertTrue(modulesPage.getPartialModuleNames().contains(valueFromFile)
                 , "The list should be filtered by the value");

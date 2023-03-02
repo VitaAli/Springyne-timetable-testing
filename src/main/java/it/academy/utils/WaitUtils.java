@@ -19,7 +19,7 @@ public class WaitUtils {
                 , "Įrašų nerasta"));
     }
 
-    public static void waitForMessageFoundRecords(WebDriver driver , int seconds) {
+    public static void waitForMessageRecordsAreFound(WebDriver driver , int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//tfoot/tr/td[1]")));
     }

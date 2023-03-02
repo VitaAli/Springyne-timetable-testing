@@ -1,6 +1,7 @@
 package it.academy.pom.modules;
 
 import it.academy.pom.AbstractPage;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,8 +34,13 @@ public class ModuleEditPage extends AbstractPage {
         inputNumber.sendKeys(number);
     }
 
-    public void enterName(String name) {
-        inputName.sendKeys(name);
+//    public void enterName(String name) {
+//        inputName.sendKeys(name);
+//    }
+        public void clearAndFillNewName(String name) {
+            inputName.sendKeys(Keys.CONTROL + "a");
+            inputName.sendKeys(Keys.DELETE);
+            inputName.sendKeys(name);
     }
 
     public void pressButtonEdit() {
