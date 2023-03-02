@@ -5,8 +5,11 @@ import it.academy.pom.modules.ModuleEditPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static it.academy.utils.GenerateDataUtils.generateRandomModuleNumber;
+import static it.academy.utils.WaitUtils.waitForMessageModuleUpdated;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModuleEditPageTest extends BaseTest {
 
@@ -25,37 +28,24 @@ public class ModuleEditPageTest extends BaseTest {
     @Test
     public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
-        moduleEditPage.enterNumber("008");
+        moduleEditPage.enterNumber(generateRandomModuleNumber());
         moduleEditPage.enterName("name");
         moduleEditPage.pressButtonEdit();
+        waitForMessageModuleUpdated(driver);
 
-        WaitUtils.waitForMessageModuleUpdated(driver);
-        Assertions.assertEquals("Įrašas sėkmingai atnaujintas"
-                , moduleEditPage.getSuccessMessage()
+        assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
     }
 
     @Test
-    public void moduleShouldBeInvalidated() {
-        performInitialSteps();
-        moduleEditPage.pressButtonDelete();
-
-        WaitUtils.waitForMessageModuleUpdated(driver);
-        Assertions.assertEquals("Įrašas sėkmingai atnaujintas"
-                , moduleEditPage.getSuccessMessage()
-                , "No success message received");
-    }
-
-    @Test
-    public void moduleShouldBeRestored() {
+    public void moduleShouldBeRestoredAfterDeletion() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
         WaitUtils.waitUntilRestoreButtonAppears(driver);
         moduleEditPage.pressButtonRestore();
+        waitForMessageModuleUpdated(driver);
 
-        WaitUtils.waitForMessageModuleUpdated(driver);
-        Assertions.assertEquals("Įrašas sėkmingai atnaujintas"
-                , moduleEditPage.getSuccessMessage()
+        assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
                 , "No success message received");
     }
 
