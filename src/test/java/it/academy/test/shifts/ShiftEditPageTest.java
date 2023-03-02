@@ -28,7 +28,7 @@ public class ShiftEditPageTest extends BaseTest {
         shiftEditPage.enterName("Rytas");
 
         shiftEditPage.pressButtonEdit();
-        WaitUtils.waitMessageRecordSuccessfullyUpdated(driver, 10);
+        WaitUtils.waitForMessageRecordSuccessfullyUpdated(driver, 10);
 
         Assertions.assertEquals("Įrašas sėkmingai atnaujintas", shiftEditPage.getSuccessMessage()
         , "Record is not updated");

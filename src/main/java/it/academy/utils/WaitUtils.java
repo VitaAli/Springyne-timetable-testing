@@ -19,36 +19,25 @@ public class WaitUtils {
                 , "Įrašų nerasta"));
     }
 
-    public static void waitForResult(WebDriver driver , int seconds) {
+    public static void waitForMessageFoundRecords(WebDriver driver , int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//tfoot/tr/td[1]")));
     }
 
-    public static void waitMessageRecordSuccessfullyCreated(WebDriver driver, int seconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
-                .cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")
-        , "Įrašas sėkmingai sukurtas"));
-
-    }
-
-    //waitMessageRecordSuccessfullyCreated in other way
-    public static void waitForRecordSuccessfullyCreated(WebDriver driver, int seconds) {
+    public static void waitForMessageRecordSuccessfullyCreated(WebDriver driver, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By
                 .cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
-
     }
 
-    public static void waitMessageRecordCouldNotBeCreated(WebDriver driver, int seconds) {
+    public static void waitForMessageRecordCouldNotBeCreated(WebDriver driver, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                 .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
         ,"Įrašo nepavyko sukurti"));
     }
 
-    // .mx-3 > div:nth-of-type(2) .MuiAlert-message
-    public static void waitForRecordSuccessfullyUpdated (WebDriver driver, int seconds) {
+    public static void waitForRecordSuccessfullyRestored(WebDriver driver, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
@@ -61,7 +50,7 @@ public class WaitUtils {
                 .visibilityOfElementLocated(By.xpath("//button[.='Atstatyti']"))));
     }
 
-    public static void waitMessageRecordSuccessfullyUpdated(WebDriver driver, int seconds) {
+    public static void waitForMessageRecordSuccessfullyUpdated(WebDriver driver, int seconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")

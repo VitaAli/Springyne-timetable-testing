@@ -26,7 +26,7 @@ public class ModuleViewPageTest extends BaseTest {
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
-        WaitUtils.waitForRecordSuccessfullyCreated(driver, 10);
+        WaitUtils.waitForMessageRecordSuccessfullyCreated(driver, 10);
 
         String expectedMessage = "Įrašas sėkmingai ištrintas";
         String actualMessage = moduleViewPage.getSuccessMessageAfterDeletion();
@@ -41,7 +41,7 @@ public class ModuleViewPageTest extends BaseTest {
         moduleViewPage.pressButtonDelete();
         WaitUtils.waitUntilRestoreButtonAppears(driver, 10);
         moduleViewPage.pressButtonRestore();
-        WaitUtils.waitForRecordSuccessfullyUpdated(driver, 10);
+        WaitUtils.waitForRecordSuccessfullyRestored(driver, 10);
 
         String expectedMessage = "Įrašas sėkmingai atstatytas";
         String actualMessage = moduleViewPage.getSuccessMessageAfterReset();

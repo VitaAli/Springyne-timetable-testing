@@ -1,7 +1,6 @@
 package it.academy.test.shifts;
 
 import it.academy.pom.Header;
-import it.academy.pom.modules.ModulesPage;
 import it.academy.pom.shifts.ShiftsPage;
 import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
@@ -26,7 +25,7 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-        WaitUtils.waitForResult(driver, 10);
+        WaitUtils.waitForMessageFoundRecords(driver, 10);
 
         Assertions.assertTrue(shiftsPage.getShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
@@ -38,7 +37,7 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-        WaitUtils.waitForResult(driver, 10);
+        WaitUtils.waitForMessageFoundRecords(driver, 10);
 
         Assertions.assertTrue(shiftsPage.getPartialShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");

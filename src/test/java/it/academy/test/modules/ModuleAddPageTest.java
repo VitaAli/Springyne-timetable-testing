@@ -28,7 +28,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterNumber("007");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-        WaitUtils.waitForRecordSuccessfullyCreated(driver, 10);
+        WaitUtils.waitForMessageRecordSuccessfullyCreated(driver, 10);
 
         String expectedMessage = "Įrašas sėkmingai sukurtas";
         String actualMessage = moduleAddPage.getSuccessMessage();
@@ -65,7 +65,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterNumber("001");
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
-        WaitUtils.waitMessageRecordCouldNotBeCreated(driver, 10);
+        WaitUtils.waitForMessageRecordCouldNotBeCreated(driver, 10);
 
         String expectedMessage = "Įrašo nepavyko sukurti";
         String actualMessage = moduleAddPage.getErrorMessage();

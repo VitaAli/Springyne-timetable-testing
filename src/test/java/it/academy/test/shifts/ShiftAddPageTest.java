@@ -27,7 +27,7 @@ public class ShiftAddPageTest extends BaseTest {
         performInitialSteps();
         shiftAddPage.enterName("test3");
         shiftAddPage.pressButtonAdd();
-        WaitUtils.waitMessageRecordSuccessfullyCreated(driver, 10);
+        WaitUtils.waitForMessageRecordSuccessfullyCreated(driver, 10);
 
         String expectedMessage = "Įrašas sėkmingai sukurtas";
         String actualMessage = shiftAddPage.getSuccessMessage();
@@ -50,7 +50,7 @@ public class ShiftAddPageTest extends BaseTest {
         performInitialSteps();
         shiftAddPage.enterName("name");
         shiftAddPage.pressButtonAdd();
-        WaitUtils.waitMessageRecordCouldNotBeCreated(driver, 10);
+        WaitUtils.waitForMessageRecordCouldNotBeCreated(driver, 10);
 
         String expectedMessage = "Įrašo nepavyko sukurti";
         String actualMessage = shiftAddPage.getErrorMessage();
