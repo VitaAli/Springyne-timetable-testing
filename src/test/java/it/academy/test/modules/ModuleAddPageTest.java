@@ -7,8 +7,8 @@ import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomModuleNumber;
-import static it.academy.utils.WaitUtils.waitForMessageModuleCreated;
-import static it.academy.utils.WaitUtils.waitForMessageModuleNotCreated;
+import static it.academy.utils.WaitUtils.waitForRecordModuleCreated;
+import static it.academy.utils.WaitUtils.waitForMessageRecordNotCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,7 +33,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
 
-        waitForMessageModuleCreated(driver);
+        waitForRecordModuleCreated(driver);
         assertEquals("Įrašas sėkmingai sukurtas", moduleAddPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
     }
@@ -67,7 +67,7 @@ public class ModuleAddPageTest extends BaseTest {
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
 
-        waitForMessageModuleNotCreated(driver);
+        waitForMessageRecordNotCreated(driver);
         assertEquals("Įrašo nepavyko sukurti", moduleAddPage.getErrorMessage()
                 , "The module number must be unique");
     }

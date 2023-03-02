@@ -7,8 +7,8 @@ import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomModuleName;
-import static it.academy.utils.WaitUtils.waitForMessageModuleCreated;
-import static it.academy.utils.WaitUtils.waitForMessageModuleNotCreated;
+import static it.academy.utils.WaitUtils.waitForRecordModuleCreated;
+import static it.academy.utils.WaitUtils.waitForMessageRecordNotCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -31,7 +31,7 @@ public class ShiftAddPageTest extends BaseTest {
         performInitialSteps();
         shiftAddPage.enterName(generateRandomModuleName());
         shiftAddPage.pressButtonAdd();
-        waitForMessageModuleCreated(driver);
+        waitForRecordModuleCreated(driver);
 
         assertEquals("Įrašas sėkmingai sukurtas", shiftAddPage.getSuccessMessage()
                 , "Shift name must be unique");
@@ -52,7 +52,7 @@ public class ShiftAddPageTest extends BaseTest {
         performInitialSteps();
         shiftAddPage.enterName("Rytinė");
         shiftAddPage.pressButtonAdd();
-        waitForMessageModuleNotCreated(driver);
+        waitForMessageRecordNotCreated(driver);
 
         assertEquals("Įrašo nepavyko sukurti", shiftAddPage.getErrorMessage()
                 , "The shift name must be unique");
