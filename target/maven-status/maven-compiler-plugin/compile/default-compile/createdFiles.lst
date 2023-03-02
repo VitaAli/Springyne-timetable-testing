@@ -1,0 +1,11 @@
+it\academy\pom\Header.class
+it\academy\pom\shifts\ShiftEditPage.class
+it\academy\pom\shifts\ShiftAddPage.class
+it\academy\pom\AbstractPage.class
+it\academy\pom\modules\ModuleEditPage.class
+it\academy\pom\modules\ModuleAddPage.class
+it\academy\pom\modules\ModulesPage.class
+it\academy\pom\modules\ModuleViewPage.class
+it\academy\pom\shifts\ShiftsPage.class
+it\academy\utils\WaitUtils.class
+it\academy\pom\rooms\RoomsPage.class
