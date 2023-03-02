@@ -76,5 +76,22 @@ public class WaitUtils {
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
     }
     //.mx-3 > div:nth-of-type(1) .MuiAlert-message
+
+    //.mx-3 > div:nth-of-type(1) .MuiAlert-message ištrintas
+    //.mx-3 > div:nth-of-type(2) .MuiAlert-message atstatytas
+
+    public static void waitForMessageModuleDeleted(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                        .cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+                ,"Įrašas sėkmingai ištrintas"));
+    }
+
+    public static void waitForMessageModuleRestored(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                        .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
+                ,"Įrašas sėkmingai atstatytas"));
+    }
 }
 

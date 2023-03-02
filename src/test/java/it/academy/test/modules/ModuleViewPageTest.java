@@ -4,9 +4,10 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleViewPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static it.academy.utils.WaitUtils.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModuleViewPageTest extends BaseTest {
 
@@ -26,12 +27,9 @@ public class ModuleViewPageTest extends BaseTest {
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
-        WaitUtils.waitForMessageRecordSuccessfullyCreated(driver, 10);
+        waitForMessageModuleDeleted(driver);
 
-        String expectedMessage = "Įrašas sėkmingai ištrintas";
-        String actualMessage = moduleViewPage.getSuccessMessageAfterDeletion();
-
-        Assertions.assertEquals(expectedMessage, actualMessage
+        assertEquals("Įrašas sėkmingai ištrintas", moduleViewPage.getSuccessMessageAfterDeletion()
                 , "No success message received after module deletion");
     }
 
@@ -39,14 +37,11 @@ public class ModuleViewPageTest extends BaseTest {
     public void invalidatedModuleShouldBeRestored() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
-        WaitUtils.waitUntilRestoreButtonAppears(driver);
+        waitUntilRestoreButtonAppears(driver);
         moduleViewPage.pressButtonRestore();
-        WaitUtils.waitForRecordSuccessfullyRestored(driver, 10);
+        waitForMessageModuleRestored(driver);
 
-        String expectedMessage = "Įrašas sėkmingai atstatytas";
-        String actualMessage = moduleViewPage.getSuccessMessageAfterReset();
-
-        Assertions.assertEquals(expectedMessage, actualMessage
+        assertEquals("Įrašas sėkmingai atstatytas", moduleViewPage.getSuccessMessageAfterReset()
                 , "No success message received");
 
     }

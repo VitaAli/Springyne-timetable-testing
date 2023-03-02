@@ -25,14 +25,11 @@ public class ModulesPage extends AbstractPage {
     @FindBy (css = ".btn-primary")
     private WebElement buttonAddModule;
 
-    @FindBy (xpath = "//*[@id='1']/td[4]/button[2]")
+    @FindBy (xpath = "//tbody/tr[1]/td[last()]/button[2]")
     private WebElement buttonEditModule;
 
-    @FindBy (xpath = "//*[@id='2']/td[4]/button[1]")
+    @FindBy (xpath = "//tbody/tr[1]/td[last()]/button[1]")
     private WebElement buttonViewModule;
-
-    @FindBy (xpath = "//*[@id='1']/td[4]/button[3]")
-    private WebElement buttonRestore; //also could be buttonDelete
 
     public ModulesPage(WebDriver driver) {
         super(driver);
