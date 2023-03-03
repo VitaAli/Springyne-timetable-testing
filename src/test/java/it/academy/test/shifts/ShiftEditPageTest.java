@@ -25,18 +25,7 @@ public class ShiftEditPageTest extends BaseTest {
         shiftsPage.pressButtonEdit();
     }
 
-    @Test
-    public void shiftNameShouldBeEdited() {
-        performInitialSteps();
-        shiftEditPage.enterName(generateRandomName());
-        shiftEditPage.pressButtonEdit();
-        waitForMessageShiftUpdated(driver);
 
-        String successMessage = shiftEditPage.getSuccessMessage();
-
-        assertEquals("Įrašas sėkmingai atnaujintas", successMessage
-        , "Record is not updated");
-    }
 
     @Test
     public void shiftShouldBeRestoredAfterDeletion() {

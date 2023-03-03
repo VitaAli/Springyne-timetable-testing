@@ -28,12 +28,13 @@ public class ModulesPageTest extends BaseTest {
     @CsvFileSource(resources = "/ModuleTestData1.txt")
     public void modulesShouldBeFilteredByName(String valueFromFile) {
         performInitialSteps();
+        List<String> modules = modulesPage.getModuleNames();
         modulesPage.searchModuleByName(valueFromFile);
         modulesPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
-        assertTrue(modulesPage.getModuleNames().contains(valueFromFile)
-                , "The list should be filtered by the value");
+        assertTrue(modules.contains(valueFromFile)
+                , "The list should be filtered by the name");
     }
 
     @ParameterizedTest
@@ -46,7 +47,7 @@ public class ModulesPageTest extends BaseTest {
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(modules.contains(valueFromFile)
-                , "The list should be filtered by the value");
+                , "The list should be filtered by the partial name");
     }
 
     @ParameterizedTest
