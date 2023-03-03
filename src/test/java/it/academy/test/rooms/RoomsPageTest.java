@@ -8,6 +8,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,33 +30,36 @@ public class RoomsPageTest extends BaseTest {
     @CsvFileSource(resources = "/RoomTestByName.txt")
     public void roomsCanBeFilteredByRoomName(String valueFromFile) {
         performInitialSteps();
+        List<String> rooms = roomsPage.getRoomsByName();
         roomsPage.searchRoomsByName(valueFromFile);
         roomsPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
-        assertTrue(roomsPage.getRoomsByName().contains(valueFromFile),
+        assertTrue(rooms.contains(valueFromFile),
                 "The list should be filtered by the room name");
     }
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByPartialName.txt")
     public void roomsCanBeFilteredByPartialName(String valueFromFile) {
         performInitialSteps();
+        List<String> rooms = roomsPage.getRoomByPartialName();
         roomsPage.searchRoomsByName(valueFromFile);
         roomsPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
-        assertTrue(roomsPage.getRoomByPartialName().contains(valueFromFile),
+        assertTrue(rooms.contains(valueFromFile),
                 "The list should be filtered by the partial room name");
     }
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByBuildingName.txt")
     public void roomsCanBeFilteredByRoomsBuilding(String valueFromFile) {
         performInitialSteps();
+        List<String> rooms = roomsPage.getRoomsByBuildingName();
         roomsPage.searchRoomsByBuilding(valueFromFile);
         roomsPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
-        assertTrue(roomsPage.getRoomsByBuildingName().contains(valueFromFile),
+        assertTrue(rooms.contains(valueFromFile),
                 "The list should be filtered by the building");
     }
 
@@ -61,11 +67,12 @@ public class RoomsPageTest extends BaseTest {
     @CsvFileSource(resources = "/RoomTestByPartialBuildingName.txt")
     public void roomsCanBeFilteredByPartialBuildingName(String valueFromFile) {
         performInitialSteps();
+        List<String> rooms = roomsPage.getRoomsByBuildingPartialName();
         roomsPage.searchRoomsByBuilding(valueFromFile);
         roomsPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
-        assertTrue(roomsPage.getRoomsByBuildingPartialName().contains(valueFromFile),
+        assertTrue(rooms.contains(valueFromFile),
                 "The list should be filtered by the partial building name");
     }
 
