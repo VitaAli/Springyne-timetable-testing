@@ -31,6 +31,7 @@ public class ShiftEditPageTest extends BaseTest {
         shiftEditPage.enterName(generateRandomName());
         shiftEditPage.pressButtonEdit();
         waitForMessageShiftUpdated(driver);
+
         String successMessage = shiftEditPage.getSuccessMessage();
 
         assertEquals("Įrašas sėkmingai atnaujintas", successMessage

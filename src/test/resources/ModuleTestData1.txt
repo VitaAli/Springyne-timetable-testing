@@ -1,1 +1,1 @@
-Informacinių sistemų projektavimas
+Java programų kūrimas
