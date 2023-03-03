@@ -6,6 +6,8 @@ import it.academy.test.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
+import java.util.List;
+
 import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
 import static it.academy.utils.WaitUtils.waitForMessageNoRecordsFound;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,24 +28,26 @@ public class ShiftsPageTest extends BaseTest {
     @CsvFileSource(resources = "/ShiftTestData1.txt")
     public void shiftsShouldBeFilteredByName(String valueFromFile) {
         performInitialSteps();
+        List<String> shifts = shiftsPage.getShiftNames();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
-        assertTrue(shiftsPage.getShiftNames().contains(valueFromFile)
-                , "The list should be filtered by the value");
+        assertTrue(shifts.contains(valueFromFile)
+                , "The list should be filtered by the name");
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/ShiftTestData2.txt")
     public void shiftsShouldBeFilteredByPartialName(String valueFromFile) {
         performInitialSteps();
+        List<String> shifts = shiftsPage.getPartialShiftNames();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
-        assertTrue(shiftsPage.getPartialShiftNames().contains(valueFromFile)
-                , "The list should be filtered by the value");
+        assertTrue(shifts.contains(valueFromFile)
+                , "The list should be filtered by the partial name");
     }
 
     @ParameterizedTest
