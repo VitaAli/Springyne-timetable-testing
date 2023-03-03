@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.academy.test.shifts.ShiftsPageTest
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 39.062 s - in it.academy.test.shifts.ShiftsPageTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.784 s - in it.academy.test.shifts.ShiftsPageTest
