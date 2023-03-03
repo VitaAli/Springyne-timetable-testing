@@ -37,7 +37,7 @@ public class ShiftEditPageTest extends BaseTest {
     }
 
     @Test
-    public void moduleShouldBeRestoredAfterDeletion() {
+    public void shiftShouldBeRestoredAfterDeletion() {
         performInitialSteps();
         shiftEditPage.pressButtonDelete();
         WaitUtils.waitUntilRestoreButtonAppears(driver);
