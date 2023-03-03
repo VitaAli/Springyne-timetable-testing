@@ -29,9 +29,10 @@ public class RoomsPageTest extends BaseTest {
         performInitialSteps();
         roomsPage.searchRoomsByName(valueFromFile);
         roomsPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
 
         assertTrue(roomsPage.getRoomsByName().contains(valueFromFile),
-                "The list should be filtered by the value");
+                "The list should be filtered by the room name");
     }
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByPartialName.txt")
@@ -39,10 +40,10 @@ public class RoomsPageTest extends BaseTest {
         performInitialSteps();
         roomsPage.searchRoomsByName(valueFromFile);
         roomsPage.pressButtonSearch();
-
         waitForMessageRecordsAreFound(driver);
+
         assertTrue(roomsPage.getRoomByPartialName().contains(valueFromFile),
-                "The list should be filtered by the value");
+                "The list should be filtered by the partial room name");
     }
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByBuildingName.txt")
@@ -50,10 +51,10 @@ public class RoomsPageTest extends BaseTest {
         performInitialSteps();
         roomsPage.searchRoomsByBuilding(valueFromFile);
         roomsPage.pressButtonSearch();
-
         waitForMessageRecordsAreFound(driver);
+
         assertTrue(roomsPage.getRoomsByBuildingName().contains(valueFromFile),
-                "The list should be filtered by the value");
+                "The list should be filtered by the building");
     }
 
     @ParameterizedTest
@@ -62,10 +63,10 @@ public class RoomsPageTest extends BaseTest {
         performInitialSteps();
         roomsPage.searchRoomsByBuilding(valueFromFile);
         roomsPage.pressButtonSearch();
-
         waitForMessageRecordsAreFound(driver);
+
         assertTrue(roomsPage.getRoomsByBuildingPartialName().contains(valueFromFile),
-                "The list should be filtered by the value");
+                "The list should be filtered by the partial building name");
     }
 
     @ParameterizedTest
@@ -74,10 +75,10 @@ public class RoomsPageTest extends BaseTest {
         performInitialSteps();
         roomsPage.searchRoomsByName(valueFromFile);
         roomsPage.pressButtonSearch();
-
         WaitUtils.waitForMessageNoRecordsFound(driver);
+
         assertEquals("Įrašų nerasta", roomsPage.getMessageWhenNoRecords()
-                , "Rooms cannot be filtered by random words or symbols");
+                , "Rooms cannot be filtered by room name using random words or symbols");
     }
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestBySymbols.txt")
@@ -85,10 +86,10 @@ public class RoomsPageTest extends BaseTest {
         performInitialSteps();
         roomsPage.searchRoomsByBuilding(valueFromFile);
         roomsPage.pressButtonSearch();
-
         WaitUtils.waitForMessageNoRecordsFound(driver);
+
         assertEquals("Įrašų nerasta", roomsPage.getMessageWhenNoRecords()
-                , "Rooms cannot be filtered by random words or symbols");
+                , "Rooms cannot be filtered by building using random words or symbols");
     }
 }
 

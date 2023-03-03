@@ -70,7 +70,13 @@ public class RoomsPage extends AbstractPage {
         for (int index = 0; index < roomsListByBuilding.size(); index++) {
             roomsBuilding.add(roomsListByBuilding.get(index).getText());
         }
-        return roomsBuilding;
+
+        ArrayList<String> buildingName = new ArrayList<>();
+        for (int index = 0; index < roomsBuilding.size(); index++) {
+            String[] result = roomsBuilding.get(index).split(" ", 2);
+            buildingName.add(result[0]);
+        }
+        return buildingName;
     }
 
 
