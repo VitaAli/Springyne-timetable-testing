@@ -23,24 +23,23 @@ public class ModuleEditPage extends AbstractPage {
     @FindBy(xpath = "//button[.='Atstatyti']")
     private WebElement buttonRestore;
 
-    @FindBy (css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+    @FindBy(css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
     private WebElement successMessage;
 
     public ModuleEditPage(WebDriver driver) {
         super(driver);
     }
 
-    public void enterNumber(String number) {
+    public void clearAndFillNewNumber(String number) {
+        inputNumber.sendKeys(Keys.CONTROL + "a");
+        inputNumber.sendKeys(Keys.DELETE);
         inputNumber.sendKeys(number);
     }
 
-//    public void enterName(String name) {
-//        inputName.sendKeys(name);
-//    }
-        public void clearAndFillNewName(String name) {
-            inputName.sendKeys(Keys.CONTROL + "a");
-            inputName.sendKeys(Keys.DELETE);
-            inputName.sendKeys(name);
+    public void clearAndFillNewName(String name) {
+        inputName.sendKeys(Keys.CONTROL + "a");
+        inputName.sendKeys(Keys.DELETE);
+        inputName.sendKeys(name);
     }
 
     public void pressButtonEdit() {

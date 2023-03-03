@@ -1,0 +1,10 @@
+it\academy\test\shifts\ShiftsPageTest.class
+it\academy\test\modules\ModuleEditPageTest.class
+it\academy\test\BaseTest.class
+it\academy\test\shifts\ShiftEditPageTest.class
+it\academy\test\shifts\ShiftAddPageTest.class
+it\academy\test\rooms\RoomAddPageTest.class
+it\academy\test\rooms\RoomsPageTest.class
+it\academy\test\modules\ModuleViewPageTest.class
+it\academy\test\modules\ModuleAddPageTest.class
+it\academy\test\modules\ModulesPageTest.class
