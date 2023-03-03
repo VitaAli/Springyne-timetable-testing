@@ -4,7 +4,6 @@ import it.academy.pom.Header;
 import it.academy.pom.shifts.ShiftEditPage;
 import it.academy.pom.shifts.ShiftsPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomName;
@@ -28,7 +27,7 @@ public class ShiftEditPageTest extends BaseTest {
     @Test
     public void shiftNameShouldBeEdited() {
         performInitialSteps();
-        shiftEditPage.clearAndFillNewName(generateRandomName());
+        shiftEditPage.enterName(generateRandomName());
         shiftEditPage.pressButtonEdit();
         waitForMessageShiftUpdated(driver);
 

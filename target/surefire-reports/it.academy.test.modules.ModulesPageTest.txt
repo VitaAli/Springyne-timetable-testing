@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: it.academy.test.modules.ModulesPageTest
--------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.072 s - in it.academy.test.modules.ModulesPageTest
