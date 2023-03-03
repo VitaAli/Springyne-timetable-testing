@@ -1,6 +1,7 @@
 package it.academy.pom.shifts;
 
 import it.academy.pom.AbstractPage;
+import it.academy.utils.WaitUtils;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

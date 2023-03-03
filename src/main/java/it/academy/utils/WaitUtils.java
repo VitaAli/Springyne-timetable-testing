@@ -26,8 +26,12 @@ public class WaitUtils {
 
     public static void waitUntilRestoreButtonAppears(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait((driver), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.xpath("//button[.='Atstatyti']")));
+//        wait.until(ExpectedConditions
+//                .visibilityOfElementLocated(By.xpath("button.btn-secondary")));
+
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                        .cssSelector("button.btn-secondary")
+                , "Atstatyti"));
     }
 
     public static void waitUntilDeleteButtonAppears(WebDriver driver) {
