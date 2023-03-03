@@ -47,4 +47,5 @@ public class ShiftEditPageTest extends BaseTest {
         assertEquals("Įrašas sėkmingai atnaujintas", shiftEditPage.getSuccessMessage()
                 , "No success message received");
     }
+
 }

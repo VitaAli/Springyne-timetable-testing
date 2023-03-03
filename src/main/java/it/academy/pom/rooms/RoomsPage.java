@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoomsPage extends AbstractPage {
-    @FindBy(xpath = "(//input[@id='search-name-input'])[1]")
+    @FindBy(css = "form > div:first-child #search-name-input")
     private WebElement inputByName;
 
-    @FindBy(xpath = "(//input[@id='search-name-input'])[2]")
+    @FindBy(css = "form > div:nth-child(2) #search-name-input")
     private WebElement inputByBuilding;
 
     @FindBy(xpath = "//button[@type='submit']")
@@ -24,7 +24,7 @@ public class RoomsPage extends AbstractPage {
     @FindBy(css = "tr td:nth-child(2)")
     private List<WebElement> roomsListByBuilding;
 
-    @FindBy(xpath = "//td[contains(text(),'Įrašų nerasta')]")
+    @FindBy(xpath = "//td[contains(.,'Įrašų nerasta')]")
     private WebElement messageNoRecords;
 
     @FindBy(xpath = "//td[contains(text(),'Rasta įrašų: ')]")
