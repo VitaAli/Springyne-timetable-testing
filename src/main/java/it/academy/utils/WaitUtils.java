@@ -77,7 +77,7 @@ public class WaitUtils {
     }
 
     public static void waitForMessageShiftUpdated(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
 //        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
 //                        .cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")
 //                , "Įrašas sėkmingai atnaujintas"));
