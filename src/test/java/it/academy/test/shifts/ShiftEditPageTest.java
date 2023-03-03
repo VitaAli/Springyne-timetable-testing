@@ -8,7 +8,7 @@ import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomName;
-import static it.academy.utils.WaitUtils.waitForMessageShiftUpdated;
+import static it.academy.utils.WaitUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShiftEditPageTest extends BaseTest {
@@ -39,8 +39,9 @@ public class ShiftEditPageTest extends BaseTest {
     @Test
     public void shiftShouldBeRestoredAfterDeletion() {
         performInitialSteps();
+        waitUntilDeleteButtonAppears(driver);
         shiftEditPage.pressButtonDelete();
-        WaitUtils.waitUntilRestoreButtonAppears(driver);
+        waitUntilRestoreButtonAppears(driver);
         shiftEditPage.pressButtonRestore();
         waitForMessageShiftUpdated(driver);
 

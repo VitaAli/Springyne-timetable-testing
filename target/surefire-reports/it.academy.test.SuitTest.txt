@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.academy.test.SuitTest
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 199.269 s - in it.academy.test.SuitTest
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 175.674 s - in it.academy.test.SuitTest

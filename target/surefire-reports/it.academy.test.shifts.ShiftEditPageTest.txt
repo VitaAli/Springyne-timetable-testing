@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: it.academy.test.shifts.ShiftEditPageTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 15.418 s <<< FAILURE! - in it.academy.test.shifts.ShiftEditPageTest
-it.academy.test.shifts.ShiftEditPageTest.moduleShouldBeRestoredAfterDeletion  Time elapsed: 2.387 s  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 15.019 s <<< FAILURE! - in it.academy.test.shifts.ShiftEditPageTest
+it.academy.test.shifts.ShiftEditPageTest.shiftShouldBeRestoredAfterDeletion  Time elapsed: 2.675 s  <<< ERROR!
 org.openqa.selenium.NoSuchElementException: 
 no such element: Unable to locate element: {"method":"xpath","selector":"//button[.='Ištrinti']"}
   (Session info: chrome=110.0.5481.178)
@@ -10,9 +10,9 @@ For documentation on this error, please visit: https://selenium.dev/exceptions/#
 Build info: version: '4.7.2', revision: '4d4020c3b7'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.16'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [e6c595aa2942bac4f17cce2b0d945d25, findElement {using=xpath, value=//button[.='Ištrinti']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.178, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: C:\Users\Vitalija\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:63131}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63131/devtoo..., se:cdpVersion: 110.0.5481.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: e6c595aa2942bac4f17cce2b0d945d25
+Command: [34adb6084b7c19a65e0a1e0055a8f4aa, findElement {using=xpath, value=//button[.='Ištrinti']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.178, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: C:\Users\Vitalija\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57260}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57260/devtoo..., se:cdpVersion: 110.0.5481.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 34adb6084b7c19a65e0a1e0055a8f4aa
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -32,7 +32,7 @@ Session ID: e6c595aa2942bac4f17cce2b0d945d25
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
 	at com.sun.proxy.$Proxy23.click(Unknown Source)
 	at it.academy.pom.shifts.ShiftEditPage.pressButtonDelete(ShiftEditPage.java:41)
-	at it.academy.test.shifts.ShiftEditPageTest.moduleShouldBeRestoredAfterDeletion(ShiftEditPageTest.java:42)
+	at it.academy.test.shifts.ShiftEditPageTest.shiftShouldBeRestoredAfterDeletion(ShiftEditPageTest.java:42)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -123,14 +123,14 @@ Session ID: e6c595aa2942bac4f17cce2b0d945d25
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
 
-it.academy.test.shifts.ShiftEditPageTest.shiftNameShouldBeEdited  Time elapsed: 13.025 s  <<< ERROR!
+it.academy.test.shifts.ShiftEditPageTest.shiftNameShouldBeEdited  Time elapsed: 12.34 s  <<< ERROR!
 org.openqa.selenium.TimeoutException: 
 Expected condition failed: waiting for text ('Įrašas sėkmingai atnaujintas') to be present in element found by By.cssSelector: .mx-3 > div:nth-of-type(3) .MuiAlert-message (tried for 10 second(s) with 500 milliseconds interval)
 Build info: version: '4.7.2', revision: '4d4020c3b7'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.16'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.178, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: C:\Users\Vitalija\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:63165}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63165/devtoo..., se:cdpVersion: 110.0.5481.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 0cd55511ad63390d6f4675326fb8dfee
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.178, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: C:\Users\Vitalija\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57297}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57297/devtoo..., se:cdpVersion: 110.0.5481.178, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: b19b7938a27cdb0266f3ee3327586006
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
 	at it.academy.utils.WaitUtils.waitForMessageShiftUpdated(WaitUtils.java:71)

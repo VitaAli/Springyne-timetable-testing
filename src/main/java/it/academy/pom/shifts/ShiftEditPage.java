@@ -11,13 +11,13 @@ public class ShiftEditPage extends AbstractPage {
     @FindBy(css = "#edit-module-number-with-error")
     private WebElement inputName;
 
-    @FindBy(xpath = "//button[.='Redaguoti']")
+    @FindBy(css = "button[type='submit']")
     private WebElement buttonEdit;
 
-    @FindBy(xpath = "//button[.='Ištrinti']")
+    @FindBy(css = "button.btn-danger")
     private WebElement buttonDelete;
 
-    @FindBy(xpath = "//button[.='Atstatyti']")
+    @FindBy(css = "button.btn-secondary")
     private WebElement buttonRestore;
 
     @FindBy (css = ".mx-3 > div:nth-of-type(3) .MuiAlert-message")
@@ -28,6 +28,7 @@ public class ShiftEditPage extends AbstractPage {
     }
 
     public void clearAndFillNewName(String name) {
+        inputName.click();
         inputName.sendKeys(Keys.CONTROL + "a");
         inputName.sendKeys(Keys.DELETE);
         inputName.sendKeys(name);

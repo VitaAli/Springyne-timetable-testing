@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.academy.test.modules.ModuleViewPageTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.861 s - in it.academy.test.modules.ModuleViewPageTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.004 s - in it.academy.test.modules.ModuleViewPageTest

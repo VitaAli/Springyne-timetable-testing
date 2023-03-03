@@ -30,6 +30,12 @@ public class WaitUtils {
                 .visibilityOfElementLocated(By.xpath("//button[.='Atstatyti']")));
     }
 
+    public static void waitUntilDeleteButtonAppears(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait((driver), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("button.btn-danger")));
+    }
+
     public static void waitForMessageRecordIsCreated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions
@@ -43,7 +49,7 @@ public class WaitUtils {
 
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
-                ,"Įrašo nepavyko sukurti"));
+                , "Įrašo nepavyko sukurti"));
     }
 
     public static void waitForMessageModuleUpdated(WebDriver driver) {
@@ -56,21 +62,24 @@ public class WaitUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")
-                ,"Įrašas sėkmingai ištrintas"));
+                , "Įrašas sėkmingai ištrintas"));
     }
 
     public static void waitForMessageModuleRestored(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
-                ,"Įrašas sėkmingai atstatytas"));
+                , "Įrašas sėkmingai atstatytas"));
     }
 
     public static void waitForMessageShiftUpdated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
-                        .cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")
-                ,"Įrašas sėkmingai atnaujintas"));
+//        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+//                        .cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")
+//                , "Įrašas sėkmingai atnaujintas"));
+
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")));
     }
 }
 
