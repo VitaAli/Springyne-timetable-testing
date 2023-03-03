@@ -14,13 +14,13 @@ public class ModuleEditPage extends AbstractPage {
     @FindBy(css = "#edit-module-name-with-error")
     private WebElement inputName;
 
-    @FindBy(xpath = "//button[.='Redaguoti']")
+    @FindBy(css = "button[type='submit']")
     private WebElement buttonEdit;
 
-    @FindBy(xpath = "//button[.='Ištrinti']")
+    @FindBy(css = "button.btn-danger")
     private WebElement buttonDelete;
 
-    @FindBy(xpath = "//button[.='Atstatyti']")
+    @FindBy(css = "button.btn-secondary")
     private WebElement buttonRestore;
 
     @FindBy(css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
@@ -30,13 +30,15 @@ public class ModuleEditPage extends AbstractPage {
         super(driver);
     }
 
-    public void clearAndFillNewNumber(String number) {
+    public void enterNumber(String number) {
+        inputNumber.click();
         inputNumber.sendKeys(Keys.CONTROL + "a");
         inputNumber.sendKeys(Keys.DELETE);
         inputNumber.sendKeys(number);
     }
 
-    public void clearAndFillNewName(String name) {
+    public void enterName(String name) {
+        inputName.click();
         inputName.sendKeys(Keys.CONTROL + "a");
         inputName.sendKeys(Keys.DELETE);
         inputName.sendKeys(name);

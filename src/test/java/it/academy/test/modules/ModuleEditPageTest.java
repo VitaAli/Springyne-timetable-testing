@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static it.academy.utils.GenerateDataUtils.generateRandomName;
 import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
 import static it.academy.utils.WaitUtils.waitForMessageModuleUpdated;
+import static it.academy.utils.WaitUtils.waitUntilRestoreButtonAppears;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModuleEditPageTest extends BaseTest {
@@ -29,8 +30,8 @@ public class ModuleEditPageTest extends BaseTest {
     @Test
     public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
-        moduleEditPage.clearAndFillNewNumber(generateRandomNumber());
-        moduleEditPage.clearAndFillNewName(generateRandomName());
+        moduleEditPage.enterNumber(generateRandomNumber());
+        moduleEditPage.enterName(generateRandomName());
         moduleEditPage.pressButtonEdit();
         waitForMessageModuleUpdated(driver);
 
@@ -42,7 +43,7 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleShouldBeRestoredAfterDeletion() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-        WaitUtils.waitUntilRestoreButtonAppears(driver);
+        waitUntilRestoreButtonAppears(driver);
         moduleEditPage.pressButtonRestore();
         waitForMessageModuleUpdated(driver);
 
