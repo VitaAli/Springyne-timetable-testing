@@ -4,7 +4,6 @@ import it.academy.pom.Header;
 import it.academy.pom.rooms.RoomsPage;
 import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -65,7 +64,7 @@ public class RoomsPageTest extends BaseTest {
         roomsPage.pressButtonSearch();
 
         waitForMessageRecordsAreFound(driver);
-        assertTrue(roomsPage.getRoomByBuildingPartialName().contains(valueFromFile),
+        assertTrue(roomsPage.getRoomsByBuildingPartialName().contains(valueFromFile),
                 "The list should be filtered by the value");
     }
 

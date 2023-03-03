@@ -30,8 +30,8 @@ public class RoomsPage extends AbstractPage {
     @FindBy(xpath = "//td[contains(text(),'Rasta įrašų: ')]")
     private WebElement messageRecordsAreFound;
 
-    @FindBy (xpath = "//a[starts-with(@href, '#/rooms/create')]")
-     private WebElement buttonAddRoom;
+    @FindBy(xpath = "//a[starts-with(@href, '#/rooms/create')]")
+    private WebElement buttonAddRoom;
 
     public RoomsPage(WebDriver driver) {
         super(driver);
@@ -49,7 +49,7 @@ public class RoomsPage extends AbstractPage {
         buttonSearch.click();
     }
 
-      public List getRoomsByName() {
+    public List getRoomsByName() {
         ArrayList<String> roomNames = new ArrayList<>();
         for (int index = 0; index < roomsListByName.size(); index++) {
             roomNames.add(roomsListByName.get(index).getText());
@@ -60,8 +60,8 @@ public class RoomsPage extends AbstractPage {
     public List<String> getRoomByPartialName() {
         ArrayList<String> roomNames = new ArrayList<>();
         for (int index = 0; index < roomsListByName.size(); index++) {
-            roomNames.add(roomsListByName.get(index).getText().substring(0,2));
-            }
+            roomNames.add(roomsListByName.get(index).getText().substring(0, 2));
+        }
         return roomNames;
     }
 
@@ -74,26 +74,34 @@ public class RoomsPage extends AbstractPage {
     }
 
 
-    public List<String> getRoomByBuildingPartialName() {
+    public List<String> getRoomsByBuildingPartialName() {
         ArrayList<String> roomsBuilding = new ArrayList<>();
         for (int index = 0; index < roomsListByBuilding.size(); index++) {
             roomsBuilding.add(roomsListByBuilding.get(index).getText());
         }
 
-        ArrayList<String> roomsPartialBuildingName = new ArrayList<>();
+        ArrayList<String> roomsStreet = new ArrayList<>();
         for (int index = 0; index < roomsBuilding.size(); index++) {
-            String roomBuilding = roomsBuilding.get(index);
-            String[] result = roomBuilding.split(" ", 2);
-            roomsPartialBuildingName.add(result[0]);
+            String[] street = roomsBuilding.get(index).split(" ", 2);
+            roomsStreet.add(street[0]);
         }
-      return roomsPartialBuildingName;
+
+        roomsStreet.remove("");
+
+        ArrayList<String> roomsBuildingPartialName = new ArrayList<>();
+        for (int index = 1; index < roomsStreet.size(); index++) {
+            roomsBuildingPartialName.add(roomsStreet.get(index).substring(0, 3));
+        }
+
+        return roomsBuildingPartialName;
     }
 
     public String getMessageWhenNoRecords() {
         return messageNoRecords.getText();
 
     }
-    public void buttonAddRoom(){
+
+    public void buttonAddRoom() {
         buttonAddRoom.click();
     }
 
