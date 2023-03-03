@@ -6,7 +6,7 @@ import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomModuleNumber;
+import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsNotCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,7 +29,7 @@ public class ModuleAddPageTest extends BaseTest {
     @Test
     public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
         performInitialSteps();
-        moduleAddPage.enterNumber(generateRandomModuleNumber());
+        moduleAddPage.enterNumber(generateRandomNumber());
         moduleAddPage.enterName("name");
         moduleAddPage.pressButtonAdd();
 
@@ -41,7 +41,7 @@ public class ModuleAddPageTest extends BaseTest {
     @Test
     public void moduleShouldNotBeCreatedWithUniqueNumberAndNoName() {
         performInitialSteps();
-        moduleAddPage.enterNumber(generateRandomModuleNumber());
+        moduleAddPage.enterNumber(generateRandomNumber());
         moduleAddPage.enterName("");
         moduleAddPage.pressButtonAdd();
 

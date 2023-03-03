@@ -1,6 +1,7 @@
 package it.academy.pom.shifts;
 
 import it.academy.pom.AbstractPage;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,7 +27,9 @@ public class ShiftEditPage extends AbstractPage {
         super(driver);
     }
 
-    public void enterName(String name) {
+    public void clearAndFillNewName(String name) {
+        inputName.sendKeys(Keys.CONTROL + "a");
+        inputName.sendKeys(Keys.DELETE);
         inputName.sendKeys(name);
     }
 

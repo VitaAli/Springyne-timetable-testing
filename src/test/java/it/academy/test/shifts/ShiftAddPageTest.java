@@ -6,7 +6,7 @@ import it.academy.pom.shifts.ShiftsPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomModuleName;
+import static it.academy.utils.GenerateDataUtils.generateRandomName;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsNotCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,7 +29,7 @@ public class ShiftAddPageTest extends BaseTest {
     @Test
     public void shiftShouldBeCreatedWithUniqueName() {
         performInitialSteps();
-        shiftAddPage.enterName(generateRandomModuleName());
+        shiftAddPage.enterName(generateRandomName());
         shiftAddPage.pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
 

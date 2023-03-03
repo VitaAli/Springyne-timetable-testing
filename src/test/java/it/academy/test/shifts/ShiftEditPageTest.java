@@ -7,7 +7,7 @@ import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomModuleName;
+import static it.academy.utils.GenerateDataUtils.generateRandomName;
 import static it.academy.utils.WaitUtils.waitForMessageShiftUpdated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,7 +28,7 @@ public class ShiftEditPageTest extends BaseTest {
     @Test
     public void shiftNameShouldBeEdited() {
         performInitialSteps();
-        shiftEditPage.enterName(generateRandomModuleName()); //nenusisiuncia naujas name
+        shiftEditPage.clearAndFillNewName(generateRandomName());
         shiftEditPage.pressButtonEdit();
         waitForMessageShiftUpdated(driver);
 

@@ -7,8 +7,8 @@ import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomModuleName;
-import static it.academy.utils.GenerateDataUtils.generateRandomModuleNumber;
+import static it.academy.utils.GenerateDataUtils.generateRandomName;
+import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
 import static it.academy.utils.WaitUtils.waitForMessageModuleUpdated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,8 +29,8 @@ public class ModuleEditPageTest extends BaseTest {
     @Test
     public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
-        moduleEditPage.clearAndFillNewNumber(generateRandomModuleNumber());
-        moduleEditPage.clearAndFillNewName(generateRandomModuleName());
+        moduleEditPage.clearAndFillNewNumber(generateRandomNumber());
+        moduleEditPage.clearAndFillNewName(generateRandomName());
         moduleEditPage.pressButtonEdit();
         waitForMessageModuleUpdated(driver);
 
