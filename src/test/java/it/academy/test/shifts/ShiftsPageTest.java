@@ -28,7 +28,7 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-        waitForMessageRecordsAreFound(driver, 10);
+        waitForMessageRecordsAreFound(driver);
 
         assertTrue(shiftsPage.getShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");
@@ -40,7 +40,7 @@ public class ShiftsPageTest extends BaseTest {
         performInitialSteps();
         shiftsPage.searchShiftByName(valueFromFile);
         shiftsPage.pressButtonSearch();
-        waitForMessageRecordsAreFound(driver, 10);
+        waitForMessageRecordsAreFound(driver);
 
         assertTrue(shiftsPage.getPartialShiftNames().contains(valueFromFile)
                 , "The list should be filtered by the value");

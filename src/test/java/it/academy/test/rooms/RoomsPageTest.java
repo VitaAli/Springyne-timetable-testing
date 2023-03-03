@@ -41,7 +41,7 @@ public class RoomsPageTest extends BaseTest {
         roomsPage.searchRoomsByName(valueFromFile);
         roomsPage.pressButtonSearch();
 
-        waitForMessageRecordsAreFound(driver, 10);
+        waitForMessageRecordsAreFound(driver);
         assertTrue(roomsPage.getRoomByPartialName().contains(valueFromFile),
                 "The list should be filtered by the value");
     }
@@ -52,7 +52,7 @@ public class RoomsPageTest extends BaseTest {
         roomsPage.searchRoomsByBuilding(valueFromFile);
         roomsPage.pressButtonSearch();
 
-        waitForMessageRecordsAreFound(driver, 10);
+        waitForMessageRecordsAreFound(driver);
         assertTrue(roomsPage.getRoomsByBuildingName().contains(valueFromFile),
                 "The list should be filtered by the value");
     }
@@ -64,7 +64,7 @@ public class RoomsPageTest extends BaseTest {
         roomsPage.searchRoomsByBuilding(valueFromFile);
         roomsPage.pressButtonSearch();
 
-        waitForMessageRecordsAreFound(driver, 10);
+        waitForMessageRecordsAreFound(driver);
         assertTrue(roomsPage.getRoomByBuildingPartialName().contains(valueFromFile),
                 "The list should be filtered by the value");
     }

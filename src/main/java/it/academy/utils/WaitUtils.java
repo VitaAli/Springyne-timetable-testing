@@ -19,8 +19,8 @@ public class WaitUtils {
                 , "Įrašų nerasta"));
     }
 
-    public static void waitForMessageRecordsAreFound(WebDriver driver , int seconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+    public static void waitForMessageRecordsAreFound(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//tfoot/tr/td[1]")));
     }
 
@@ -30,13 +30,13 @@ public class WaitUtils {
                 .visibilityOfElementLocated(By.xpath("//button[.='Atstatyti']")));
     }
 
-    public static void waitForRecordModuleCreated(WebDriver driver) {
+    public static void waitForMessageRecordIsCreated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
     }
 
-    public static void waitForMessageRecordNotCreated(WebDriver driver) {
+    public static void waitForMessageRecordIsNotCreated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 //        wait.until(ExpectedConditions
 //                .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")));
