@@ -1,2 +1,2 @@
-Testavimo
-Duomenų
+Java
+Programavimo

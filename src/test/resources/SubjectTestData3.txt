@@ -1,2 +1,2 @@
-Testavimo metodikų taikymas
-Duomenų bazių projektavimas
+Java programų kūrimas
+Programavimo aplinkos valdymas
