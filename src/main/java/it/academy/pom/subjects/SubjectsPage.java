@@ -61,8 +61,42 @@ public class SubjectsPage extends AbstractPage {
     public List<String> getSubjectsByPartialName() {
         ArrayList<String> subjectNames = new ArrayList<>();
         for (int index = 0; index < subjectsListByName.size(); index++) {
-            subjectNames.add(subjectsListByName.get(index).getText().substring(0, 2));
+            subjectNames.add(subjectsListByName.get(index).getText());
+        }
+
+        ArrayList<String> partialSubjectNames = new ArrayList<>();
+        for (int index = 0; index < subjectNames.size(); index++) {
+            String subjectName = subjectNames.get(index);
+            String[] result = subjectName.split(" ", 2);
+            partialSubjectNames.add(result[0]);
+        }
+        return partialSubjectNames;
+    }
+
+    public List getSubjectsByModuleName() {
+        ArrayList<String> subjectNames = new ArrayList<>();
+        for (int index = 0; index < subjectsListByModule.size(); index++) {
+            subjectNames.add(subjectsListByModule.get(index).getText());
         }
         return subjectNames;
+    }
+
+    public List<String> getSubjectsByPartialModuleName() {
+        ArrayList<String> moduleNames = new ArrayList<>();
+        for (int index = 0; index < subjectsListByModule.size(); index++) {
+            moduleNames.add(subjectsListByModule.get(index).getText());
+        }
+
+        ArrayList<String> partialModuleNames = new ArrayList<>();
+        for (int index = 0; index < moduleNames.size(); index++) {
+            String moduleName = moduleNames.get(index);
+            String[] result = moduleName.split(" ", 2);
+            partialModuleNames.add(result[0]);
+        }
+        return partialModuleNames;
+    }
+
+    public String getTextOfMessageNoRecords() {
+        return messageNoRecords.getText();
     }
 }

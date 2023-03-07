@@ -1,0 +1,2 @@
+Testavimo metodikų taikymas
+Duomenų bazių projektavimas
