@@ -7,8 +7,6 @@ import it.academy.utils.WaitUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;

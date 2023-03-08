@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: it.academy.test.rooms.RoomsPageTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 85.406 s - in it.academy.test.rooms.RoomsPageTest
