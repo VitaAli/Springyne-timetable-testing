@@ -5,6 +5,8 @@ import it.academy.pom.modules.ModuleAddPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
@@ -26,11 +28,12 @@ public class ModuleAddPageTest extends BaseTest {
         modulesPage.pressButtonAdd();
     }
 
-    @Test
-    public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
+    @ParameterizedTest
+    @CsvFileSource(resources = "/ModuleAddTestData.txt")
+    public void moduleShouldBeCreatedWithUniqueNumberAndAnyName(String valueFromFile) {
         performInitialSteps();
         moduleAddPage.enterNumber(generateRandomNumber());
-        moduleAddPage.enterName("name");
+        moduleAddPage.enterName(valueFromFile);
         moduleAddPage.pressButtonAdd();
 
         waitForMessageRecordIsCreated(driver);
