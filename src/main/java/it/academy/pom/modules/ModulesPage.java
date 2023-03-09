@@ -31,6 +31,18 @@ public class ModulesPage extends AbstractPage {
     @FindBy (xpath = "//tbody/tr[1]/td[last()]/button[1]")
     private WebElement buttonViewModule;
 
+    @FindBy (xpath = "//tbody/tr[1]/td[last()]/button[3]")
+    private WebElement buttonDeleteModule;
+
+    @FindBy (xpath = "//tbody/tr[last()]/td[last()]/button[3]")
+    private WebElement buttonRestoreModule;
+
+    @FindBy (xpath = "//tbody/tr[last()]/td[3]")
+    private WebElement lastModuleState;
+
+    @FindBy (xpath = "//tbody/tr[1]/td[3]")
+    private WebElement firstModuleState;
+
     public ModulesPage(WebDriver driver) {
         super(driver);
     }
@@ -81,6 +93,22 @@ public class ModulesPage extends AbstractPage {
 
     public void pressButtonView() {
         buttonViewModule.click();
+    }
+
+    public void pressButtonDelete() {
+        buttonDeleteModule.click();
+    }
+
+    public String getLastModuleState() {
+        return lastModuleState.getText();
+    }
+
+    public void pressButtonRestore() {
+        buttonRestoreModule.click();
+    }
+
+    public String getFirstModuleState() {
+        return firstModuleState.getText();
     }
 
 }
