@@ -1,2 +1,0 @@
-Automatinis testavimas
-Duomenų bazės

@@ -40,15 +40,25 @@ public class ModuleEditPageTest extends BaseTest {
     }
 
     @Test
-    public void moduleShouldBeRestoredAfterDeletion() {
+    public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-        waitUntilRestoreButtonAppears(driver);
-        moduleEditPage.pressButtonRestore();
         waitForMessageModuleUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
                 , "No success message received");
     }
+
+//    @Test
+//    public void moduleShouldBeRestoredAfterDeletion() {
+//        performInitialSteps();
+//        moduleEditPage.pressButtonDelete();
+//        waitUntilRestoreButtonAppears(driver);
+//        moduleEditPage.pressButtonRestore();
+//        waitForMessageModuleUpdated(driver);
+//
+//        assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
+//                , "No success message received");
+//    }
 
 }

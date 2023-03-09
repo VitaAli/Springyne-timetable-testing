@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: it.academy.test.SuitTest
--------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 225.431 s - in it.academy.test.SuitTest
