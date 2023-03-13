@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class RoomAddPage extends AbstractPage {
-    @FindBy(css = ".btn-primary")
-    private WebElement buttonAddRoom;
-
     @FindBy (xpath ="(//input[@id='create-room-number-with-error'])[1]")
     private WebElement inputRoomNumber;
 
@@ -31,15 +28,15 @@ public class RoomAddPage extends AbstractPage {
     public RoomAddPage(WebDriver driver) {
         super(driver);
     }
-    public void pressButtonAddRoom() {
-        buttonAddRoom.click();
-    }
+
     public void enterNumber(String number) {
         inputRoomNumber.sendKeys(number);
     }
+
     public void enterName(String name) {
         inputRoomName.sendKeys(name);
     }
+
     public void enterDescription(String description) {
         inputRoomDescription.sendKeys(description);
     }
@@ -59,4 +56,5 @@ public class RoomAddPage extends AbstractPage {
         return Boolean.parseBoolean(inputRoomNumber.getAttribute("aria-invalid"));
     }
 }
+
 

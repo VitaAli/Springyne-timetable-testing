@@ -30,8 +30,17 @@ public class RoomsPage extends AbstractPage {
     @FindBy(xpath = "//td[contains(text(),'Rasta įrašų: ')]")
     private WebElement messageRecordsAreFound;
 
-    @FindBy(xpath = "//a[starts-with(@href, '#/rooms/create')]")
+    @FindBy(css = ".btn-primary")
     private WebElement buttonAddRoom;
+
+    @FindBy(css = "button[title='Redaguoti']")
+    private WebElement buttonEdit;
+
+    @FindBy(xpath = "(//button[@title='Ištrinti'])")
+    private WebElement buttonDelete;
+
+    @FindBy(xpath = "(//button[@title='Atstatyti'])")
+    private WebElement buttonRestore;
 
     public RoomsPage(WebDriver driver) {
         super(driver);
@@ -107,8 +116,18 @@ public class RoomsPage extends AbstractPage {
 
     }
 
-    public void buttonAddRoom() {
+    public void pressButtonAddRoom() {
         buttonAddRoom.click();
     }
+    public void pressButtonEdit() {
+        buttonEdit.click();
+    }
+    public void pressButtonDelete(){
+        buttonDelete.click();
 
+    }
+    public void pressButtonRestore(){
+        buttonRestore.click();
+
+    }
 }

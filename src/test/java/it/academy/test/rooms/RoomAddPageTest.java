@@ -21,7 +21,7 @@ public class RoomAddPageTest extends BaseTest {
         roomsPage = new RoomsPage(driver);
         roomAddPage = new RoomAddPage(driver);
         header.openRooms();
-        roomAddPage.pressButtonAddRoom();
+        roomsPage.pressButtonAddRoom();
 
     }
 
@@ -71,5 +71,4 @@ public class RoomAddPageTest extends BaseTest {
         assertTrue(roomAddPage.getNumberInvalidValue()
                 , "User must see validation error message when he wants to create a room with no number");
     }
-
 }

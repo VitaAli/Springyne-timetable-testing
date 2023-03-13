@@ -98,4 +98,3 @@ public class RoomsPageTest extends BaseTest {
     }
 }
 
-
