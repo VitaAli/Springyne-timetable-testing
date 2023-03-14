@@ -17,8 +17,8 @@ public class BaseTest {
         driver.get("http://localhost:3000/?#/");
     }
 
-//    @AfterEach
-//    public void closeDriver() {
-//        driver.quit();
-//    }
+    @AfterEach
+    public void closeDriver() {
+        driver.quit();
+    }
 }
