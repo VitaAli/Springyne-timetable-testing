@@ -39,7 +39,7 @@ public class ModuleViewPageTest extends BaseTest {
         moduleViewPage.pressButtonDelete();
         waitUntilRestoreButtonAppears(driver);
         moduleViewPage.pressButtonRestore();
-        waitForMessageModuleRestored(driver);
+        waitForMessageRecordRestored(driver);
 
         assertEquals("Įrašas sėkmingai atstatytas", moduleViewPage.getSuccessMessageAfterRestore()
                 , "No success message received");

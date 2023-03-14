@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomName;
 import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
-import static it.academy.utils.WaitUtils.waitForMessageModuleUpdated;
+import static it.academy.utils.WaitUtils.waitForMessageRecordUpdated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModuleEditPageTest extends BaseTest {
@@ -31,7 +31,7 @@ public class ModuleEditPageTest extends BaseTest {
         moduleEditPage.enterNumber(generateRandomNumber());
         moduleEditPage.enterName(generateRandomName());
         moduleEditPage.pressButtonEdit();
-        waitForMessageModuleUpdated(driver);
+        waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
@@ -41,7 +41,7 @@ public class ModuleEditPageTest extends BaseTest {
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();
-        waitForMessageModuleUpdated(driver);
+        waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
                 , "No success message received");

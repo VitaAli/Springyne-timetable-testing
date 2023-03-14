@@ -56,7 +56,7 @@ public class WaitUtils {
                 , "Įrašo nepavyko sukurti"));
     }
 
-    public static void waitForMessageModuleUpdated(WebDriver driver) {
+    public static void waitForMessageRecordUpdated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(1) .MuiAlert-message")));
@@ -69,7 +69,7 @@ public class WaitUtils {
                 , "Įrašas sėkmingai ištrintas"));
     }
 
-    public static void waitForMessageModuleRestored(WebDriver driver) {
+    public static void waitForMessageRecordRestored(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")

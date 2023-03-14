@@ -7,7 +7,7 @@ import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomName;
-import static it.academy.utils.WaitUtils.waitForMessageModuleUpdated;
+import static it.academy.utils.WaitUtils.waitForMessageRecordUpdated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RoomEditPageTest extends BaseTest {
@@ -32,7 +32,7 @@ public class RoomEditPageTest extends BaseTest {
         roomEditPage.enterBuildingName(generateRandomName());
         roomEditPage.enterDescription(generateRandomName());
         roomEditPage.pressButtonSubmit();
-        waitForMessageModuleUpdated(driver);
+        waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", roomEditPage.getSuccessMessage()
                 , "The room name and building fields are mandatory.");
