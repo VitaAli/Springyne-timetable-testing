@@ -5,6 +5,7 @@ import it.academy.test.modules.ModuleEditPageTest;
 import it.academy.test.modules.ModuleViewPageTest;
 import it.academy.test.modules.ModulesPageTest;
 import it.academy.test.rooms.RoomAddPageTest;
+import it.academy.test.rooms.RoomEditPageTest;
 import it.academy.test.rooms.RoomsPageTest;
 import it.academy.test.shifts.ShiftAddPageTest;
 import it.academy.test.shifts.ShiftEditPageTest;
@@ -15,7 +16,7 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @SelectClasses({ModulesPageTest.class, ModuleAddPageTest.class, ModuleEditPageTest.class, ModuleViewPageTest.class
-        , RoomsPageTest.class, RoomAddPageTest.class
+        , RoomsPageTest.class, RoomAddPageTest.class, RoomEditPageTest.class
         , ShiftsPageTest.class, ShiftAddPageTest.class, ShiftEditPageTest.class
         , SubjectsPageTest.class })
 public class SuitTest {

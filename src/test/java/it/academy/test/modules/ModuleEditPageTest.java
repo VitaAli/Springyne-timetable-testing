@@ -4,13 +4,11 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleEditPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomName;
 import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
 import static it.academy.utils.WaitUtils.waitForMessageModuleUpdated;
-import static it.academy.utils.WaitUtils.waitUntilRestoreButtonAppears;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModuleEditPageTest extends BaseTest {
