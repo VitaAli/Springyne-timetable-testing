@@ -1,11 +1,11 @@
-package it.academy.pom.modules;
+package it.academy.pom.subjects;
 
 import it.academy.pom.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ModuleViewPage extends AbstractPage {
+public class SubjectViewPage extends AbstractPage {
 
     @FindBy(xpath = "//button[.='Ištrinti']")
     private WebElement buttonDelete;
@@ -19,7 +19,7 @@ public class ModuleViewPage extends AbstractPage {
     @FindBy (css = ".mx-3 > div:nth-of-type(2) .MuiAlert-message")
     private WebElement successMessageAfterRestore;
 
-    public ModuleViewPage(WebDriver driver) {
+    public SubjectViewPage(WebDriver driver) {
         super(driver);
     }
 
@@ -38,4 +38,6 @@ public class ModuleViewPage extends AbstractPage {
     public String getSuccessMessageAfterRestore() {
         return successMessageAfterRestore.getText();
     }
+
+
 }
