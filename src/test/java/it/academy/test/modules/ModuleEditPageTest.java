@@ -47,16 +47,4 @@ public class ModuleEditPageTest extends BaseTest {
                 , "No success message received");
     }
 
-//    @Test
-//    public void moduleShouldBeRestoredAfterDeletion() {
-//        performInitialSteps();
-//        moduleEditPage.pressButtonDelete();
-//        waitUntilRestoreButtonAppears(driver);
-//        moduleEditPage.pressButtonRestore();
-//        waitForMessageModuleUpdated(driver);
-//
-//        assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
-//                , "No success message received");
-//    }
-
 }

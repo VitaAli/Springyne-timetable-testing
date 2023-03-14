@@ -20,9 +20,6 @@ public class ModuleEditPage extends AbstractPage {
     @FindBy(css = "button.btn-danger")
     private WebElement buttonDelete;
 
-    @FindBy(css = "button.btn-secondary")
-    private WebElement buttonRestore;
-
     @FindBy(css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
     private WebElement successMessage;
 
@@ -50,10 +47,6 @@ public class ModuleEditPage extends AbstractPage {
 
     public void pressButtonDelete() {
         buttonDelete.click();
-    }
-
-    public void pressButtonRestore() {
-        buttonRestore.click();
     }
 
     public String getSuccessMessage() {
