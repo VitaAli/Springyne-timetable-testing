@@ -30,11 +30,11 @@ public class SubjectViewPageTest extends BaseTest {
         waitForMessageRecordDeleted(driver);
 
         assertEquals("Įrašas sėkmingai ištrintas", subjectViewPage.getSuccessMessageAfterDeletion()
-                , "No success message received after module deletion");
+                , "No success message received after subject deletion");
     }
 
     @Test
-    public void invalidatedModuleShouldBeRestored() {
+    public void invalidatedSubjectShouldBeRestored() {
         performInitialSteps();
         subjectViewPage.pressButtonDelete();
         waitUntilRestoreButtonAppears(driver);
@@ -42,7 +42,7 @@ public class SubjectViewPageTest extends BaseTest {
         waitForMessageRecordRestored(driver);
 
         assertEquals("Įrašas sėkmingai atstatytas", subjectViewPage.getSuccessMessageAfterRestore()
-                , "No success message received");
+                , "No success message received after subject restoring");
 
     }
 
