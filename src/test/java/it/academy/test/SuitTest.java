@@ -12,6 +12,7 @@ import it.academy.test.shifts.ShiftEditPageTest;
 import it.academy.test.shifts.ShiftsPageTest;
 import it.academy.test.subjects.SubjectAddPageTest;
 import it.academy.test.subjects.SubjectEditPageTest;
+import it.academy.test.subjects.SubjectViewPageTest;
 import it.academy.test.subjects.SubjectsPageTest;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
@@ -20,6 +21,6 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasses({ModulesPageTest.class, ModuleAddPageTest.class, ModuleEditPageTest.class, ModuleViewPageTest.class
         , RoomsPageTest.class, RoomAddPageTest.class, RoomEditPageTest.class
         , ShiftsPageTest.class, ShiftAddPageTest.class, ShiftEditPageTest.class
-        , SubjectsPageTest.class, SubjectAddPageTest.class, SubjectEditPageTest.class })
+        , SubjectsPageTest.class, SubjectAddPageTest.class, SubjectEditPageTest.class, SubjectViewPageTest.class })
 public class SuitTest {
 }

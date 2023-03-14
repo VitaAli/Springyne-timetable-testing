@@ -66,7 +66,7 @@ public class ModulesPageTest extends BaseTest {
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         modulesPage.pressButtonDelete();
-        waitForMessageModuleDeleted(driver);
+        waitForMessageRecordDeleted(driver);
 
         assertEquals("Ištrintas", modulesPage.getLastModuleState()
                 , "Module is not deleted and has no state");

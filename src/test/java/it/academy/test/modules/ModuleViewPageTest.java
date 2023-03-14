@@ -27,7 +27,7 @@ public class ModuleViewPageTest extends BaseTest {
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
-        waitForMessageModuleDeleted(driver);
+        waitForMessageRecordDeleted(driver);
 
         assertEquals("Įrašas sėkmingai ištrintas", moduleViewPage.getSuccessMessageAfterDeletion()
                 , "No success message received after module deletion");
