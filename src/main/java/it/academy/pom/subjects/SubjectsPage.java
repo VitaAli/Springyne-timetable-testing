@@ -99,4 +99,8 @@ public class SubjectsPage extends AbstractPage {
     public String getTextOfMessageNoRecords() {
         return messageNoRecords.getText();
     }
+
+    public void pressButtonAdd() {
+        buttonAddSubject.click();
+    }
 }
