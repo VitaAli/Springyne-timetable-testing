@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static it.academy.utils.WaitUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SubjectsEditPageTest extends BaseTest {
+public class SubjectEditPageTest extends BaseTest {
 
 
     private Header header;
