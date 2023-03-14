@@ -85,5 +85,13 @@ public class WaitUtils {
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")));
     }
+
+    public static void waitForMessageSubjectUpdated(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//div[contains(text(),'Įrašas sėkmingai atnaujintas')]")));
+    }
+
 }
 

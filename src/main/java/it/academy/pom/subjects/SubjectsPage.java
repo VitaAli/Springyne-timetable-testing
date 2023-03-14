@@ -34,6 +34,9 @@ public class SubjectsPage extends AbstractPage {
     @FindBy(css = ".btn-primary")
     private WebElement buttonAddSubject;
 
+    @FindBy(xpath = "//tbody/tr[1]/td[last()]/button[2]")
+    private WebElement buttonEditSubject;
+
     public SubjectsPage(WebDriver driver) {
         super(driver);
     }
@@ -100,7 +103,11 @@ public class SubjectsPage extends AbstractPage {
         return messageNoRecords.getText();
     }
 
-    public void pressButtonAdd() {
+    public void pressButtonAddSubject() {
         buttonAddSubject.click();
+    }
+
+    public void pressButtonEditSubject() {
+        buttonEditSubject.click();
     }
 }

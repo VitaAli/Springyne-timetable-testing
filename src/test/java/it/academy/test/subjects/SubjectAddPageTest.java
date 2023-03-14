@@ -22,7 +22,7 @@ public class SubjectAddPageTest extends BaseTest {
         subjectsPage = new SubjectsPage(driver);
         subjectAddPage = new SubjectAddPage(driver);
         header.openSubjects();
-        subjectsPage.pressButtonAdd();
+        subjectsPage.pressButtonAddSubject();
     }
 
     @Test
