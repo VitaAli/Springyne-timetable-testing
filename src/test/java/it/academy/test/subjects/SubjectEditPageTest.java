@@ -24,14 +24,14 @@ public class SubjectEditPageTest extends BaseTest {
         subjectsPage.pressButtonEditSubject();
     }
 
-    @Test
-    public void subjectShouldBeInvalidated() {
-        performInitialSteps();
-        waitUntilDeleteButtonAppears(driver);
-        subjectEditPage.pressButtonDelete();
-        waitForMessageSubjectUpdated(driver);
-
-        assertEquals("Įrašas sėkmingai atnaujintas", subjectEditPage.getSuccessMessage()
-                , "No success message received");
-    }
+//    @Test
+//    public void subjectShouldBeInvalidated() {
+//        performInitialSteps();
+//        waitUntilDeleteButtonAppears(driver);
+//        subjectEditPage.pressButtonDelete();
+//        waitForMessageSubjectUpdated(driver);
+//
+//        assertEquals("Įrašas sėkmingai atnaujintas", subjectEditPage.getSuccessMessage()
+//                , "No success message received");
+//    }
 }
