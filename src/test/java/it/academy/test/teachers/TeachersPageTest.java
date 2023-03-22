@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TeachersPageTest extends BaseTest {
@@ -27,12 +28,11 @@ public class TeachersPageTest extends BaseTest {
         performInitialSteps();
         List<String> results = teachersPage.getNamesFromTeacherList();
         String result = teachersPage.getFirstNameFromTeacherList();
-
         teachersPage.searchTeacherByName(result);
         teachersPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
 
         assertTrue(results.contains(result)
                 , "The teacher list should be filtered by the teacher name");
-
     }
 }
