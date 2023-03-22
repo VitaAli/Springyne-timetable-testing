@@ -13,4 +13,9 @@ public class GenerateDataUtils {
         int randomNum = ThreadLocalRandom.current().nextInt(1, 9999);
         return "name" + randomNum;
     }
+
+    public static String generateRandomNum() {
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 9999);
+        return String.valueOf(randomNum);
+    }
 }

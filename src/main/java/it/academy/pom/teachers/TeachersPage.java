@@ -19,6 +19,9 @@ public class TeachersPage extends AbstractPage {
     @FindBy(css = "button[type='submit']")
     private WebElement buttonSearch;
 
+    @FindBy(css = ".btn-primary")
+    private WebElement buttonAddTeacher;
+
     public TeachersPage(WebDriver driver) {
         super(driver);
     }
@@ -42,5 +45,9 @@ public class TeachersPage extends AbstractPage {
 
     public void pressButtonSearch() {
         buttonSearch.click();
+    }
+
+    public void pressButtonAddTeacher() {
+        buttonAddTeacher.click();
     }
 }
