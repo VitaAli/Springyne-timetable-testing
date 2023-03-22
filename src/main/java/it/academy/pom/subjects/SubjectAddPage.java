@@ -25,7 +25,7 @@ public class SubjectAddPage extends AbstractPage {
     @FindBy (xpath = "//div[4]/div/input")
     private WebElement roomInvalidValue;
 
-    @FindBy (xpath = "//li[1]")
+    @FindBy (css = "#menu- li:first-of-type")
     private WebElement firstValueFromList;
 
     @FindBy(css = "button[type='submit']")
