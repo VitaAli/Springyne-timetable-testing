@@ -1,5 +1,7 @@
 package it.academy.test;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,20 +12,20 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static it.academy.test.Config.*;
-import static it.academy.test.Config.platformName;
+import static it.academy.test.SauceLabConfig.*;
 
-public class BrowserManager {
+
+public class BaseTestSauceLab {
 
     protected RemoteWebDriver driver;
 
-    public void manageDifferentBrowsers(TestInfo testInfo) throws MalformedURLException {
-
+    @BeforeEach
+    public void setUp(TestInfo testInfo) throws MalformedURLException {
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
         MutableCapabilities sauceOptions = new MutableCapabilities();
         sauceOptions.setCapability("username", sauceUser);
         sauceOptions.setCapability("accesskey", sauceKey);
         sauceOptions.setCapability("name", testInfo.getDisplayName());
-
         MutableCapabilities options;
         switch (browserName) {
             case "Firefox": {
@@ -39,15 +41,18 @@ public class BrowserManager {
                 break;
             }
         }
-
         options.setCapability("browserName", browserName);
         options.setCapability("browserVersion", browserVersion);
         options.setCapability("platformName", platformName);
-
         options.setCapability("sauce:options", sauceOptions);
-        URL url = new URL("https://oauth-vitalija.alisauskiene-96ae5:f5bfb19e-74aa-47f7-b004-c0b0b768f7b4@ondemand.eu-central-1.saucelabs.com:443/wd/hub");
-
+        URL url = new URL("https://ondemand.eu-central-1.saucelabs.com/wd/hub");
         driver = new RemoteWebDriver(url, options);
+        driver.manage().window().maximize();
+        driver.get("https://tomcat.akademijait.vtmc.lt/springyne/");
+    }
 
+    @AfterEach
+    public void closeDriver() {
+        driver.quit();
     }
 }
