@@ -4,7 +4,6 @@ import it.academy.pom.Header;
 import it.academy.pom.teachers.TeacherAddPage;
 import it.academy.pom.teachers.TeachersPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.GeneralUse;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -18,13 +17,10 @@ public class TeacherAddPageTest extends BaseTest {
     private TeachersPage teachersPage;
     private TeacherAddPage teacherAddPage;
 
-    private GeneralUse generalUse;
-
     public void performInitialSteps() {
         header = new Header(driver);
         teachersPage = new TeachersPage(driver);
         teacherAddPage = new TeacherAddPage(driver);
-        generalUse = new GeneralUse(driver);
         header.openTeachers();
         teachersPage.pressButtonAddTeacher();
     }
@@ -39,10 +35,10 @@ public class TeacherAddPageTest extends BaseTest {
                 .enterTeacherNumbersOfHours("40")
                 .selectTeacherSubject()
                 .selectTeacherShift();
-        generalUse.pressButtonAdd();
+        teacherAddPage.pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
 
-        assertEquals("Įrašas sėkmingai sukurtas", generalUse.getSuccessMessage()
+        assertEquals("Įrašas sėkmingai sukurtas", teacherAddPage.getSuccessMessage()
                 , "All mandatory fields must be filled in when creating a record");
     }
 }

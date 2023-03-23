@@ -25,7 +25,11 @@ public class TeacherAddPage extends AbstractPage {
     @FindBy (css = "#menu- li:first-of-type")
     private WebElement firstValueFromList;
 
+    @FindBy(css = "button[type='submit']")
+    private WebElement buttonAdd;
 
+    @FindBy (css = ".mx-3 > div:nth-of-type(1) .MuiAlert-message")
+    private WebElement successMessage;
 
     public TeacherAddPage(WebDriver driver) {
         super(driver);
@@ -56,6 +60,15 @@ public class TeacherAddPage extends AbstractPage {
         inputTeacherShift.click();
         firstValueFromList.click();
         return this;
+    }
+
+    public TeacherAddPage pressButtonAdd() {
+        buttonAdd.click();
+        return this;
+    }
+
+    public String getSuccessMessage() {
+        return successMessage.getText();
     }
 
 }
