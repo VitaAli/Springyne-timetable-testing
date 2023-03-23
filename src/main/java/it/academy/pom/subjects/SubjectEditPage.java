@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class SubjectEditPage extends AbstractPage {
 
-    @FindBy(css = "button.btn-danger")
+    @FindBy(css = "button.btn-danger.me-2")
     private WebElement buttonDelete;
 
     @FindBy(css = "button.btn-secondary")

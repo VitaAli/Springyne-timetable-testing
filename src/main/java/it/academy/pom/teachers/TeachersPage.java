@@ -22,6 +22,9 @@ public class TeachersPage extends AbstractPage {
     @FindBy(css = ".btn-primary")
     private WebElement buttonAddTeacher;
 
+    @FindBy(xpath = "//tbody/tr[1]/td[last()]/div/button[2]")
+    private WebElement buttonEditTeacher;
+
     @FindBy (xpath = "//tbody/tr[1]/td[last()]/div/button[1]")
     private WebElement buttonViewTeacher;
 
@@ -52,6 +55,10 @@ public class TeachersPage extends AbstractPage {
 
     public void pressButtonAddTeacher() {
         buttonAddTeacher.click();
+    }
+
+    public void pressButtonEditTeacher() {
+        buttonEditTeacher.click();
     }
 
     public void pressButtonViewTeacher() {
