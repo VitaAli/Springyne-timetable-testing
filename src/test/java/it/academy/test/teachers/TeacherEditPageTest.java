@@ -4,7 +4,10 @@ import it.academy.pom.Header;
 import it.academy.pom.teachers.TeacherEditPage;
 import it.academy.pom.teachers.TeachersPage;
 import it.academy.test.BaseTest;
+import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomNum;
 import static it.academy.utils.WaitUtils.*;
@@ -25,7 +28,7 @@ public class TeacherEditPageTest extends BaseTest {
     }
 
     @Test
-    public void teacherShouldBeEditedByEditingAllFields() {
+    public void teacherShouldBeEditedByEditingAllFields() throws InterruptedException {
         performInitialSteps();
         teacherEditPage.enterTeacherName("TeacherName" + generateRandomNum())
                 .enterTeacherUsername("TeacherUserName" + generateRandomNum())
@@ -33,8 +36,11 @@ public class TeacherEditPageTest extends BaseTest {
                 .enterTeacherMobile("TeacherMobile" + generateRandomNum())
                 .enterTeacherNumbersOfHours("40")
                 .selectTeacherSubject()
-                .selectTeacherShift()
-                .pressButtonEdit();
+                .selectTeacherShift();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");
+        Thread.sleep(3000);
+        teacherEditPage.pressButtonEdit();
         waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", teacherEditPage.getSuccessMessage()
@@ -42,13 +48,17 @@ public class TeacherEditPageTest extends BaseTest {
     }
 
     @Test
-    public void teacherShouldBeInvalidated() {
+    public void teacherShouldBeInvalidated() throws InterruptedException {
         performInitialSteps();
-        waitUntilDeleteButtonAppears(driver);
-        teacherEditPage.pressButtonDelete();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");
+        Thread.sleep(3000);
+        teacherEditPage.pressButtonEdit()
+                .pressButtonDelete();
         waitForMessageSubjectUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", teacherEditPage.getSuccessMessage()
                 , "No success message received");
     }
+
 }

@@ -11,11 +11,10 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://tomcat.akademijait.vtmc.lt/springyne/");
-
     }
 
     @AfterEach
