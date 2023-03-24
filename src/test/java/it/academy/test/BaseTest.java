@@ -18,8 +18,8 @@ public class BaseTest {
 
     }
 
-//    @AfterEach
-//    public void closeDriver() {
-//        driver.quit();
-//    }
+    @AfterEach
+    public void closeDriver() {
+        driver.quit();
+    }
 }
