@@ -4,6 +4,7 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleEditPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomName;
@@ -26,6 +27,7 @@ public class ModuleEditPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
     public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
         moduleEditPage.enterNumber(generateRandomNumber());
@@ -38,6 +40,7 @@ public class ModuleEditPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();

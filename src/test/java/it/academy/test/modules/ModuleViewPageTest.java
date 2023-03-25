@@ -4,6 +4,7 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleViewPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.WaitUtils.*;
@@ -24,6 +25,7 @@ public class ModuleViewPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
@@ -34,6 +36,7 @@ public class ModuleViewPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
     public void invalidatedModuleShouldBeRestored() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();

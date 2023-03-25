@@ -12,11 +12,11 @@ public class BaseTest {
     @BeforeEach
     public void setUp() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-        System.setProperty("webdriver.chrome.driver"
-                , "C:/Users/Vitalija/Documents/Vitalija/AKADEMIJA.IT/PROJEKTAS/Springyne/Springyne-timetable-testing/src/main/resources/chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver"
+//                , "/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://tomcat.akademijait.vtmc.lt/springyne/");
+        driver.get("http://localhost:3000/");
     }
 
     @AfterEach

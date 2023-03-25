@@ -3,6 +3,7 @@ package it.academy.test.modules;
 import it.academy.pom.Header;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -26,6 +27,7 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/ModuleTestData1.txt")
+    @Tag("smoke")
     public void modulesShouldBeFilteredByName(String valueFromFile) {
         performInitialSteps();
         List<String> modules = modulesPage.getModuleNames();
@@ -63,6 +65,7 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         modulesPage.pressButtonDelete();

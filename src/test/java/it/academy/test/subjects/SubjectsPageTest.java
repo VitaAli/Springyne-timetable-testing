@@ -4,6 +4,7 @@ import it.academy.pom.Header;
 import it.academy.pom.subjects.SubjectsPage;
 import it.academy.test.BaseTest;
 import it.academy.utils.WaitUtils;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -26,6 +27,7 @@ public class SubjectsPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/SubjectTestData1.txt")
+    @Tag("smoke")
     public void subjectsCanBeFilteredBySubjectName(String valueFromFile) {
         performInitialSteps();
         List<String> subjects = subjectsPage.getSubjectsByName();

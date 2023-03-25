@@ -4,6 +4,7 @@ import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleAddPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -30,6 +31,7 @@ public class ModuleAddPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/ModuleAddTestData.txt")
+    @Tag("smoke")
     public void moduleShouldBeCreatedWithUniqueNumberAndAnyName(String valueFromFile) {
         performInitialSteps();
         moduleAddPage.enterNumber(generateRandomNumber());
