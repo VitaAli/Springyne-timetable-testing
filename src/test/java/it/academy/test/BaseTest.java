@@ -13,7 +13,7 @@ public class BaseTest {
     public void setUp() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
 //        System.setProperty("webdriver.chrome.driver"
-//                , "/resources/chromedriver.exe");
+//                , "/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://localhost:3000/");

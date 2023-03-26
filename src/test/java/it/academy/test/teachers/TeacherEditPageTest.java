@@ -70,12 +70,17 @@ public class TeacherEditPageTest extends BaseTest {
     @Tag("smoke")
     public void invalidatedTeacherShouldBeRestored() throws InterruptedException {
         performInitialSteps();
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,500)");
         Thread.sleep(3000);
-        teacherEditPage.pressButtonEdit()
-                .pressButtonDelete()
-                .pressButtonRestore();
+
+        teacherEditPage.pressButtonDelete();
+
+        js.executeScript("window.scrollBy(0,500)");
+        Thread.sleep(3000);
+
+        teacherEditPage.pressButtonRestore();
         waitForMessageSubjectUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", teacherEditPage.getSuccessMessage()
