@@ -6,6 +6,8 @@ import it.academy.pom.teachers.TeachersPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomNum;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
@@ -25,13 +27,14 @@ public class TeacherAddPageTest extends BaseTest {
         teachersPage.pressButtonAddTeacher();
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvFileSource(resources = "/TeacherAddTestData.txt")
     @Tag("smoke")
     @Tag("regression")
-    public void teacherShouldBeAddedByEnteringMandatoryFields() {
+    public void teacherShouldBeAddedByEnteringMandatoryFields(String valueFromFile) {
         performInitialSteps();
         teacherAddPage
-                .enterTeacherName("TeacherName" + generateRandomNum())
+                .enterTeacherName(valueFromFile)
                 .enterTeacherUsername("TeacherUsername" + generateRandomNum())
                 .enterTeacherNumbersOfHours("40")
                 .selectTeacherSubject()

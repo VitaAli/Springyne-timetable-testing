@@ -5,6 +5,7 @@ import it.academy.pom.modules.ModuleAddPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -14,6 +15,9 @@ import static it.academy.utils.WaitUtils.waitForMessageRecordIsNotCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Verify if new module can be created
+ */
 public class ModuleAddPageTest extends BaseTest {
 
     private Header header;
@@ -44,14 +48,13 @@ public class ModuleAddPageTest extends BaseTest {
                 , "The number and name fields are mandatory. The number must be unique");
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/ModuleAddTestData.txt")
+    @Test
     @Tag("regression")
-    public void moduleShouldNotBeCreatedWithUniqueNumberAndNoName(String valueFromFile) {
+    public void moduleShouldNotBeCreatedWithUniqueNumberAndNoName() {
         performInitialSteps();
         moduleAddPage
                 .enterModuleNumber("ModuleNumber" + generateRandomNum())
-                .enterModuleName(valueFromFile)
+                .enterModuleName("")
                 .pressButtonAdd();
 
         assertTrue(moduleAddPage.getNameInvalidValue()

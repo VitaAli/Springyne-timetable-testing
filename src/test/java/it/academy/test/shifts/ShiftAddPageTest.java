@@ -58,7 +58,7 @@ public class ShiftAddPageTest extends BaseTest {
     public void shiftShouldNotBeCreatedWithNonUniqueName() {
         performInitialSteps();
         shiftAddPage
-                .enterShiftName("Rytinė")
+                .enterShiftName("Vakarinė")
                 .pressButtonAdd();
         waitForMessageRecordIsNotCreated(driver);
 

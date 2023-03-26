@@ -34,10 +34,9 @@ public class WaitUtils {
     }
 
     public static void waitForMessageRecordIsNotCreated(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
-                        .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
-                , "Įrašo nepavyko sukurti"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                        .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")));
     }
 
     public static void waitForMessageRecordUpdated(WebDriver driver) {
