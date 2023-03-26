@@ -19,6 +19,9 @@ public class Header extends AbstractPage {
     @FindBy(css = "a[href='#/teachers']")
     private WebElement teachers;
 
+    @FindBy(css = "a[href='#/programs']")
+    private WebElement programs;
+
     public Header(WebDriver driver) {
         super(driver);
     }
@@ -45,5 +48,9 @@ public class Header extends AbstractPage {
 
     public void openTeachers() {
         teachers.click();
+    }
+
+    public void openPrograms() {
+        programs.click();
     }
 }
