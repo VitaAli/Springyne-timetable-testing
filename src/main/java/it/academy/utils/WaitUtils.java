@@ -26,9 +26,6 @@ public class WaitUtils {
 
     public static void waitUntilRestoreButtonAppears(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait((driver), Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions
-//                .visibilityOfElementLocated(By.xpath("button.btn-secondary")));
-
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector("button.btn-secondary")
                 , "Atstatyti"));
@@ -48,9 +45,6 @@ public class WaitUtils {
 
     public static void waitForMessageRecordIsNotCreated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-//        wait.until(ExpectedConditions
-//                .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")));
-
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector(".mx-3 > div:nth-of-type(2) .MuiAlert-message")
                 , "Įrašo nepavyko sukurti"));
@@ -78,17 +72,12 @@ public class WaitUtils {
 
     public static void waitForMessageShiftUpdated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
-//        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
-//                        .cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")
-//                , "Įrašas sėkmingai atnaujintas"));
-
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".mx-3 > div:nth-of-type(3) .MuiAlert-message")));
     }
 
     public static void waitForMessageSubjectUpdated(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
-
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.xpath("//div[contains(text(),'Įrašas sėkmingai atnaujintas')]")));
     }
