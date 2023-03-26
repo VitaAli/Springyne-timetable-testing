@@ -23,12 +23,14 @@ public class SubjectViewPage extends AbstractPage {
         super(driver);
     }
 
-    public void pressButtonDelete() {
+    public SubjectViewPage pressButtonDelete() {
         buttonDelete.click();
+        return this;
     }
 
-    public void pressButtonRestore() {
+    public SubjectViewPage pressButtonRestore() {
         buttonRestore.click();
+        return this;
     }
 
     public String getSuccessMessageAfterDeletion() {

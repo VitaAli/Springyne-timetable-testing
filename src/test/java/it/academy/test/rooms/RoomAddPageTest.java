@@ -4,9 +4,10 @@ import it.academy.pom.Header;
 import it.academy.pom.rooms.RoomAddPage;
 import it.academy.pom.rooms.RoomsPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
+import static it.academy.utils.GenerateDataUtils.generateRandomNum;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,51 +23,59 @@ public class RoomAddPageTest extends BaseTest {
         roomAddPage = new RoomAddPage(driver);
         header.openRooms();
         roomsPage.pressButtonAddRoom();
-
     }
 
     @Test
-    public void roomShouldBeCreatedWithNumberNameAndDescription() {
+    @Tag("smoke")
+    @Tag("regression")
+    public void roomShouldBeCreatedWithNameBuildingAndDescription() {
         performInitialSteps();
-        roomAddPage.enterNumber(generateRandomNumber());
-        roomAddPage.enterName("name");
-        roomAddPage.enterDescription("description");
-        roomAddPage.pressButtonSaveRecord();
-
+        roomAddPage
+                .enterRoomName("RoomName" + generateRandomNum())
+                .enterRoomBuilding("RoomBuilding" + generateRandomNum())
+                .enterRoomDescription("RoomDescription" + generateRandomNum())
+                .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
+
         assertEquals("Įrašas sėkmingai sukurtas", roomAddPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
     }
 
     @Test
-    public void roomShouldBeCreatedWithNumberNameAndNoDescription() {
+    @Tag("regression")
+    public void roomShouldBeCreatedWithNameBuildingAndNoDescription() {
         performInitialSteps();
-        roomAddPage.enterNumber(generateRandomNumber());
-        roomAddPage.enterName("name");
-        roomAddPage.pressButtonSaveRecord();
-
+        roomAddPage
+                .enterRoomName("RoomName" + generateRandomNum())
+                .enterRoomBuilding("RoomBuilding" + generateRandomNum())
+                .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
+
         assertEquals("Įrašas sėkmingai sukurtas", roomAddPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
     }
 
     @Test
-    public void roomShouldNotBeCreatedWithNumberAndNoName() {
+    @Tag("regression")
+    public void roomShouldNotBeCreatedWithNameAndNoBuilding() {
         performInitialSteps();
-        roomAddPage.enterNumber(generateRandomNumber());
-        roomAddPage.enterName("");
-        roomAddPage.pressButtonSaveRecord();
+        roomAddPage
+                .enterRoomName("RoomName" + generateRandomNum())
+                .enterRoomBuilding("")
+                .pressButtonAdd();
 
         assertTrue(roomAddPage.getNameInvalidValue()
                 , "User must see validation error message when he wants to create a room with no name");
     }
 
     @Test
-    public void roomShouldNotBeCreatedWithNoNumberAndAnyName() {
+    @Tag("regression")
+    public void roomShouldNotBeCreatedWithNoNameAndAnyBuilding() {
         performInitialSteps();
-        roomAddPage.enterNumber("");
-        roomAddPage.enterName("name");
-        roomAddPage.pressButtonSaveRecord();
+        roomAddPage
+                .enterRoomName("")
+                .enterRoomBuilding("RoomBuilding" + generateRandomNum())
+                .pressButtonAdd();
 
         assertTrue(roomAddPage.getNumberInvalidValue()
                 , "User must see validation error message when he wants to create a room with no number");

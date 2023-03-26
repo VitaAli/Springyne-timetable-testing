@@ -9,10 +9,6 @@ import java.time.Duration;
 
 public class WaitUtils {
 
-    public static void setImplicitWait(WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-    }
-
     public static void waitForMessageNoRecordsFound(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("tr td:nth-child(1)")
@@ -29,12 +25,6 @@ public class WaitUtils {
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By
                         .cssSelector("button.btn-secondary")
                 , "Atstatyti"));
-    }
-
-    public static void waitUntilDeleteButtonAppears(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait((driver), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector("button.btn-danger")));
     }
 
     public static void waitForMessageRecordIsCreated(WebDriver driver) {

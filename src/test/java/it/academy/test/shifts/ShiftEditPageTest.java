@@ -27,9 +27,9 @@ public class ShiftEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void shiftShouldBeRestoredAfterDeletion() {
         performInitialSteps();
-        waitUntilDeleteButtonAppears(driver);
         shiftEditPage.pressButtonDelete();
         waitUntilRestoreButtonAppears(driver);
         shiftEditPage.pressButtonRestore();
@@ -41,9 +41,10 @@ public class ShiftEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void shiftCanBeEdited() {
         performInitialSteps();
-        shiftEditPage.enterName("ShiftName" + generateRandomNum());
+        shiftEditPage.editShiftName("ShiftName" + generateRandomNum());
         shiftEditPage.pressButtonEdit();
         waitForMessageShiftUpdated(driver);
 

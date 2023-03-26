@@ -4,9 +4,10 @@ import it.academy.pom.Header;
 import it.academy.pom.rooms.RoomEditPage;
 import it.academy.pom.rooms.RoomsPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomName;
+import static it.academy.utils.GenerateDataUtils.generateRandomNum;
 import static it.academy.utils.WaitUtils.waitForMessageRecordUpdated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,13 +26,17 @@ public class RoomEditPageTest extends BaseTest {
         header.openRooms();
         roomsPage.pressButtonEdit();
     }
+
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     public void roomNameAndBuildingAndDescriptionCanBeEdited() {
         performInitialSteps();
-        roomEditPage.enterRoomName(generateRandomName());
-        roomEditPage.enterBuildingName(generateRandomName());
-        roomEditPage.enterDescription(generateRandomName());
-        roomEditPage.pressButtonSubmit();
+        roomEditPage
+                .editRoomName("RoomName" + generateRandomNum())
+                .editRoomBuilding("RoomBuilding" + generateRandomNum())
+                .editRoomDescription("RoomDescription" + generateRandomNum())
+                .pressButtonSubmit();
         waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", roomEditPage.getSuccessMessage()

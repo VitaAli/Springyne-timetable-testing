@@ -23,12 +23,14 @@ public class ModuleViewPage extends AbstractPage {
         super(driver);
     }
 
-    public void pressButtonDelete() {
+    public ModuleViewPage pressButtonDelete() {
         buttonDelete.click();
+        return this;
     }
 
-    public void pressButtonRestore() {
+    public ModuleViewPage pressButtonRestore() {
         buttonRestore.click();
+        return this;
     }
 
     public String getSuccessMessageAfterDeletion() {

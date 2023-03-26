@@ -4,14 +4,12 @@ import it.academy.pom.Header;
 import it.academy.pom.teachers.TeacherEditPage;
 import it.academy.pom.teachers.TeachersPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomNum;
-import static it.academy.utils.WaitUtils.*;
+import static it.academy.utils.WaitUtils.waitForMessageRecordUpdated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TeacherEditPageTest extends BaseTest {
@@ -30,6 +28,7 @@ public class TeacherEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void teacherShouldBeEditedByEditingAllFields() throws InterruptedException {
         performInitialSteps();
         teacherEditPage.enterTeacherName("TeacherName" + generateRandomNum())
@@ -53,14 +52,18 @@ public class TeacherEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void teacherShouldBeInvalidated() throws InterruptedException {
         performInitialSteps();
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,500)");
         Thread.sleep(3000);
-        teacherEditPage.pressButtonEdit()
+
+        teacherEditPage
+                .pressButtonEdit()
                 .pressButtonDelete();
-        waitForMessageSubjectUpdated(driver);
+        waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", teacherEditPage.getSuccessMessage()
                 , "No success message received");
@@ -68,6 +71,7 @@ public class TeacherEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void invalidatedTeacherShouldBeRestored() throws InterruptedException {
         performInitialSteps();
 
@@ -81,7 +85,7 @@ public class TeacherEditPageTest extends BaseTest {
         Thread.sleep(3000);
 
         teacherEditPage.pressButtonRestore();
-        waitForMessageSubjectUpdated(driver);
+        waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", teacherEditPage.getSuccessMessage()
                 , "No success message received");

@@ -1,7 +1,6 @@
 package it.academy.pom.programs;
 
 import it.academy.pom.AbstractPage;
-import it.academy.pom.teachers.TeacherAddPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

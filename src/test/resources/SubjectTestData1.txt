@@ -1,2 +1,2 @@
 Automatinis testavimas
-Duomenų bazės
+Tarnybinės stotys ir operacinės sistemos

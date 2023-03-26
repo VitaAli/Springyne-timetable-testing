@@ -3,12 +3,13 @@ package it.academy.test.rooms;
 import it.academy.pom.Header;
 import it.academy.pom.rooms.RoomsPage;
 import it.academy.test.BaseTest;
-import it.academy.utils.WaitUtils;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.util.List;
 
+import static it.academy.utils.WaitUtils.waitForMessageNoRecordsFound;
 import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class RoomsPageTest extends BaseTest {
     private Header header;
     private RoomsPage roomsPage;
-
 
     void performInitialSteps() {
         header = new Header(driver);
@@ -26,35 +26,45 @@ public class RoomsPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByName.txt")
+    @Tag("smoke")
+    @Tag("regression")
     public void roomsCanBeFilteredByRoomName(String valueFromFile) {
         performInitialSteps();
         List<String> rooms = roomsPage.getRoomsByName();
-        roomsPage.searchRoomsByName(valueFromFile);
-        roomsPage.pressButtonSearch();
+        roomsPage
+                .searchRoomsByName(valueFromFile)
+                .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(rooms.contains(valueFromFile),
                 "The list should be filtered by the room name");
     }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByPartialName.txt")
+    @Tag("regression")
     public void roomsCanBeFilteredByPartialName(String valueFromFile) {
         performInitialSteps();
         List<String> rooms = roomsPage.getRoomByPartialName();
-        roomsPage.searchRoomsByName(valueFromFile);
-        roomsPage.pressButtonSearch();
+        roomsPage
+                .searchRoomsByName(valueFromFile)
+                .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(rooms.contains(valueFromFile),
                 "The list should be filtered by the partial room name");
     }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByBuildingName.txt")
+    @Tag("smoke")
+    @Tag("regression")
     public void roomsCanBeFilteredByRoomsBuilding(String valueFromFile) {
         performInitialSteps();
         List<String> rooms = roomsPage.getRoomsByBuildingName();
-        roomsPage.searchRoomsByBuilding(valueFromFile);
-        roomsPage.pressButtonSearch();
+        roomsPage
+                .searchRoomsByBuilding(valueFromFile)
+                .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(rooms.contains(valueFromFile),
@@ -63,11 +73,13 @@ public class RoomsPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestByPartialBuildingName.txt")
+    @Tag("regression")
     public void roomsCanBeFilteredByPartialBuildingName(String valueFromFile) {
         performInitialSteps();
         List<String> rooms = roomsPage.getRoomsByBuildingPartialName();
-        roomsPage.searchRoomsByBuilding(valueFromFile);
-        roomsPage.pressButtonSearch();
+        roomsPage
+                .searchRoomsByBuilding(valueFromFile)
+                .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(rooms.contains(valueFromFile),
@@ -76,22 +88,30 @@ public class RoomsPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestBySymbols.txt")
+    @Tag("regression")
     public void roomsShouldNotBeFound(String valueFromFile) {
         performInitialSteps();
-        roomsPage.searchRoomsByName(valueFromFile);
-        roomsPage.pressButtonSearch();
-        WaitUtils.waitForMessageNoRecordsFound(driver);
+        roomsPage
+                .pressButtonSearch()
+                .searchRoomsByName(valueFromFile)
+                .pressButtonSearch();
+        waitForMessageNoRecordsFound(driver);
 
-        assertEquals("Įrašų nerasta", roomsPage.getMessageWhenNoRecords()
+        assertEquals(
+                "Įrašų nerasta", roomsPage.getMessageWhenNoRecords()
                 , "Rooms cannot be filtered by room name using random words or symbols");
     }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/RoomTestBySymbols.txt")
+    @Tag("regression")
     public void roomsBuildingShouldNotBeFound(String valueFromFile) {
         performInitialSteps();
-        roomsPage.searchRoomsByBuilding(valueFromFile);
-        roomsPage.pressButtonSearch();
-        WaitUtils.waitForMessageNoRecordsFound(driver);
+        roomsPage
+                .pressButtonSearch()
+                .searchRoomsByBuilding(valueFromFile)
+                .pressButtonSearch();
+        waitForMessageNoRecordsFound(driver);
 
         assertEquals("Įrašų nerasta", roomsPage.getMessageWhenNoRecords()
                 , "Rooms cannot be filtered by building using random words or symbols");

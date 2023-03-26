@@ -7,8 +7,7 @@ import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomName;
-import static it.academy.utils.GenerateDataUtils.generateRandomNumber;
+import static it.academy.utils.GenerateDataUtils.*;
 import static it.academy.utils.WaitUtils.waitForMessageRecordUpdated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,11 +27,13 @@ public class ModuleEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void moduleNumberAndNameShouldBeEdited() {
         performInitialSteps();
-        moduleEditPage.enterNumber(generateRandomNumber());
-        moduleEditPage.enterName(generateRandomName());
-        moduleEditPage.pressButtonEdit();
+        moduleEditPage
+                .editModuleNumber("ModuleNumber" + generateRandomNum())
+                .editModuleName("ModuleName" + generateRandomNum())
+                .pressButtonEditModule();
         waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
@@ -41,6 +42,7 @@ public class ModuleEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleEditPage.pressButtonDelete();

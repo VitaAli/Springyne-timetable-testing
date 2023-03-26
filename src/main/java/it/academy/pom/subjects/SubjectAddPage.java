@@ -41,26 +41,31 @@ public class SubjectAddPage extends AbstractPage {
         super(driver);
     }
 
-    public void enterSubjectName(String name) {
+    public SubjectAddPage enterSubjectName(String name) {
         inputSubjectName.sendKeys(name);
+        return this;
     }
 
-    public void enterSubjectDescription(String description) {
+    public SubjectAddPage enterSubjectDescription(String description) {
         inputSubjectDescription.sendKeys(description);
+        return this;
     }
 
-    public void selectModule() {
+    public SubjectAddPage selectModule() {
         moduleList.click();
         firstValueFromList.click();
+        return this;
     }
 
-    public void selectRoom() {
+    public SubjectAddPage selectRoom() {
         roomList.click();
         firstValueFromList.click();
+        return this;
     }
 
-    public void pressButtonAdd() {
+    public SubjectAddPage pressButtonAdd() {
         buttonAdd.click();
+        return this;
     }
 
     public String getSuccessMessage() {

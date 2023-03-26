@@ -23,12 +23,14 @@ public class ShiftAddPage extends AbstractPage {
         super(driver);
     }
 
-    public void enterName(String name) {
+    public ShiftAddPage enterShiftName(String name) {
         inputName.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonAdd() {
+    public ShiftAddPage pressButtonAdd() {
         buttonAdd.click();
+        return this;
     }
 
     public String getSuccessMessage() {

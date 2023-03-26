@@ -26,12 +26,14 @@ public class ProgramsPage extends AbstractPage {
         super(driver);
     }
 
-    public void searchProgramByName(String name) {
+    public ProgramsPage searchProgramByName(String name) {
         inputProgramName.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonSearch() {
+    public ProgramsPage pressButtonSearch() {
         buttonSearch.click();
+        return this;
     }
 
     public List<String> getProgramNames() {
@@ -42,7 +44,8 @@ public class ProgramsPage extends AbstractPage {
         return programNames;
     }
 
-    public void pressButtonAddProgram() {
+    public ProgramsPage pressButtonAddProgram() {
         buttonAddProgram.click();
+        return this;
     }
 }

@@ -26,11 +26,13 @@ public class ProgramsPageTest extends BaseTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/ProgramTestData1.txt")
     @Tag("smoke")
+    @Tag("regression")
     public void programsShouldBeFilteredByName(String valueFromFile) {
         performInitialSteps();
         List<String> programs = programsPage.getProgramNames();
-        programsPage.searchProgramByName(valueFromFile);
-        programsPage.pressButtonSearch();
+        programsPage
+                .searchProgramByName(valueFromFile)
+                .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(programs.contains(valueFromFile)

@@ -44,16 +44,19 @@ public class SubjectsPage extends AbstractPage {
         super(driver);
     }
 
-    public void searchSubjectsByName(String name) {
+    public SubjectsPage searchSubjectsByName(String name) {
         inputByName.sendKeys(name);
+        return this;
     }
 
-    public void searchSubjectsByModule(String name) {
+    public SubjectsPage searchSubjectsByModule(String name) {
         inputByModule.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonSearch() {
+    public SubjectsPage pressButtonSearch() {
         buttonSearch.click();
+        return this;
     }
 
     public List getSubjectsByName() {
@@ -106,15 +109,18 @@ public class SubjectsPage extends AbstractPage {
         return messageNoRecords.getText();
     }
 
-    public void pressButtonAddSubject() {
+    public SubjectsPage pressButtonAddSubject() {
         buttonAddSubject.click();
+        return this;
     }
 
-    public void pressButtonEditSubject() {
+    public SubjectsPage pressButtonEditSubject() {
         buttonEditSubject.click();
+        return this;
     }
 
-    public void pressButtonViewSubject() {
+    public SubjectsPage pressButtonViewSubject() {
         buttonViewSubject.click();
+        return this;
     }
 }

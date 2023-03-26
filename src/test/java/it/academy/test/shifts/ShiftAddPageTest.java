@@ -4,9 +4,10 @@ import it.academy.pom.Header;
 import it.academy.pom.shifts.ShiftAddPage;
 import it.academy.pom.shifts.ShiftsPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomName;
+import static it.academy.utils.GenerateDataUtils.generateRandomNum;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsNotCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,10 +28,13 @@ public class ShiftAddPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     public void shiftShouldBeCreatedWithUniqueName() {
         performInitialSteps();
-        shiftAddPage.enterName(generateRandomName());
-        shiftAddPage.pressButtonAdd();
+        shiftAddPage
+                .enterShiftName("ShiftName" + generateRandomNum())
+                .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
 
         assertEquals("Įrašas sėkmingai sukurtas", shiftAddPage.getSuccessMessage()
@@ -38,20 +42,24 @@ public class ShiftAddPageTest extends BaseTest {
     }
 
     @Test
-    public void shiftShouldNotBeCreatedWithNoName () {
+    @Tag("regression")
+    public void shiftShouldNotBeCreatedWithNoName() {
         performInitialSteps();
-        shiftAddPage.enterName("");
-        shiftAddPage.pressButtonAdd();
+        shiftAddPage
+                .enterShiftName("")
+                .pressButtonAdd();
 
         assertTrue(shiftAddPage.getNumberInvalidValue()
                 , "The shift name is mandatory for adding a new shift");
     }
 
     @Test
+    @Tag("regression")
     public void shiftShouldNotBeCreatedWithNonUniqueName() {
         performInitialSteps();
-        shiftAddPage.enterName("Rytinė");
-        shiftAddPage.pressButtonAdd();
+        shiftAddPage
+                .enterShiftName("Rytinė")
+                .pressButtonAdd();
         waitForMessageRecordIsNotCreated(driver);
 
         assertEquals("Įrašo nepavyko sukurti", shiftAddPage.getErrorMessage()

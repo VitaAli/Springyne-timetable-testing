@@ -27,26 +27,30 @@ public class ModuleEditPage extends AbstractPage {
         super(driver);
     }
 
-    public void enterNumber(String number) {
+    public ModuleEditPage editModuleNumber(String number) {
         inputNumber.click();
         inputNumber.sendKeys(Keys.CONTROL + "a");
         inputNumber.sendKeys(Keys.DELETE);
         inputNumber.sendKeys(number);
+        return this;
     }
 
-    public void enterName(String name) {
+    public ModuleEditPage editModuleName(String name) {
         inputName.click();
         inputName.sendKeys(Keys.CONTROL + "a");
         inputName.sendKeys(Keys.DELETE);
         inputName.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonEdit() {
+    public ModuleEditPage pressButtonEditModule() {
         buttonEdit.click();
+        return this;
     }
 
-    public void pressButtonDelete() {
+    public ModuleEditPage pressButtonDelete() {
         buttonDelete.click();
+        return this;
     }
 
     public String getSuccessMessage() {

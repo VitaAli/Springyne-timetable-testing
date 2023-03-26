@@ -26,6 +26,7 @@ public class ModuleViewPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();
@@ -37,6 +38,7 @@ public class ModuleViewPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void invalidatedModuleShouldBeRestored() {
         performInitialSteps();
         moduleViewPage.pressButtonDelete();

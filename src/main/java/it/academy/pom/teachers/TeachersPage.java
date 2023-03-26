@@ -45,23 +45,28 @@ public class TeachersPage extends AbstractPage {
         return firstName;
     }
 
-    public void searchTeacherByName(String name) {
+    public TeachersPage searchTeacherByName(String name) {
         inputByName.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonSearch() {
+    public TeachersPage pressButtonSearch() {
         buttonSearch.click();
+        return this;
     }
 
-    public void pressButtonAddTeacher() {
+    public TeachersPage pressButtonAddTeacher() {
         buttonAddTeacher.click();
+        return this;
     }
 
-    public void pressButtonEditTeacher() {
+    public TeachersPage pressButtonEditTeacher() {
         buttonEditTeacher.click();
+        return this;
     }
 
-    public void pressButtonViewTeacher() {
+    public TeachersPage pressButtonViewTeacher() {
         buttonViewTeacher.click();
+        return this;
     }
 }

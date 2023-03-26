@@ -29,20 +29,24 @@ public class RoomAddPage extends AbstractPage {
         super(driver);
     }
 
-    public void enterNumber(String number) {
+    public RoomAddPage enterRoomName(String number) {
         inputRoomNumber.sendKeys(number);
+        return this;
     }
 
-    public void enterName(String name) {
+    public RoomAddPage enterRoomBuilding(String name) {
         inputRoomName.sendKeys(name);
+        return this;
     }
 
-    public void enterDescription(String description) {
+    public RoomAddPage enterRoomDescription(String description) {
         inputRoomDescription.sendKeys(description);
+        return this;
     }
 
-    public void pressButtonSaveRecord() {
+    public RoomAddPage pressButtonAdd() {
         buttonSaveRecord.click();
+        return this;
     }
     public String getSuccessMessage() {
         return successMessage.getText();

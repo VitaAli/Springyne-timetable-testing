@@ -4,7 +4,9 @@ import it.academy.pom.Header;
 import it.academy.pom.teachers.TeacherViewPage;
 import it.academy.pom.teachers.TeachersPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.JavascriptExecutor;
 
 import static it.academy.utils.WaitUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,8 +26,15 @@ public class TeacherViewPageTest extends BaseTest {
     }
 
     @Test
-    public void teacherShouldBeInvalidated() {
+    @Tag("smoke")
+    @Tag("regression")
+    public void teacherShouldBeInvalidated() throws InterruptedException {
         performInitialSteps();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");
+        Thread.sleep(3000);
+
         teacherViewPage.pressButtonDelete();
         waitForMessageRecordDeleted(driver);
 
@@ -34,8 +43,15 @@ public class TeacherViewPageTest extends BaseTest {
     }
 
     @Test
-    public void invalidatedTeacherShouldBeRestored() {
+    @Tag("smoke")
+    @Tag("regression")
+    public void invalidatedTeacherShouldBeRestored() throws InterruptedException {
         performInitialSteps();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");
+        Thread.sleep(3000);
+
         teacherViewPage.pressButtonDelete();
         waitUntilRestoreButtonAppears(driver);
         teacherViewPage.pressButtonRestore();
@@ -43,6 +59,5 @@ public class TeacherViewPageTest extends BaseTest {
 
         assertEquals("Įrašas sėkmingai atstatytas", teacherViewPage.getSuccessMessageAfterRestore()
                 , "No success message received after teacher restoring");
-
     }
 }

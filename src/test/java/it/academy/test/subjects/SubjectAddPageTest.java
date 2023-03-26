@@ -4,9 +4,10 @@ import it.academy.pom.Header;
 import it.academy.pom.subjects.SubjectAddPage;
 import it.academy.pom.subjects.SubjectsPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static it.academy.utils.GenerateDataUtils.generateRandomName;
+import static it.academy.utils.GenerateDataUtils.generateRandomNum;
 import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,13 +27,16 @@ public class SubjectAddPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     public void subjectShouldBeCreatedByFillingInMandatoryFields() {
         performInitialSteps();
-        subjectAddPage.enterSubjectName(generateRandomName());
-        subjectAddPage.enterSubjectDescription("description");
-        subjectAddPage.selectModule();
-        subjectAddPage.selectRoom();
-        subjectAddPage.pressButtonAdd();
+        subjectAddPage
+                .enterSubjectName("SubjectName" + generateRandomNum())
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+                .selectModule()
+                .selectRoom()
+                .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
 
         assertEquals("Įrašas sėkmingai sukurtas", subjectAddPage.getSuccessMessage()
@@ -40,36 +44,42 @@ public class SubjectAddPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("regression")
     public void subjectShouldNotBeCreatedWithNoName() {
         performInitialSteps();
-        subjectAddPage.enterSubjectDescription("description");
-        subjectAddPage.selectModule();
-        subjectAddPage.selectRoom();
-        subjectAddPage.pressButtonAdd();
+        subjectAddPage
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+                .selectModule()
+                .selectRoom()
+                .pressButtonAdd();
 
         assertTrue(subjectAddPage.getNameInvalidValue()
                 , "User must see validation error message when he wants to create a subject with no name");
     }
 
     @Test
+    @Tag("regression")
     public void subjectShouldNotBeCreatedWithNoRoom() {
         performInitialSteps();
-        subjectAddPage.enterSubjectName(generateRandomName());
-        subjectAddPage.enterSubjectDescription("description");
-        subjectAddPage.selectModule();
-        subjectAddPage.pressButtonAdd();
+        subjectAddPage
+                .enterSubjectName("SubjectName" + generateRandomNum())
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+                .selectModule()
+                .pressButtonAdd();
 
         assertTrue(subjectAddPage.getRoomInvalidValue()
                 , "User must see validation error message when he wants to create a subject with no room");
     }
 
     @Test
+    @Tag("regression")
     public void subjectShouldNotBeCreatedWithNoModule() {
         performInitialSteps();
-        subjectAddPage.enterSubjectName(generateRandomName());
-        subjectAddPage.enterSubjectDescription("description");
-        subjectAddPage.selectRoom();
-        subjectAddPage.pressButtonAdd();
+        subjectAddPage
+                .enterSubjectName("SubjectName" + generateRandomNum())
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+                .selectRoom()
+                .pressButtonAdd();
 
         assertTrue(subjectAddPage.getModuleInvalidValue()
                 , "User must see validation error message when he wants to create a subject with no module");

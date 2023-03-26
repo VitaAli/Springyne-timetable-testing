@@ -44,12 +44,14 @@ public class ModulesPage extends AbstractPage {
         super(driver);
     }
 
-    public void searchModuleByName(String name) {
+    public ModulesPage searchModuleByName(String name) {
         inputByName.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonSearch() {
+    public ModulesPage pressButtonSearch() {
         buttonSearch.click();
+        return this;
     }
 
     public List<String> getModuleNames() {
@@ -80,20 +82,24 @@ public class ModulesPage extends AbstractPage {
         return messageNoRecords.getText();
     }
 
-    public void pressButtonAdd() {
+    public ModulesPage pressButtonAdd() {
         buttonAddModule.click();
+        return this;
     }
 
-    public void pressButtonEdit() {
+    public ModulesPage pressButtonEdit() {
         buttonEditModule.click();
+        return this;
     }
 
-    public void pressButtonView() {
+    public ModulesPage pressButtonView() {
         buttonViewModule.click();
+        return this;
     }
 
-    public void pressButtonDelete() {
+    public ModulesPage pressButtonDelete() {
         buttonDeleteModule.click();
+        return this;
     }
 
     public String getLastModuleState() {

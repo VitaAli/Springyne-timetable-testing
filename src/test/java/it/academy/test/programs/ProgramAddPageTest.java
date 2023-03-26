@@ -3,7 +3,6 @@ package it.academy.test.programs;
 import it.academy.pom.Header;
 import it.academy.pom.programs.ProgramAddPage;
 import it.academy.pom.programs.ProgramsPage;
-import it.academy.pom.teachers.TeacherAddPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -28,13 +27,15 @@ public class ProgramAddPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void programShouldBeAddedByEnteringMandatoryFields() {
         performInitialSteps();
-        programAddPage.enterProgramName("ProgramName" + generateRandomNum())
+        programAddPage
+                .enterProgramName("ProgramName" + generateRandomNum())
                 .enterProgramDescription("ProgramDescription" + generateRandomNum())
                 .enterSubjectHours("20")
-                .selectSubject();
-        programAddPage.pressButtonAdd();
+                .selectSubject()
+                .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
 
         assertEquals("Įrašas sėkmingai sukurtas", programAddPage.getSuccessMessage()

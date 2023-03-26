@@ -28,11 +28,13 @@ public class ModulesPageTest extends BaseTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/ModuleTestData1.txt")
     @Tag("smoke")
+    @Tag("regression")
     public void modulesShouldBeFilteredByName(String valueFromFile) {
         performInitialSteps();
         List<String> modules = modulesPage.getModuleNames();
-        modulesPage.searchModuleByName(valueFromFile);
-        modulesPage.pressButtonSearch();
+        modulesPage
+                .searchModuleByName(valueFromFile)
+                .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(modules.contains(valueFromFile)
@@ -41,11 +43,13 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/ModuleTestData2.txt")
+    @Tag("regression")
     public void modulesShouldBeFilteredByPartialName(String valueFromFile) {
         performInitialSteps();
         List<String> modules = modulesPage.getPartialModuleNames();
-        modulesPage.searchModuleByName(valueFromFile);
-        modulesPage.pressButtonSearch();
+        modulesPage
+                .searchModuleByName(valueFromFile)
+                .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
 
         assertTrue(modules.contains(valueFromFile)
@@ -54,10 +58,13 @@ public class ModulesPageTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/ModuleTestData3.txt")
+    @Tag("regression")
     public void modulesShouldNotBeFound(String valueFromFile) {
         performInitialSteps();
-        modulesPage.searchModuleByName(valueFromFile);
-        modulesPage.pressButtonSearch();
+        modulesPage
+                .pressButtonSearch()
+                .searchModuleByName(valueFromFile)
+                .pressButtonSearch();
         waitForMessageNoRecordsFound(driver);
 
         assertEquals("Įrašų nerasta", modulesPage.getTextOfMessageNoRecords()
@@ -66,6 +73,7 @@ public class ModulesPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
         modulesPage.pressButtonDelete();

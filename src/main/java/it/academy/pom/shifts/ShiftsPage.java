@@ -35,12 +35,14 @@ public class ShiftsPage extends AbstractPage {
         super(driver);
     }
 
-    public void searchShiftByName(String name) {
+    public ShiftsPage searchShiftByName(String name) {
         inputByName.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonSearch() {
+    public ShiftsPage pressButtonSearch() {
         buttonSearch.click();
+        return this;
     }
 
     public List<String> getShiftNames() {
@@ -64,16 +66,19 @@ public class ShiftsPage extends AbstractPage {
         return messageNoRecords.getText();
     }
 
-    public void pressButtonAdd() {
+    public ShiftsPage pressButtonAdd() {
         buttonAddShift.click();
+        return this;
     }
 
-    public void pressButtonEdit() {
+    public ShiftsPage pressButtonEdit() {
         buttonEditShift.click();
+        return this;
     }
 
-    public void pressButtonDelete() {
+    public ShiftsPage pressButtonDelete() {
         buttonDeleteShift.click();
+        return this;
     }
 
 

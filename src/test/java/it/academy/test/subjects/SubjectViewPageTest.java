@@ -4,6 +4,7 @@ import it.academy.pom.Header;
 import it.academy.pom.subjects.SubjectViewPage;
 import it.academy.pom.subjects.SubjectsPage;
 import it.academy.test.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.WaitUtils.*;
@@ -24,6 +25,8 @@ public class SubjectViewPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     public void subjectShouldBeInvalidated() {
         performInitialSteps();
         subjectViewPage.pressButtonDelete();
@@ -34,6 +37,8 @@ public class SubjectViewPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("smoke")
+    @Tag("regression")
     public void invalidatedSubjectShouldBeRestored() {
         performInitialSteps();
         subjectViewPage.pressButtonDelete();
@@ -43,7 +48,6 @@ public class SubjectViewPageTest extends BaseTest {
 
         assertEquals("Įrašas sėkmingai atstatytas", subjectViewPage.getSuccessMessageAfterRestore()
                 , "No success message received after subject restoring");
-
     }
 
 }

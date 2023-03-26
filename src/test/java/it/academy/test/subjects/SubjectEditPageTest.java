@@ -28,9 +28,11 @@ public class SubjectEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void subjectInformationShouldBeEditedByChangingAllFields() throws InterruptedException {
         performInitialSteps();
-        subjectEditPage.enterSubjectName("SubjectName" + generateRandomNum())
+        subjectEditPage
+                .enterSubjectName("SubjectName" + generateRandomNum())
                 .enterSubjectDescription("SubjectDescription" + generateRandomNum())
                 .selectSubjectModule()
                 .selectSubjectRoom();
@@ -48,6 +50,7 @@ public class SubjectEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void subjectShouldBeInvalidated() throws InterruptedException {
         performInitialSteps();
 
@@ -64,6 +67,7 @@ public class SubjectEditPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void invalidatedSubjectShouldBeRestored() throws InterruptedException {
         performInitialSteps();
 

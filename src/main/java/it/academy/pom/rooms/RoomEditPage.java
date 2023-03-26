@@ -32,34 +32,43 @@ public class RoomEditPage extends AbstractPage {
         super(driver);
     }
 
-    public void enterRoomName(String number){
+    public RoomEditPage editRoomName(String number) {
         inputRoomName.click();
         inputRoomName.sendKeys(Keys.CONTROL + "a");
         inputRoomName.sendKeys(Keys.DELETE);
         inputRoomName.sendKeys(number);
+        return this;
     }
-    public void enterBuildingName(String number){
+
+    public RoomEditPage editRoomBuilding(String number) {
         inputBuildingName.click();
         inputBuildingName.sendKeys(Keys.CONTROL + "a");
         inputBuildingName.sendKeys(Keys.DELETE);
         inputBuildingName.sendKeys(number);
+        return this;
     }
-    public void enterDescription(String name) {
+
+    public RoomEditPage editRoomDescription(String name) {
         inputDescription.click();
         inputDescription.sendKeys(Keys.CONTROL + "a");
         inputDescription.sendKeys(Keys.DELETE);
         inputDescription.sendKeys(name);
+        return this;
     }
-    public void pressButtonSubmit() {
+
+    public RoomEditPage pressButtonSubmit() {
         buttonSubmit.click();
+        return this;
     }
 
-    public void pressButtonDelete() {
+    public RoomEditPage pressButtonDelete() {
         buttonDelete.click();
+        return this;
     }
 
-    public void pressButtonRestore() {
+    public RoomEditPage pressButtonRestore() {
         buttonRestore.click();
+        return this;
     }
 
     public String getSuccessMessage() {

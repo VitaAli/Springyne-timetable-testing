@@ -27,6 +27,7 @@ public class TeacherAddPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void teacherShouldBeAddedByEnteringMandatoryFields() {
         performInitialSteps();
         teacherAddPage

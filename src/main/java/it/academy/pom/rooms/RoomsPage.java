@@ -46,16 +46,19 @@ public class RoomsPage extends AbstractPage {
         super(driver);
     }
 
-    public void searchRoomsByName(String name) {
+    public RoomsPage searchRoomsByName(String name) {
         inputByName.sendKeys(name);
+        return this;
     }
 
-    public void searchRoomsByBuilding(String name) {
+    public RoomsPage searchRoomsByBuilding(String name) {
         inputByBuilding.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonSearch() {
+    public RoomsPage pressButtonSearch() {
         buttonSearch.click();
+        return this;
     }
 
     public List getRoomsByName() {
@@ -119,15 +122,18 @@ public class RoomsPage extends AbstractPage {
     public void pressButtonAddRoom() {
         buttonAddRoom.click();
     }
-    public void pressButtonEdit() {
+
+    public RoomsPage pressButtonEdit() {
         buttonEdit.click();
+        return this;
     }
-    public void pressButtonDelete(){
+
+    public RoomsPage pressButtonDelete(){
         buttonDelete.click();
-
+        return this;
     }
-    public void pressButtonRestore(){
+    public RoomsPage pressButtonRestore(){
         buttonRestore.click();
-
+        return this;
     }
 }

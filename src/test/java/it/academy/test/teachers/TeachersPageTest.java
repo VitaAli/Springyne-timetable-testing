@@ -24,8 +24,10 @@ public class TeachersPageTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("regression")
     public void teachersShouldBeFilteredByName() {
         performInitialSteps();
+        teachersPage.pressButtonSearch();
         List<String> results = teachersPage.getNamesFromTeacherList();
         String result = teachersPage.getFirstNameFromTeacherList();
         teachersPage.searchTeacherByName(result);

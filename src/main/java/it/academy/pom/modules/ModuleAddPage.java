@@ -26,16 +26,19 @@ public class ModuleAddPage extends AbstractPage {
         super(driver);
     }
 
-    public void enterNumber(String number) {
+    public ModuleAddPage enterModuleNumber(String number) {
         inputNumber.sendKeys(number);
+        return this;
     }
 
-    public void enterName(String name) {
+    public ModuleAddPage enterModuleName(String name) {
         inputName.sendKeys(name);
+        return this;
     }
 
-    public void pressButtonAdd() {
+    public ModuleAddPage pressButtonAdd() {
         buttonAdd.click();
+        return this;
     }
 
     public String getSuccessMessage() {
