@@ -1,6 +1,7 @@
 package it.academy.test.rooms;
 
 import it.academy.pom.Header;
+import it.academy.pom.rooms.RoomAddPage;
 import it.academy.pom.rooms.RoomsPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
@@ -30,6 +31,7 @@ public class RoomsPageTest extends BaseTest {
     @Tag("regression")
     public void roomsCanBeFilteredByRoomName(String valueFromFile) {
         performInitialSteps();
+
         List<String> rooms = roomsPage.getRoomsByName();
         roomsPage
                 .searchRoomsByName(valueFromFile)
@@ -78,6 +80,7 @@ public class RoomsPageTest extends BaseTest {
         performInitialSteps();
         List<String> rooms = roomsPage.getRoomsByBuildingPartialName();
         roomsPage
+                .pressButtonSearch()
                 .searchRoomsByBuilding(valueFromFile)
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);

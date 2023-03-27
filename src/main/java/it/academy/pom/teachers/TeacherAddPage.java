@@ -71,4 +71,8 @@ public class TeacherAddPage extends AbstractPage {
         return successMessage.getText();
     }
 
+    public boolean getTeacherNameInvalidValue() {
+        return Boolean.parseBoolean(inputTeacherName.getAttribute("aria-invalid"));
+    }
+
 }

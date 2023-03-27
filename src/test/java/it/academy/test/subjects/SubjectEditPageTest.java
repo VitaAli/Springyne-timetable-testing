@@ -38,7 +38,7 @@ public class SubjectEditPageTest extends BaseTest {
                 .selectSubjectRoom();
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,500)");
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
 
         subjectEditPage.pressButtonEditSubject();

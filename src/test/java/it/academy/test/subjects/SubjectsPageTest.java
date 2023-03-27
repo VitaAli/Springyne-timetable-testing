@@ -64,6 +64,7 @@ public class SubjectsPageTest extends BaseTest {
         performInitialSteps();
         List<String> subjects = subjectsPage.getSubjectsByModuleName();
         subjectsPage
+                .pressButtonSearch()
                 .searchSubjectsByModule(valueFromFile)
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);

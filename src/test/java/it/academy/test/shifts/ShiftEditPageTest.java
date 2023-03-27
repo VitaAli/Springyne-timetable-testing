@@ -1,6 +1,7 @@
 package it.academy.test.shifts;
 
 import it.academy.pom.Header;
+import it.academy.pom.shifts.ShiftAddPage;
 import it.academy.pom.shifts.ShiftEditPage;
 import it.academy.pom.shifts.ShiftsPage;
 import it.academy.test.BaseTest;
@@ -15,6 +16,7 @@ public class ShiftEditPageTest extends BaseTest {
 
     private Header header;
     private ShiftsPage shiftsPage;
+    private ShiftAddPage shiftAddPage;
     private ShiftEditPage shiftEditPage;
 
     void performInitialSteps() {
@@ -43,9 +45,25 @@ public class ShiftEditPageTest extends BaseTest {
     @Tag("smoke")
     @Tag("regression")
     public void shiftCanBeEdited() {
-        performInitialSteps();
-        shiftEditPage.editShiftName("ShiftName" + generateRandomNum());
-        shiftEditPage.pressButtonEdit();
+        header = new Header(driver);
+        shiftsPage = new ShiftsPage(driver);
+        shiftAddPage = new ShiftAddPage(driver);
+        shiftEditPage = new ShiftEditPage(driver);
+        header.openShifts();
+        shiftsPage.pressButtonAdd();
+        String shiftName = "ShiftName" + generateRandomNum();
+        shiftAddPage
+                .enterShiftName(shiftName)
+                .pressButtonAdd();
+        header.openShifts();
+        shiftsPage
+                .pressButtonSearch()
+                .searchShiftByName(shiftName)
+                .pressButtonSearch()
+                .pressButtonEdit();
+        shiftEditPage
+                .editShiftName("ShiftName" + generateRandomNum())
+                .pressButtonEdit();
         waitForMessageShiftUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", shiftEditPage.getSuccessMessage()

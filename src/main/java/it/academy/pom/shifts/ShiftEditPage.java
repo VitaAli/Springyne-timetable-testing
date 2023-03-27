@@ -27,11 +27,12 @@ public class ShiftEditPage extends AbstractPage {
         super(driver);
     }
 
-    public void editShiftName(String name) {
+    public ShiftEditPage editShiftName(String name) {
         inputName.click();
         inputName.sendKeys(Keys.CONTROL + "a");
         inputName.sendKeys(Keys.DELETE);
         inputName.sendKeys(name);
+        return this;
     }
 
     public void pressButtonEdit() {

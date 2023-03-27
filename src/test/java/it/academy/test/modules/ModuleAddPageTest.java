@@ -15,9 +15,6 @@ import static it.academy.utils.WaitUtils.waitForMessageRecordIsNotCreated;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Verify if new module can be created
- */
 public class ModuleAddPageTest extends BaseTest {
 
     private Header header;
@@ -50,7 +47,7 @@ public class ModuleAddPageTest extends BaseTest {
 
     @Test
     @Tag("regression")
-    public void moduleShouldNotBeCreatedWithUniqueNumberAndNoName() {
+    public void moduleShouldNotBeCreatedWithNonUniqueNumberAndNoName() {
         performInitialSteps();
         moduleAddPage
                 .enterModuleNumber("ModuleNumber" + generateRandomNum())

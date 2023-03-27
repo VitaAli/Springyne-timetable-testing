@@ -31,29 +31,12 @@ public class TeacherViewPageTest extends BaseTest {
         teachersPage.pressButtonViewTeacher();
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/TeacherAddTestData.txt")
+    @Test
     @Tag("smoke")
     @Tag("regression")
-    public void teacherShouldBeInvalidated(String valueFromFile) throws InterruptedException {
-        header = new Header(driver);
-        teachersPage = new TeachersPage(driver);
-        teacherAddPage = new TeacherAddPage(driver);
-        teacherViewPage = new TeacherViewPage(driver);
-        header.openTeachers();
-        teachersPage.pressButtonAddTeacher();
-        teacherAddPage
-                .enterTeacherName(valueFromFile)
-                .enterTeacherUsername("TeacherUsername" + generateRandomNum())
-                .enterTeacherNumbersOfHours("40")
-                .selectTeacherSubject();
-        Thread.sleep(3000);
-        teacherAddPage
-                .selectTeacherShift()
-                .pressButtonAdd();
-        waitForMessageRecordIsCreated(driver);
-        header.openTeachers();
-        teachersPage.pressButtonViewTeacher();
+    public void teacherShouldBeInvalidated() throws InterruptedException {
+        performInitialSteps();
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);

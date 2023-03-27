@@ -48,7 +48,8 @@ public class TeacherEditPage extends AbstractPage {
         super(driver);
     }
 
-    public TeacherEditPage enterTeacherName(String name) {
+    public TeacherEditPage editTeacherName(String name) {
+        inputTeacherName.click();
         inputTeacherName.click();
         inputTeacherName.sendKeys(Keys.CONTROL + "a");
         inputTeacherName.sendKeys(Keys.DELETE);
