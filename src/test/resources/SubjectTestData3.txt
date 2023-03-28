@@ -1,2 +1,2 @@
-Informacinių sistemų projektavimas
+Programavimo aplinkos valdymas
 Java programų kūrimas

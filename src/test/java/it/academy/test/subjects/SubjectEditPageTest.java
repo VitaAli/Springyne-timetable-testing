@@ -1,6 +1,7 @@
 package it.academy.test.subjects;
 
 import it.academy.pom.Header;
+import it.academy.pom.subjects.SubjectAddPage;
 import it.academy.pom.subjects.SubjectEditPage;
 import it.academy.pom.subjects.SubjectsPage;
 import it.academy.test.BaseTest;
@@ -16,13 +17,28 @@ public class SubjectEditPageTest extends BaseTest {
 
     private Header header;
     private SubjectsPage subjectsPage;
+    private SubjectAddPage subjectAddPage;
     private SubjectEditPage subjectEditPage;
 
     void performInitialSteps() {
         header = new Header(driver);
         subjectsPage = new SubjectsPage(driver);
+        subjectAddPage = new SubjectAddPage(driver);
         subjectEditPage = new SubjectEditPage(driver);
         header.openSubjects();
+        subjectsPage.pressButtonAddSubject();
+        String subjectName = "SubjectName" + generateRandomNum();
+        subjectAddPage
+                .enterSubjectName(subjectName)
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+                .selectModule()
+                .selectRoom()
+                .pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header.openSubjects();
+        subjectsPage.pressButtonSearch();
+        subjectsPage.searchSubjectsByName(subjectName);
+        subjectsPage.pressButtonSearch();
         subjectsPage.pressButtonEditSubject();
     }
 
@@ -55,7 +71,7 @@ public class SubjectEditPageTest extends BaseTest {
         performInitialSteps();
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,500)");
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
 
         subjectEditPage.pressButtonDelete();
@@ -72,12 +88,12 @@ public class SubjectEditPageTest extends BaseTest {
         performInitialSteps();
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,500)");
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
 
         subjectEditPage.pressButtonDelete();
 
-        js.executeScript("window.scrollBy(0,500)");
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
 
         subjectEditPage.pressButtonRestore();
