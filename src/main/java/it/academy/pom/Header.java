@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class Header extends AbstractPage {
 
     @FindBy(css = "a[href='#/']")
-    private WebElement home;
+    private WebElement schedules;
     @FindBy(css = "a[href='#/modules']")
     private WebElement modules;
     @FindBy(css = "a[href='#/rooms']")
@@ -27,7 +27,7 @@ public class Header extends AbstractPage {
     }
 
     public void openHome() {
-        home.click();
+        schedules.click();
     }
 
     public void openModules() {

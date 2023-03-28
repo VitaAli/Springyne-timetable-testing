@@ -20,14 +20,28 @@ public class TeacherEditPageTest extends BaseTest {
     private Header header;
     private TeachersPage teachersPage;
     private TeacherAddPage teacherAddPage;
-    private TeacherViewPage teacherViewPage;
     private TeacherEditPage teacherEditPage;
 
     void performInitialSteps() {
         header = new Header(driver);
         teachersPage = new TeachersPage(driver);
+        teacherAddPage = new TeacherAddPage(driver);
         teacherEditPage = new TeacherEditPage(driver);
         header.openTeachers();
+        teachersPage.pressButtonAddTeacher();
+        String teacherName = "TeacherName" + generateRandomNum();
+        teacherAddPage
+                .enterTeacherName(teacherName)
+                .enterTeacherUsername("TeacherUsername" + generateRandomNum())
+                .enterTeacherNumbersOfHours("40")
+                .selectTeacherSubject()
+                .selectTeacherShift();
+        teacherAddPage.pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header.openTeachers();
+        teachersPage.pressButtonSearch();
+        teachersPage.searchTeacherByName(teacherName);
+        teachersPage.pressButtonSearch();
         teachersPage.pressButtonEditTeacher();
     }
 

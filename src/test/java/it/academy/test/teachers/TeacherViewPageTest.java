@@ -28,6 +28,20 @@ public class TeacherViewPageTest extends BaseTest {
         teacherAddPage = new TeacherAddPage(driver);
         teacherViewPage = new TeacherViewPage(driver);
         header.openTeachers();
+        teachersPage.pressButtonAddTeacher();
+        String teacherName = "TeacherName" + generateRandomNum();
+        teacherAddPage
+                .enterTeacherName(teacherName)
+                .enterTeacherUsername("TeacherUsername" + generateRandomNum())
+                .enterTeacherNumbersOfHours("40")
+                .selectTeacherSubject()
+                .selectTeacherShift();
+        teacherAddPage.pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header.openTeachers();
+        teachersPage.pressButtonSearch();
+        teachersPage.searchTeacherByName(teacherName);
+        teachersPage.pressButtonSearch();
         teachersPage.pressButtonViewTeacher();
     }
 
