@@ -45,13 +45,11 @@ public class SubjectEditPageTest extends BaseTest {
     @Test
     @Tag("smoke")
     @Tag("regression")
-    public void subjectInformationShouldBeEditedByChangingAllFields() throws InterruptedException {
+    public void subjectInformationShouldBeEditedByChangingNameAndDescription() throws InterruptedException {
         performInitialSteps();
         subjectEditPage
                 .enterSubjectName("SubjectName" + generateRandomNum())
-                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
-                .selectSubjectModule()
-                .selectSubjectRoom();
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum());
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");

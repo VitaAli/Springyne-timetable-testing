@@ -39,7 +39,6 @@ public class TeacherEditPageTest extends BaseTest {
         teacherAddPage.pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
         header.openTeachers();
-        teachersPage.pressButtonSearch();
         teachersPage.searchTeacherByName(teacherName);
         teachersPage.pressButtonSearch();
         teachersPage.pressButtonEditTeacher();
