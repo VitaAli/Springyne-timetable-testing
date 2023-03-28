@@ -1,6 +1,8 @@
 package it.academy.test.modules;
 
 import it.academy.pom.Header;
+import it.academy.pom.modules.ModuleAddPage;
+import it.academy.pom.modules.ModuleEditPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
@@ -10,6 +12,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.util.List;
 
+import static it.academy.utils.GenerateDataUtils.generateRandomNum;
 import static it.academy.utils.WaitUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,10 +21,14 @@ public class ModulesPageTest extends BaseTest {
 
     private Header header;
     private ModulesPage modulesPage;
+    private ModuleAddPage moduleAddPage;
+    private ModuleEditPage moduleEditPage;
 
     void performInitialSteps() {
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
+        moduleAddPage = new ModuleAddPage(driver);
+        moduleEditPage = new ModuleEditPage(driver);
         header.openModules();
     }
 
@@ -76,7 +83,19 @@ public class ModulesPageTest extends BaseTest {
     @Tag("regression")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
-        modulesPage.pressButtonDelete();
+        String moduleName = "ModuleName" + generateRandomNum();
+        modulesPage.pressButtonAdd();
+        moduleAddPage
+                .enterModuleNumber("ModuleNumber" + generateRandomNum())
+                .enterModuleName(moduleName)
+                .pressButtonAdd();
+        header
+                .openModules();
+        modulesPage
+                .pressButtonSearch()
+                .searchModuleByName(moduleName)
+                .pressButtonSearch()
+                .pressButtonDelete();
         waitForMessageRecordDeleted(driver);
 
         assertEquals("Ištrintas", modulesPage.getLastModuleState()

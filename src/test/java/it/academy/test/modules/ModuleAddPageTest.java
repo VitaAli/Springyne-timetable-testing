@@ -29,15 +29,14 @@ public class ModuleAddPageTest extends BaseTest {
         modulesPage.pressButtonAdd();
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/ModuleAddTestData.txt")
+    @Test
     @Tag("smoke")
     @Tag("regression")
-    public void moduleShouldBeCreatedWithUniqueNumberAndAnyName(String valueFromFile) {
+    public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
         performInitialSteps();
         moduleAddPage
                 .enterModuleNumber("ModuleNumber" + generateRandomNum())
-                .enterModuleName(valueFromFile)
+                .enterModuleName("ModuleName" + generateRandomNum())
                 .pressButtonAdd();
 
         waitForMessageRecordIsCreated(driver);

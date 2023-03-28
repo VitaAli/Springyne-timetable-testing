@@ -1,6 +1,7 @@
 package it.academy.test.modules;
 
 import it.academy.pom.Header;
+import it.academy.pom.modules.ModuleAddPage;
 import it.academy.pom.modules.ModuleEditPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
@@ -15,14 +16,30 @@ public class ModuleEditPageTest extends BaseTest {
 
     private Header header;
     private ModulesPage modulesPage;
+    private ModuleAddPage moduleAddPage;
     private ModuleEditPage moduleEditPage;
 
     void performInitialSteps() {
         header = new Header(driver);
         modulesPage = new ModulesPage(driver);
+        moduleAddPage = new ModuleAddPage(driver);
         moduleEditPage = new ModuleEditPage(driver);
-        header.openModules();
-        modulesPage.pressButtonEdit();
+        header
+                .openModules();
+        modulesPage
+                .pressButtonAdd();
+        String moduleName = "ModuleName" + generateRandomNum();
+        moduleAddPage
+                .enterModuleNumber("ModuleNumber" + generateRandomNum())
+                .enterModuleName(moduleName)
+                .pressButtonAdd();
+        header
+                .openModules();
+        modulesPage
+                .pressButtonSearch()
+                .searchModuleByName(moduleName)
+                .pressButtonSearch()
+                .pressButtonEdit();
     }
 
     @Test
@@ -45,7 +62,8 @@ public class ModuleEditPageTest extends BaseTest {
     @Tag("regression")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
-        moduleEditPage.pressButtonDelete();
+        moduleEditPage
+                .pressButtonDelete();
         waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
