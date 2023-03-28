@@ -22,7 +22,7 @@ public class TeacherViewPageTest extends BaseTest {
     private TeacherAddPage teacherAddPage;
     private TeacherViewPage teacherViewPage;
 
-    void performInitialSteps() {
+    void performInitialSteps() throws InterruptedException {
         header = new Header(driver);
         teachersPage = new TeachersPage(driver);
         teacherAddPage = new TeacherAddPage(driver);
@@ -34,13 +34,15 @@ public class TeacherViewPageTest extends BaseTest {
                 .enterTeacherName(teacherName)
                 .enterTeacherUsername("TeacherUsername" + generateRandomNum())
                 .enterTeacherNumbersOfHours("40")
-                .selectTeacherSubject()
-                .selectTeacherShift();
+                .selectTeacherSubject();
+        Thread.sleep(3000);
+        teacherAddPage.selectTeacherShift();
         teacherAddPage.pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
         header.openTeachers();
         teachersPage.searchTeacherByName(teacherName);
         teachersPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
         teachersPage.pressButtonViewTeacher();
     }
 

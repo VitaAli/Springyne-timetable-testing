@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static it.academy.utils.GenerateDataUtils.*;
 import static it.academy.utils.WaitUtils.waitForMessageRecordUpdated;
+import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModuleEditPageTest extends BaseTest {
@@ -38,8 +39,9 @@ public class ModuleEditPageTest extends BaseTest {
         modulesPage
                 .pressButtonSearch()
                 .searchModuleByName(moduleName)
-                .pressButtonSearch()
-                .pressButtonEdit();
+                .pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
+        modulesPage.pressButtonEdit();
     }
 
     @Test

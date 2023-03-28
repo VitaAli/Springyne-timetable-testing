@@ -36,6 +36,7 @@ public class ModuleViewPageTest extends BaseTest {
         modulesPage.pressButtonSearch();
         modulesPage.searchModuleByName(moduleName);
         modulesPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
         modulesPage.pressButtonView();
     }
 

@@ -39,6 +39,7 @@ public class SubjectViewPageTest extends BaseTest {
         subjectsPage.pressButtonSearch();
         subjectsPage.searchSubjectsByName(subjectName);
         subjectsPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
         subjectsPage.pressButtonViewSubject();
     }
 

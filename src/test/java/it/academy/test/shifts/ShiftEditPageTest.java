@@ -34,8 +34,9 @@ public class ShiftEditPageTest extends BaseTest {
         shiftsPage
                 .pressButtonSearch()
                 .searchShiftByName(shiftName)
-                .pressButtonSearch()
-                .pressButtonEdit();
+                .pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
+        shiftsPage.pressButtonEdit();
     }
 
     @Test

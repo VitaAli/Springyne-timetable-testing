@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.JavascriptExecutor;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomNum;
-import static it.academy.utils.WaitUtils.waitForMessageRecordIsCreated;
-import static it.academy.utils.WaitUtils.waitForMessageRecordUpdated;
+import static it.academy.utils.WaitUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TeacherEditPageTest extends BaseTest {
@@ -22,7 +21,7 @@ public class TeacherEditPageTest extends BaseTest {
     private TeacherAddPage teacherAddPage;
     private TeacherEditPage teacherEditPage;
 
-    void performInitialSteps() {
+    void performInitialSteps() throws InterruptedException {
         header = new Header(driver);
         teachersPage = new TeachersPage(driver);
         teacherAddPage = new TeacherAddPage(driver);
@@ -34,13 +33,15 @@ public class TeacherEditPageTest extends BaseTest {
                 .enterTeacherName(teacherName)
                 .enterTeacherUsername("TeacherUsername" + generateRandomNum())
                 .enterTeacherNumbersOfHours("40")
-                .selectTeacherSubject()
-                .selectTeacherShift();
+                .selectTeacherSubject();
+        Thread.sleep(3000);
+        teacherAddPage.selectTeacherShift();
         teacherAddPage.pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
         header.openTeachers();
         teachersPage.searchTeacherByName(teacherName);
         teachersPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
         teachersPage.pressButtonEditTeacher();
     }
 

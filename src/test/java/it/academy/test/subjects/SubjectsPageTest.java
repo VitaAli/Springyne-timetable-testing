@@ -1,16 +1,18 @@
 package it.academy.test.subjects;
 
 import it.academy.pom.Header;
+import it.academy.pom.subjects.SubjectAddPage;
 import it.academy.pom.subjects.SubjectsPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.util.List;
 
-import static it.academy.utils.WaitUtils.waitForMessageNoRecordsFound;
-import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
+import static it.academy.utils.GenerateDataUtils.generateRandomNum;
+import static it.academy.utils.WaitUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,43 +20,72 @@ public class SubjectsPageTest extends BaseTest {
 
     private Header header;
     private SubjectsPage subjectsPage;
+    private SubjectAddPage subjectAddPage;
 
     void performInitialSteps() {
         header = new Header(driver);
         subjectsPage = new SubjectsPage(driver);
-        header.openSubjects();
+        subjectAddPage = new SubjectAddPage(driver);
+        header
+                .openSubjects();
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/SubjectTestData1.txt")
+    @Test
     @Tag("smoke")
     @Tag("regression")
-    public void subjectsCanBeFilteredBySubjectName(String valueFromFile) {
+    public void subjectsCanBeFilteredBySubjectName() throws InterruptedException {
         performInitialSteps();
+        subjectsPage
+                .pressButtonAddSubject();
+        String subjectName = "SubjectName" + generateRandomNum();
+        subjectAddPage
+                .enterSubjectName(subjectName)
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+                .selectModule();
+        Thread
+                .sleep(3000);
+        subjectAddPage
+                .selectRoom()
+                .pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header
+                .openSubjects();
+        subjectsPage
+                .searchSubjectsByName(subjectName);
+        subjectsPage
+                .pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
         List<String> subjects = subjectsPage.getSubjectsByName();
-        subjectsPage
-                .searchSubjectsByName(valueFromFile)
-                .pressButtonSearch();
-        waitForMessageRecordsAreFound(driver);
-
-        assertTrue(subjects.contains(valueFromFile),
+        assertTrue(subjects.contains(subjectName),
                 "The list should be filtered by the subject name");
-    }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/SubjectTestData2.txt")
-    @Tag("regression")
-    public void subjectsCanBeFilteredByPartialSubjectName(String valueFromFile) {
-        performInitialSteps();
-        List<String> subjects = subjectsPage.getSubjectsByPartialName();
-        subjectsPage
-                .searchSubjectsByName(valueFromFile)
-                .pressButtonSearch();
-        waitForMessageRecordsAreFound(driver);
-
-        assertTrue(subjects.contains(valueFromFile),
-                "The list should be filtered by the partial subject name");
     }
+//WRONG, IT DEPENDS ON CONCRETE SUBJECT NAME WHICH SHOULD BE ADDED BEFORE TEST AND SHOULD BE UNIQUE
+//    @Test
+//    @Tag("regression")
+//    public void subjectsCanBeFilteredByPartialSubjectName() throws InterruptedException {
+//        performInitialSteps();
+//        subjectsPage
+//                .pressButtonAddSubject();
+//        String subjectName = "SubjectName" + generateRandomNum();
+//        subjectAddPage
+//                .enterSubjectName(subjectName)
+//                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+//                .selectModule();
+//        Thread.sleep(3000);
+//        subjectAddPage
+//                .selectRoom()
+//                .pressButtonAdd();
+//        waitForMessageRecordIsCreated(driver);
+//        header.openSubjects();
+//        subjectsPage.searchSubjectsByName("SubjectName");
+//        subjectsPage.pressButtonSearch();
+//        waitForMessageRecordsAreFound(driver);
+//        List<String> subjects = subjectsPage.getSubjectsByName();
+//        assertTrue(subjects.contains(subjectName),
+//                "The list should be filtered by the partial subject name");
+//
+//    }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/SubjectTestData3.txt")

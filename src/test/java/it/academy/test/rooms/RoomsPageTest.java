@@ -5,19 +5,21 @@ import it.academy.pom.rooms.RoomAddPage;
 import it.academy.pom.rooms.RoomsPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.util.List;
 
-import static it.academy.utils.WaitUtils.waitForMessageNoRecordsFound;
-import static it.academy.utils.WaitUtils.waitForMessageRecordsAreFound;
+import static it.academy.utils.GenerateDataUtils.generateRandomNum;
+import static it.academy.utils.WaitUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RoomsPageTest extends BaseTest {
     private Header header;
     private RoomsPage roomsPage;
+    private RoomAddPage roomAddPage;
 
     void performInitialSteps() {
         header = new Header(driver);
@@ -25,20 +27,29 @@ public class RoomsPageTest extends BaseTest {
         header.openRooms();
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/RoomTestByName.txt")
+    @Test
     @Tag("smoke")
     @Tag("regression")
-    public void roomsCanBeFilteredByRoomName(String valueFromFile) {
-        performInitialSteps();
-
-        List<String> rooms = roomsPage.getRoomsByName();
-        roomsPage
-                .searchRoomsByName(valueFromFile)
+    public void roomsCanBeFilteredByRoomName() {
+        header = new Header(driver);
+        roomsPage = new RoomsPage(driver);
+        roomAddPage = new RoomAddPage(driver);
+        header.openRooms();
+        roomsPage.pressButtonAddRoom();
+        String roomName = "RoomName" + generateRandomNum();
+        roomAddPage
+                .enterRoomName(roomName)
+                .enterRoomBuilding("RoomBuilding" + generateRandomNum())
+                .enterRoomDescription("RoomDescription" + generateRandomNum())
+                .pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header.openRooms();
+        roomsPage.searchRoomsByName(roomName)
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
+        List<String> rooms = roomsPage.getRoomsByName();
 
-        assertTrue(rooms.contains(valueFromFile),
+        assertTrue(rooms.contains(roomName),
                 "The list should be filtered by the room name");
     }
 

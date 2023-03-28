@@ -94,8 +94,9 @@ public class ModulesPageTest extends BaseTest {
         modulesPage
                 .pressButtonSearch()
                 .searchModuleByName(moduleName)
-                .pressButtonSearch()
-                .pressButtonDelete();
+                .pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
+        modulesPage.pressButtonDelete();
         waitForMessageRecordDeleted(driver);
 
         assertEquals("Ištrintas", modulesPage.getLastModuleState()
