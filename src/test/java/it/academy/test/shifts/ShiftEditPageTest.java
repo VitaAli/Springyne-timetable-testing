@@ -22,9 +22,20 @@ public class ShiftEditPageTest extends BaseTest {
     void performInitialSteps() {
         header = new Header(driver);
         shiftsPage = new ShiftsPage(driver);
+        shiftAddPage = new ShiftAddPage(driver);
         shiftEditPage = new ShiftEditPage(driver);
         header.openShifts();
-        shiftsPage.pressButtonEdit();
+        shiftsPage.pressButtonAdd();
+        String shiftName = "ShiftName" + generateRandomNum();
+        shiftAddPage
+                .enterShiftName(shiftName)
+                .pressButtonAdd();
+        header.openShifts();
+        shiftsPage
+                .pressButtonSearch()
+                .searchShiftByName(shiftName)
+                .pressButtonSearch()
+                .pressButtonEdit();
     }
 
     @Test
@@ -45,22 +56,7 @@ public class ShiftEditPageTest extends BaseTest {
     @Tag("smoke")
     @Tag("regression")
     public void shiftCanBeEdited() {
-        header = new Header(driver);
-        shiftsPage = new ShiftsPage(driver);
-        shiftAddPage = new ShiftAddPage(driver);
-        shiftEditPage = new ShiftEditPage(driver);
-        header.openShifts();
-        shiftsPage.pressButtonAdd();
-        String shiftName = "ShiftName" + generateRandomNum();
-        shiftAddPage
-                .enterShiftName(shiftName)
-                .pressButtonAdd();
-        header.openShifts();
-        shiftsPage
-                .pressButtonSearch()
-                .searchShiftByName(shiftName)
-                .pressButtonSearch()
-                .pressButtonEdit();
+        performInitialSteps();
         shiftEditPage
                 .editShiftName("ShiftName" + generateRandomNum())
                 .pressButtonEdit();
