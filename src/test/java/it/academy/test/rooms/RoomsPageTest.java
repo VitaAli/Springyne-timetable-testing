@@ -24,6 +24,7 @@ public class RoomsPageTest extends BaseTest {
     void performInitialSteps() {
         header = new Header(driver);
         roomsPage = new RoomsPage(driver);
+        roomAddPage = new RoomAddPage(driver);
         header.openRooms();
     }
 
@@ -31,10 +32,7 @@ public class RoomsPageTest extends BaseTest {
     @Tag("smoke")
     @Tag("regression")
     public void roomsCanBeFilteredByRoomName() {
-        header = new Header(driver);
-        roomsPage = new RoomsPage(driver);
-        roomAddPage = new RoomAddPage(driver);
-        header.openRooms();
+        performInitialSteps();
         roomsPage.pressButtonAddRoom();
         String roomName = "RoomName" + generateRandomNum();
         roomAddPage
@@ -53,51 +51,76 @@ public class RoomsPageTest extends BaseTest {
                 "The list should be filtered by the room name");
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/RoomTestByPartialName.txt")
+    @Test
     @Tag("regression")
-    public void roomsCanBeFilteredByPartialName(String valueFromFile) {
+    public void roomsCanBeFilteredByPartialName() {
         performInitialSteps();
-        List<String> rooms = roomsPage.getRoomByPartialName();
-        roomsPage
-                .searchRoomsByName(valueFromFile)
+        roomsPage.pressButtonAddRoom();
+        String roomName = "RoomName" + generateRandomNum();
+        roomAddPage
+                .enterRoomName(roomName)
+                .enterRoomBuilding("RoomBuilding" + generateRandomNum())
+                .enterRoomDescription("RoomDescription" + generateRandomNum())
+                .pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header.openRooms();
+        roomsPage.searchRoomsByName("RoomName")
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
+        List<String> rooms = roomsPage.getRoomsByName();
 
-        assertTrue(rooms.contains(valueFromFile),
-                "The list should be filtered by the partial room name");
+        assertTrue(rooms.contains(roomName),
+                "The list should be filtered by the room name");
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/RoomTestByBuildingName.txt")
+    @Test
     @Tag("smoke")
     @Tag("regression")
-    public void roomsCanBeFilteredByRoomsBuilding(String valueFromFile) {
+    public void roomsCanBeFilteredByRoomsBuilding() {
         performInitialSteps();
-        List<String> rooms = roomsPage.getRoomsByBuildingName();
         roomsPage
-                .searchRoomsByBuilding(valueFromFile)
+                .pressButtonAddRoom();
+        String roomBuilding = "RoomBuilding" + generateRandomNum();
+        roomAddPage
+                .enterRoomName("RoomName" + generateRandomNum())
+                .enterRoomBuilding(roomBuilding)
+                .enterRoomDescription("RoomDescription" + generateRandomNum())
+                .pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header
+                .openRooms();
+        roomsPage
+                .searchRoomsByBuilding(roomBuilding)
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
+        List<String> rooms = roomsPage.getRoomsByName();
 
-        assertTrue(rooms.contains(valueFromFile),
-                "The list should be filtered by the building");
+        assertTrue(rooms.contains(roomBuilding),
+                "The list should be filtered by the room building");
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/RoomTestByPartialBuildingName.txt")
+    @Test
     @Tag("regression")
-    public void roomsCanBeFilteredByPartialBuildingName(String valueFromFile) {
+    public void roomsCanBeFilteredByPartialBuildingName() {
         performInitialSteps();
-        List<String> rooms = roomsPage.getRoomsByBuildingPartialName();
+        roomsPage.pressButtonAddRoom();
+        String roomBuilding = "RoomBuilding" + generateRandomNum();
+        roomAddPage
+                .enterRoomName("RoomName" + generateRandomNum())
+                .enterRoomBuilding(roomBuilding)
+                .enterRoomDescription("RoomDescription" + generateRandomNum())
+                .pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header
+                .openRooms();
         roomsPage
-                .pressButtonSearch()
-                .searchRoomsByBuilding(valueFromFile)
+                .searchRoomsByBuilding("roomBuilding")
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
+        List<String> rooms = roomsPage.getRoomsByName();
 
-        assertTrue(rooms.contains(valueFromFile),
-                "The list should be filtered by the partial building name");
+        assertTrue(rooms.contains(roomBuilding),
+                "The list should be filtered by the room building");
     }
 
     @ParameterizedTest
