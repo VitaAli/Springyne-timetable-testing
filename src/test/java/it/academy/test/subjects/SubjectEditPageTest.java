@@ -20,7 +20,7 @@ public class SubjectEditPageTest extends BaseTest {
     private SubjectAddPage subjectAddPage;
     private SubjectEditPage subjectEditPage;
 
-    void performInitialSteps() {
+    void performInitialSteps() throws InterruptedException {
         header = new Header(driver);
         subjectsPage = new SubjectsPage(driver);
         subjectAddPage = new SubjectAddPage(driver);
@@ -31,7 +31,9 @@ public class SubjectEditPageTest extends BaseTest {
         subjectAddPage
                 .enterSubjectName(subjectName)
                 .enterSubjectDescription("SubjectDescription" + generateRandomNum())
-                .selectModule()
+                .selectModule();
+        Thread.sleep(3000);
+        subjectAddPage
                 .selectRoom()
                 .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);

@@ -49,8 +49,6 @@ public class SubjectAddPageTest extends BaseTest {
         performInitialSteps();
         subjectAddPage
                 .enterSubjectDescription("SubjectDescription" + generateRandomNum())
-                .selectModule()
-                .selectRoom()
                 .pressButtonAdd();
 
         assertTrue(subjectAddPage.getNameInvalidValue()
@@ -64,7 +62,6 @@ public class SubjectAddPageTest extends BaseTest {
         subjectAddPage
                 .enterSubjectName("SubjectName" + generateRandomNum())
                 .enterSubjectDescription("SubjectDescription" + generateRandomNum())
-                .selectModule()
                 .pressButtonAdd();
 
         assertTrue(subjectAddPage.getRoomInvalidValue()
@@ -78,7 +75,6 @@ public class SubjectAddPageTest extends BaseTest {
         subjectAddPage
                 .enterSubjectName("SubjectName" + generateRandomNum())
                 .enterSubjectDescription("SubjectDescription" + generateRandomNum())
-                .selectRoom()
                 .pressButtonAdd();
 
         assertTrue(subjectAddPage.getModuleInvalidValue()
