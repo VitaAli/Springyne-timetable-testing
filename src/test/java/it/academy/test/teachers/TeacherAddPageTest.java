@@ -28,14 +28,13 @@ public class TeacherAddPageTest extends BaseTest {
         teachersPage.pressButtonAddTeacher();
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/TeacherAddTestData.txt")
+    @Test
     @Tag("smoke")
     @Tag("regression")
-    public void teacherShouldBeAddedByEnteringMandatoryFields(String valueFromFile) {
+    public void teacherShouldBeAddedByEnteringMandatoryFields() {
         performInitialSteps();
         teacherAddPage
-                .enterTeacherName(valueFromFile)
+                .enterTeacherName("TeacherName" + generateRandomNum())
                 .enterTeacherUsername("TeacherUsername" + generateRandomNum())
                 .enterTeacherNumbersOfHours("40")
                 .selectTeacherSubject()

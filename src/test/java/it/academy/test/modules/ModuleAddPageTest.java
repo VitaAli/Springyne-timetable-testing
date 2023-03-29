@@ -34,14 +34,19 @@ public class ModuleAddPageTest extends BaseTest {
     @Tag("regression")
     public void moduleShouldBeCreatedWithUniqueNumberAndAnyName() {
         performInitialSteps();
+        String moduleNumber = "ModuleNumber" + generateRandomNum();
         moduleAddPage
-                .enterModuleNumber("ModuleNumber" + generateRandomNum())
+                .enterModuleNumber(moduleNumber)
                 .enterModuleName("ModuleName" + generateRandomNum())
                 .pressButtonAdd();
 
         waitForMessageRecordIsCreated(driver);
         assertEquals("Įrašas sėkmingai sukurtas", moduleAddPage.getSuccessMessage()
                 , "The number and name fields are mandatory. The number must be unique");
+
+        header.openModules();
+        modulesPage.searchModuleByName(moduleNumber);
+        modulesPage.pressButtonDelete();
     }
 
     @Test
@@ -49,7 +54,7 @@ public class ModuleAddPageTest extends BaseTest {
     public void moduleShouldNotBeCreatedWithNonUniqueNumberAndNoName() {
         performInitialSteps();
         moduleAddPage
-                .enterModuleNumber("ModuleNumber" + generateRandomNum())
+                .enterModuleNumber("002")
                 .enterModuleName("")
                 .pressButtonAdd();
 
@@ -77,7 +82,7 @@ public class ModuleAddPageTest extends BaseTest {
     public void moduleShouldNotBeCreatedWithNonUniqueNumberAndAnyName(String valueFromFile) {
         performInitialSteps();
         moduleAddPage
-                .enterModuleNumber("001")
+                .enterModuleNumber("002")
                 .enterModuleName(valueFromFile)
                 .pressButtonAdd();
 

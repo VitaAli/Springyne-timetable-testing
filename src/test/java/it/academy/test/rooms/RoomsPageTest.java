@@ -76,7 +76,7 @@ public class RoomsPageTest extends BaseTest {
     @Test
     @Tag("smoke")
     @Tag("regression")
-    public void roomsCanBeFilteredByRoomsBuilding() {
+    public void roomsCanBeFilteredByRoomsBuilding() throws InterruptedException {
         performInitialSteps();
         roomsPage
                 .pressButtonAddRoom();
@@ -93,7 +93,7 @@ public class RoomsPageTest extends BaseTest {
                 .searchRoomsByBuilding(roomBuilding)
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
-        List<String> rooms = roomsPage.getRoomsByName();
+        List<String> rooms = roomsPage.getRoomsByBuildingName();
 
         assertTrue(rooms.contains(roomBuilding),
                 "The list should be filtered by the room building");
@@ -117,7 +117,7 @@ public class RoomsPageTest extends BaseTest {
                 .searchRoomsByBuilding("roomBuilding")
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
-        List<String> rooms = roomsPage.getRoomsByName();
+        List<String> rooms = roomsPage.getRoomsByBuildingName();
 
         assertTrue(rooms.contains(roomBuilding),
                 "The list should be filtered by the room building");

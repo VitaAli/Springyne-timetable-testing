@@ -26,14 +26,43 @@ public class SubjectsPageTest extends BaseTest {
         header = new Header(driver);
         subjectsPage = new SubjectsPage(driver);
         subjectAddPage = new SubjectAddPage(driver);
-        header
-                .openSubjects();
+        header.openSubjects();
     }
 
     @Test
     @Tag("smoke")
     @Tag("regression")
     public void subjectsCanBeFilteredBySubjectName() throws InterruptedException {
+        performInitialSteps();
+        subjectsPage.pressButtonAddSubject();
+        String subjectName = "SubjectName" + generateRandomNum();
+        subjectAddPage
+                .enterSubjectName(subjectName)
+                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
+                .selectModule();
+        Thread.sleep(3000);
+        subjectAddPage.selectRoom();
+        Thread.sleep(3000);
+        subjectAddPage.pressButtonAdd();
+        waitForMessageRecordIsCreated(driver);
+        header.openSubjects();
+        subjectsPage.searchSubjectsByName(subjectName);
+        subjectsPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
+        List<String> subjects = subjectsPage.getSubjectsByName();
+
+        assertTrue(subjects.contains(subjectName),
+                "The list should be filtered by the subject name");
+
+        driver.navigate().refresh();
+        subjectsPage.searchSubjectsByName(subjectName);
+        subjectsPage.pressButtonSearch();
+        subjectsPage.pressButtonDeleteSubject();
+    }
+
+    @Test
+    @Tag("regression")
+    public void subjectsCanBeFilteredByPartialSubjectName() throws InterruptedException {
         performInitialSteps();
         subjectsPage
                 .pressButtonAddSubject();
@@ -42,53 +71,28 @@ public class SubjectsPageTest extends BaseTest {
                 .enterSubjectName(subjectName)
                 .enterSubjectDescription("SubjectDescription" + generateRandomNum())
                 .selectModule();
-        Thread
-                .sleep(3000);
+        Thread.sleep(3000);
         subjectAddPage
                 .selectRoom()
                 .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
-        header
-                .openSubjects();
-        subjectsPage
-                .searchSubjectsByName(subjectName);
-        subjectsPage
-                .pressButtonSearch();
+        header.openSubjects();
+        subjectsPage.searchSubjectsByName("SubjectName");
+        subjectsPage.pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
         List<String> subjects = subjectsPage.getSubjectsByName();
-        assertTrue(subjects.contains(subjectName),
-                "The list should be filtered by the subject name");
 
+        assertTrue(subjects.contains(subjectName),
+                "The list should be filtered by the partial subject name");
+
+        driver.navigate().refresh();
+        subjectsPage.searchSubjectsByName(subjectName);
+        subjectsPage.pressButtonSearch();
+        subjectsPage.pressButtonDeleteSubject();
     }
-//WRONG, IT DEPENDS ON CONCRETE SUBJECT NAME WHICH SHOULD BE ADDED BEFORE TEST AND SHOULD BE UNIQUE
-//    @Test
-//    @Tag("regression")
-//    public void subjectsCanBeFilteredByPartialSubjectName() throws InterruptedException {
-//        performInitialSteps();
-//        subjectsPage
-//                .pressButtonAddSubject();
-//        String subjectName = "SubjectName" + generateRandomNum();
-//        subjectAddPage
-//                .enterSubjectName(subjectName)
-//                .enterSubjectDescription("SubjectDescription" + generateRandomNum())
-//                .selectModule();
-//        Thread.sleep(3000);
-//        subjectAddPage
-//                .selectRoom()
-//                .pressButtonAdd();
-//        waitForMessageRecordIsCreated(driver);
-//        header.openSubjects();
-//        subjectsPage.searchSubjectsByName("SubjectName");
-//        subjectsPage.pressButtonSearch();
-//        waitForMessageRecordsAreFound(driver);
-//        List<String> subjects = subjectsPage.getSubjectsByName();
-//        assertTrue(subjects.contains(subjectName),
-//                "The list should be filtered by the partial subject name");
-//
-//    }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/SubjectTestData3.txt")
+    @CsvFileSource(resources = "/SubjectTestByModule.txt")
     @Tag("smoke")
     @Tag("regression")
     public void subjectsCanBeFilteredByModuleName(String valueFromFile) {
@@ -105,7 +109,7 @@ public class SubjectsPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/SubjectTestData4.txt")
+    @CsvFileSource(resources = "/SubjectTestByPartialModule.txt")
     @Tag("regression")
     public void subjectsCanBeFilteredByPartialModuleName(String valueFromFile) {
         performInitialSteps();

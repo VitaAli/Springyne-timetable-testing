@@ -33,7 +33,7 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/ModuleTestData1.txt")
+    @CsvFileSource(resources = "/ModuleTestByName.txt")
     @Tag("smoke")
     @Tag("regression")
     public void modulesShouldBeFilteredByName(String valueFromFile) {
@@ -49,7 +49,7 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/ModuleTestData2.txt")
+    @CsvFileSource(resources = "/ModuleTestByPartialName.txt")
     @Tag("regression")
     public void modulesShouldBeFilteredByPartialName(String valueFromFile) {
         performInitialSteps();
@@ -64,7 +64,7 @@ public class ModulesPageTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/ModuleTestData3.txt")
+    @CsvFileSource(resources = "/GeneralTestData.txt")
     @Tag("regression")
     public void modulesShouldNotBeFound(String valueFromFile) {
         performInitialSteps();

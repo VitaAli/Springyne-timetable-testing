@@ -14,7 +14,7 @@ public class BaseTest {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://localhost:3000/");
+        driver.get("https://tomcat.akademijait.vtmc.lt/springyne/");
     }
 
     @AfterEach

@@ -40,6 +40,9 @@ public class SubjectsPage extends AbstractPage {
     @FindBy (xpath = "//tbody/tr[1]/td[last()]/button[1]")
     private WebElement buttonViewSubject;
 
+    @FindBy (xpath = "//tbody/tr[1]/td[last()]/button[3]")
+    private WebElement buttonDeleteSubject;
+
     public SubjectsPage(WebDriver driver) {
         super(driver);
     }
@@ -121,6 +124,11 @@ public class SubjectsPage extends AbstractPage {
 
     public SubjectsPage pressButtonViewSubject() {
         buttonViewSubject.click();
+        return this;
+    }
+
+    public SubjectsPage pressButtonDeleteSubject() {
+        buttonDeleteSubject.click();
         return this;
     }
 }

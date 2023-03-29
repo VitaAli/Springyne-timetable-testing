@@ -25,17 +25,14 @@ public class ModuleEditPageTest extends BaseTest {
         modulesPage = new ModulesPage(driver);
         moduleAddPage = new ModuleAddPage(driver);
         moduleEditPage = new ModuleEditPage(driver);
-        header
-                .openModules();
-        modulesPage
-                .pressButtonAdd();
+        header.openModules();
+        modulesPage.pressButtonAdd();
         String moduleName = "ModuleName" + generateRandomNum();
         moduleAddPage
                 .enterModuleNumber("ModuleNumber" + generateRandomNum())
                 .enterModuleName(moduleName)
                 .pressButtonAdd();
-        header
-                .openModules();
+        header.openModules();
         modulesPage
                 .pressButtonSearch()
                 .searchModuleByName(moduleName)
@@ -64,8 +61,7 @@ public class ModuleEditPageTest extends BaseTest {
     @Tag("regression")
     public void moduleShouldBeInvalidated() {
         performInitialSteps();
-        moduleEditPage
-                .pressButtonDelete();
+        moduleEditPage.pressButtonDelete();
         waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", moduleEditPage.getSuccessMessage()
