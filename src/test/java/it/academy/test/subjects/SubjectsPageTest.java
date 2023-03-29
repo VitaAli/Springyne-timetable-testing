@@ -57,6 +57,7 @@ public class SubjectsPageTest extends BaseTest {
         driver.navigate().refresh();
         subjectsPage.searchSubjectsByName(subjectName);
         subjectsPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
         subjectsPage.pressButtonDeleteSubject();
     }
 
@@ -88,6 +89,7 @@ public class SubjectsPageTest extends BaseTest {
         driver.navigate().refresh();
         subjectsPage.searchSubjectsByName(subjectName);
         subjectsPage.pressButtonSearch();
+        waitForMessageRecordsAreFound(driver);
         subjectsPage.pressButtonDeleteSubject();
     }
 

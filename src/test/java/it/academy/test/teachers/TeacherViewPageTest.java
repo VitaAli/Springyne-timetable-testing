@@ -7,8 +7,6 @@ import it.academy.pom.teachers.TeachersPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.JavascriptExecutor;
 
 import static it.academy.utils.GenerateDataUtils.generateRandomNum;
