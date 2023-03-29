@@ -53,11 +53,9 @@ public class SubjectEditPageTest extends BaseTest {
         subjectEditPage
                 .enterSubjectName("SubjectName" + generateRandomNum())
                 .enterSubjectDescription("SubjectDescription" + generateRandomNum());
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         subjectEditPage.pressButtonEditSubject();
         waitForMessageRecordUpdated(driver);
 
@@ -70,11 +68,9 @@ public class SubjectEditPageTest extends BaseTest {
     @Tag("regression")
     public void subjectShouldBeInvalidated() throws InterruptedException {
         performInitialSteps();
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         subjectEditPage.pressButtonDelete();
         waitForMessageSubjectUpdated(driver);
 
@@ -87,19 +83,14 @@ public class SubjectEditPageTest extends BaseTest {
     @Tag("regression")
     public void invalidatedSubjectShouldBeRestored() throws InterruptedException {
         performInitialSteps();
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         subjectEditPage.pressButtonDelete();
-
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         subjectEditPage.pressButtonRestore();
         waitForMessageSubjectUpdated(driver);
-
 
         assertEquals("Įrašas sėkmingai atnaujintas", subjectEditPage.getSuccessMessage()
                 , "No success message received");

@@ -2,7 +2,6 @@ package it.academy.test.subjects;
 
 import it.academy.pom.Header;
 import it.academy.pom.subjects.SubjectAddPage;
-import it.academy.pom.subjects.SubjectEditPage;
 import it.academy.pom.subjects.SubjectViewPage;
 import it.academy.pom.subjects.SubjectsPage;
 import it.academy.test.BaseTest;

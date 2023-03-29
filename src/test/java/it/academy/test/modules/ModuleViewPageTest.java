@@ -2,7 +2,6 @@ package it.academy.test.modules;
 
 import it.academy.pom.Header;
 import it.academy.pom.modules.ModuleAddPage;
-import it.academy.pom.modules.ModuleEditPage;
 import it.academy.pom.modules.ModuleViewPage;
 import it.academy.pom.modules.ModulesPage;
 import it.academy.test.BaseTest;
