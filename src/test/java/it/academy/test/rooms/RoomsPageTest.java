@@ -42,7 +42,8 @@ public class RoomsPageTest extends BaseTest {
                 .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
         header.openRooms();
-        roomsPage.searchRoomsByName(roomName)
+        roomsPage
+                .searchRoomsByName(roomName)
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
         List<String> rooms = roomsPage.getRoomsByName();
@@ -64,7 +65,8 @@ public class RoomsPageTest extends BaseTest {
                 .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
         header.openRooms();
-        roomsPage.searchRoomsByName("RoomName")
+        roomsPage
+                .searchRoomsByName("RoomName")
                 .pressButtonSearch();
         waitForMessageRecordsAreFound(driver);
         List<String> rooms = roomsPage.getRoomsByName();
@@ -78,8 +80,7 @@ public class RoomsPageTest extends BaseTest {
     @Tag("regression")
     public void roomsCanBeFilteredByRoomsBuilding() throws InterruptedException {
         performInitialSteps();
-        roomsPage
-                .pressButtonAddRoom();
+        roomsPage.pressButtonAddRoom();
         String roomBuilding = "RoomBuilding" + generateRandomNum();
         roomAddPage
                 .enterRoomName("RoomName" + generateRandomNum())
@@ -87,8 +88,7 @@ public class RoomsPageTest extends BaseTest {
                 .enterRoomDescription("RoomDescription" + generateRandomNum())
                 .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
-        header
-                .openRooms();
+        header.openRooms();
         roomsPage
                 .searchRoomsByBuilding(roomBuilding)
                 .pressButtonSearch();
@@ -111,8 +111,7 @@ public class RoomsPageTest extends BaseTest {
                 .enterRoomDescription("RoomDescription" + generateRandomNum())
                 .pressButtonAdd();
         waitForMessageRecordIsCreated(driver);
-        header
-                .openRooms();
+        header.openRooms();
         roomsPage
                 .searchRoomsByBuilding("roomBuilding")
                 .pressButtonSearch();

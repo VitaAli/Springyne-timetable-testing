@@ -49,11 +49,9 @@ public class TeacherViewPageTest extends BaseTest {
     @Tag("regression")
     public void teacherShouldBeInvalidated() throws InterruptedException {
         performInitialSteps();
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         teacherViewPage.pressButtonDelete();
         waitForMessageRecordDeleted(driver);
 
@@ -66,17 +64,13 @@ public class TeacherViewPageTest extends BaseTest {
     @Tag("regression")
     public void invalidatedTeacherShouldBeRestored() throws InterruptedException {
         performInitialSteps();
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         teacherViewPage.pressButtonDelete();
         waitUntilRestoreButtonAppears(driver);
-
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         teacherViewPage.pressButtonRestore();
         waitForMessageRecordRestored(driver);
 

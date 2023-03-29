@@ -3,7 +3,6 @@ package it.academy.test.teachers;
 import it.academy.pom.Header;
 import it.academy.pom.teachers.TeacherAddPage;
 import it.academy.pom.teachers.TeacherEditPage;
-import it.academy.pom.teachers.TeacherViewPage;
 import it.academy.pom.teachers.TeachersPage;
 import it.academy.test.BaseTest;
 import org.junit.jupiter.api.Tag;
@@ -48,15 +47,12 @@ public class TeacherEditPageTest extends BaseTest {
     @Test
     @Tag("smoke")
     @Tag("regression")
-    public void teacherShouldBeEditedByEditingAllFields() throws InterruptedException {
+    public void teacherShouldBeEdited() throws InterruptedException {
         performInitialSteps();
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
-        teacherEditPage
-                .pressButtonEdit();
+        teacherEditPage.pressButtonEdit();
         waitForMessageRecordUpdated(driver);
 
         assertEquals("Įrašas sėkmingai atnaujintas", teacherEditPage.getSuccessMessage()
@@ -68,11 +64,9 @@ public class TeacherEditPageTest extends BaseTest {
     @Tag("regression")
     public void teacherShouldBeInvalidated() throws InterruptedException {
         performInitialSteps();
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         teacherEditPage
                 .pressButtonEdit()
                 .pressButtonDelete();
@@ -90,12 +84,9 @@ public class TeacherEditPageTest extends BaseTest {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         teacherEditPage.pressButtonDelete();
-
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         Thread.sleep(3000);
-
         teacherEditPage.pressButtonRestore();
         waitForMessageRecordUpdated(driver);
 
