@@ -27,3 +27,9 @@ hs_err_pid*
 ## target folder at any level of the project structue
 **/target
 /target
+
+## allure-results folder at any level of the project structue
+**/allure-results
+/allure-results
+
+
